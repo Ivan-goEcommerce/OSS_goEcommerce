@@ -1,0 +1,75 @@
+---
+description: Flask development rules and best practices for the OSS_goEcommerce project
+globs: ["**/*.py", "**/app/**", "**/templates/**", "**/static/**"]
+alwaysApply: true
+---
+
+# Flask Development Rules
+
+## Project Structure
+- Follow standard Flask project structure with `app/` directory
+- Keep templates in `app/templates/` directory
+- Store static files in `app/static/` directory
+- Use blueprints for modular organization
+- Place configuration in separate config files
+
+## Code Organization
+- Use application factory pattern with `create_app()` function
+- Organize routes in blueprints by feature/functionality
+- Keep business logic separate from route handlers
+- Use proper error handling with try-catch blocks
+- Implement proper logging throughout the application
+
+## Database Integration
+- Use Flask-SQLAlchemy for database operations
+- Implement proper database migrations with Flask-Migrate
+- Use database models for data validation
+- Implement proper connection pooling and error handling
+
+## Security Best Practices
+- Use Flask-WTF for form handling and CSRF protection
+- Implement proper input validation and sanitization
+- Use secure session management
+- Implement proper authentication and authorization
+- Use environment variables for sensitive configuration
+
+## API Development
+- Use Flask-RESTful or Flask-RESTX for API endpoints
+- Implement proper HTTP status codes
+- Use JSON for API responses
+- Implement proper error handling and validation
+- Use request/response serialization
+
+## Integration with Drawscape Factorio
+- When using the custom Drawscape Factorio module, follow the established pattern:
+  ```python
+  from drawscape_factorio import create as createFactorio
+  from drawscape_factorio import importFUE5
+  
+  with open('/path/to/exported-entities.json', 'r') as file:
+      json_data = json.load(file)
+      data = importFUE5(json_data)
+      result = createFactorio(data, {
+          'theme_name': 'default',
+          'color_scheme': 'main',
+          'show_layers': ['assets', 'belts', 'walls', 'rails', 'electrical', 'spaceship']
+      })
+  ```
+
+## Testing
+- Write unit tests for all business logic
+- Use Flask-Testing for integration tests
+- Implement proper test fixtures and mocking
+- Maintain high test coverage
+
+## Performance
+- Use proper caching strategies
+- Implement database query optimization
+- Use background tasks for heavy operations
+- Monitor application performance
+
+## Documentation
+- Document all API endpoints
+- Use docstrings for all functions and classes
+- Maintain README with setup instructions
+- Document environment variables and configuration

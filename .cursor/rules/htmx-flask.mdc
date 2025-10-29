@@ -1,0 +1,89 @@
+---
+description: HTMX with Flask best practices and folder structure for the OSS_goEcommerce project
+globs: ["**/*.py", "**/templates/**", "**/static/**", "**/app/**"]
+alwaysApply: true
+---
+
+# HTMX with Flask Best Practices
+
+## HTMX and Flask Integration
+
+### Core Best Practices
+- Use Flask's `render_template` for server-side rendering
+- Implement Flask-WTF for form handling
+- Utilize Flask's `url_for` for generating URLs
+- Use Flask's `jsonify` for JSON responses
+- Implement Flask-SQLAlchemy for database operations
+- Utilize Flask's Blueprint for modular applications
+
+## Project Folder Structure
+
+```
+app/
+  templates/
+  static/
+    css/
+    js/
+  models/
+  routes/
+  __init__.py
+config.py
+run.py
+```
+
+## Additional Instructions
+
+1. **Jinja2 Templating with HTMX**
+   - Use Jinja2 templating with HTMX attributes
+   - Implement proper template inheritance
+   - Use HTMX attributes like `hx-get`, `hx-post`, `hx-target`, `hx-swap`
+
+2. **Security**
+   - Implement proper CSRF protection with Flask-WTF
+   - Validate all HTMX requests
+   - Use Flask's request object for handling HTMX requests
+
+3. **Database Management**
+   - Use Flask-Migrate for database migrations
+   - Implement proper database models with SQLAlchemy
+   - Use database sessions properly
+
+4. **Error Handling and Logging**
+   - Implement proper error handling and logging
+   - Use Flask's built-in logging system
+   - Handle HTMX-specific errors appropriately
+
+5. **Application Architecture**
+   - Follow Flask's application factory pattern
+   - Use environment variables for configuration
+   - Implement proper separation of concerns
+
+6. **HTMX Specific Patterns**
+   - Use partial template rendering for HTMX responses
+   - Implement proper loading states
+   - Handle HTMX request headers appropriately
+   - Use HTMX events for client-side interactions
+
+## Example HTMX Integration
+
+```python
+# routes.py
+from flask import render_template, request, jsonify
+from flask_wtf.csrf import CSRFProtect
+
+@app.route('/api/data', methods=['POST'])
+def update_data():
+    if request.headers.get('HX-Request'):
+        # Handle HTMX request
+        data = request.get_json()
+        # Process data
+        return render_template('partials/data_update.html', data=data)
+    return jsonify({'error': 'Invalid request'})
+```
+
+```html
+<!-- templates/partials/data_update.html -->
+<div hx-get="/api/data" hx-trigger="load">
+    <!-- HTMX content -->
+</div>
+```

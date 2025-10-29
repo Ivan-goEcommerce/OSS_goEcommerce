@@ -1,0 +1,1349 @@
+---
+alwaysApply: true
+---
+
+{
+  "name": "Reddit Brand Monitoring with AI Sentiment Analysis - Fixed",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "search",
+        "subreddit": "n8n",
+        "keyword": "Osly",
+        "limit": 10,
+        "additionalFields": {}
+      },
+      "id": "b0b495ba-3254-4e66-ba42-f482af8b74e0",
+      "name": "Search Reddit Posts",
+      "type": "n8n-nodes-base.reddit",
+      "typeVersion": 1,
+      "position": [
+        -4208,
+        480
+      ],
+      "credentials": {
+        "redditOAuth2Api": {
+          "id": "dUQYBbsjEirFJgnr",
+          "name": "Reddit account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Process Reddit posts and prepare for AI analysis\nconst processedPosts = $input.all().map(item => {\n  const post = item.json;\n  \n  return {\n    json: {\n      // Original post data\n      postId: post.id,\n      title: post.title || '',\n      content: post.selftext || post.title || '',\n      author: post.author,\n      subreddit: post.subreddit,\n      url: post.url,\n      permalink: `https://reddit.com${post.permalink}`,\n      score: post.score || 0,\n      numComments: post.num_comments || 0,\n      createdUtc: post.created_utc,\n      \n      // Prepare combined text for AI analysis\n      fullText: `Title: ${post.title || ''}\\n\\nContent: ${post.selftext || 'No content'}`,\n      \n      // Metadata\n      processedAt: new Date().toISOString(),\n      source: 'reddit'\n    }\n  };\n});\n\nreturn processedPosts;"
+      },
+      "id": "5ad2c0b0-39aa-4bfb-9a48-b7719a90cbd0",
+      "name": "Process Reddit Posts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3984,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "You are an expert social media analyst specializing in brand sentiment analysis. Analyze the following Reddit post for sentiment and categorization:\n\nPost Title: {{ $json.title }}\nPost Content: {{ $json.content }}\nAuthor: {{ $json.author }}\nSubreddit: {{ $json.subreddit }}\n\nPlease analyze this post and provide:\n1. Sentiment: positive, neutral, or negative\n2. Category: praise, question, complaint, or spam\n3. Brief reasoning for your analysis\n\nBe thorough in your analysis and consider context, tone, and intent. CRITICAL: Before responding, validate your output meets ALL specified requirements including exact sentiment classification and category assignment.",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "You are an expert social media analyst specializing in brand sentiment analysis. Analyze Reddit posts accurately and provide structured responses. CRITICAL: Before responding, validate your output meets ALL specified requirements including exact sentiment classification and category assignment.",
+          "maxIterations": 5
+        }
+      },
+      "id": "65561235-9676-4357-b122-1c7912407775",
+      "name": "AI Sentiment Analysis Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        -3712,
+        736
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {}
+      },
+      "id": "d9f68dc2-9c8a-4c2f-867a-7490b768429e",
+      "name": "Anthropic Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        -3760,
+        960
+      ],
+      "credentials": {
+        "anthropicApi": {
+          "id": "wimFF0ah6AUU9Kgy",
+          "name": "Anthropic account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"sentiment\": \"positive\",\n  \"category\": \"praise\",\n  \"reasoning\": \"The post expresses positive feedback about the brand\",\n  \"confidence\": 0.85\n}",
+        "autoFix": true
+      },
+      "id": "43ca2daa-521c-462c-b235-467db5b87f80",
+      "name": "Structured Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -3504,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {}
+      },
+      "id": "0df48579-cf36-4787-aaf6-ec67be5f3788",
+      "name": "Anthropic Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        -3424,
+        1168
+      ],
+      "credentials": {
+        "anthropicApi": {
+          "id": "wimFF0ah6AUU9Kgy",
+          "name": "Anthropic account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "sonar",
+        "messages": {
+          "message": [
+            {
+              "content": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('message0_Text', ``, 'string') }}"
+            }
+          ]
+        },
+        "options": {},
+        "requestOptions": {}
+      },
+      "id": "4932c0db-3329-4e41-8aa4-68b139efbbb0",
+      "name": "Perplexity Search",
+      "type": "n8n-nodes-base.perplexityTool",
+      "typeVersion": 1,
+      "position": [
+        -3632,
+        960
+      ],
+      "credentials": {
+        "perplexityApi": {
+          "id": "DqFeOzqrrnHcWDYc",
+          "name": "Perplexity account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "5d6024dc-5653-4535-9ddc-8ce9b0716dbd",
+      "name": "Merge Analysis Data",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -3136,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "postId_field",
+              "name": "postId",
+              "type": "string",
+              "value": "={{ $input.item.json.postId }}"
+            },
+            {
+              "id": "title_field",
+              "name": "title",
+              "type": "string",
+              "value": "={{ $input.item.json.title }}"
+            },
+            {
+              "id": "content_field",
+              "name": "content",
+              "type": "string",
+              "value": "={{ $input.item.json.content }}"
+            },
+            {
+              "id": "author_field",
+              "name": "author",
+              "type": "string",
+              "value": "={{ $input.item.json.author }}"
+            },
+            {
+              "id": "subreddit_field",
+              "name": "subreddit",
+              "type": "string",
+              "value": "={{ $input.item.json.subreddit }}"
+            },
+            {
+              "id": "permalink_field",
+              "name": "permalink",
+              "type": "string",
+              "value": "={{ $input.item.json.permalink }}"
+            },
+            {
+              "id": "sentiment_field",
+              "name": "sentiment",
+              "type": "string",
+              "value": "={{ $input.item.json.output.sentiment }}"
+            },
+            {
+              "id": "category_field",
+              "name": "category",
+              "type": "string",
+              "value": "={{ $input.item.json.output.category }}"
+            },
+            {
+              "id": "reasoning_field",
+              "name": "reasoning",
+              "type": "string",
+              "value": "={{ $input.item.json.output.reasoning }}"
+            },
+            {
+              "id": "confidence_field",
+              "name": "confidence",
+              "type": "number",
+              "value": "={{ $input.item.json.output.confidence }}"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "4c56dbfb-9cd1-4fba-bba2-a94b67bdcc52",
+      "name": "Combine Post and Analysis",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2912,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "negative-sentiment",
+              "leftValue": "={{ $json.sentiment }}",
+              "rightValue": "negative",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "complaint-category",
+              "leftValue": "={{ $json.category }}",
+              "rightValue": "complaint",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "c8aead37-7967-4ac1-8e25-dfed0df84e22",
+      "name": "Check if Negative or Complaint",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -2688,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "alerts"
+        },
+        "text": "🚨 **NEGATIVE REDDIT MENTION DETECTED** 🚨\n\n**Post Details:**\n• **Title:** {{ $json.title }}\n• **Author:** u/{{ $json.author }}\n• **Subreddit:** r/{{ $json.subreddit }}\n• **Sentiment:** {{ $json.sentiment | upper }}\n• **Category:** {{ $json.category | upper }}\n\n**Content Preview:**\n{{ $json.content | truncate(300) }}\n\n**AI Analysis:**\n{{ $json.reasoning }}\n**Confidence:** {{ Math.round($json.confidence * 100) }}%\n\n**Actions Required:**\n• Review the post immediately\n• Consider crafting a response\n• Monitor for additional comments\n\n🔗 **[View Post]({{ $json.permalink }})**\n\n*Detected at {{ new Date().toLocaleString() }}*",
+        "otherOptions": {}
+      },
+      "id": "7b897c0b-b2e5-4c2e-a65b-1c171309202d",
+      "name": "Send Slack Alert",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        -2256,
+        288
+      ],
+      "webhookId": "51667a66-81d6-4b56-ad74-f3eb6c62e5c8",
+      "credentials": {
+        "slackApi": {
+          "id": "LSdI6HJX6LASQlgU",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Log negative incidents for tracking and analysis\nconst incidents = $input.all().map(item => {\n  const data = item.json;\n  \n  return {\n    json: {\n      // Incident tracking\n      incidentId: `reddit_${data.postId}_${Date.now()}`,\n      timestamp: new Date().toISOString(),\n      platform: 'reddit',\n      \n      // Post details\n      postId: data.postId,\n      title: data.title,\n      content: data.content,\n      author: data.author,\n      subreddit: data.subreddit,\n      permalink: data.permalink,\n      \n      // Analysis results\n      sentiment: data.sentiment,\n      category: data.category,\n      reasoning: data.reasoning,\n      confidence: data.confidence,\n      \n      // Incident classification\n      severity: data.sentiment === 'negative' && data.confidence > 0.8 ? 'high' : 'medium',\n      status: 'new',\n      assignedTo: null,\n      \n      // Response tracking\n      responseRequired: true,\n      responseDeadline: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(), // 24 hours\n      \n      // Metadata\n      source: 'reddit_monitoring_workflow',\n      workflowExecutionId: $execution.id\n    }\n  };\n});\n\nreturn incidents;"
+      },
+      "id": "14cf2a03-4295-4a07-a941-5764f2b4a086",
+      "name": "Log Incident",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2272,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Draft a helpful and professional reply to this Reddit post:\n\n**Post Details:**\n- Title: {{ $json.title || '' }}\n- Content: {{ ($json.content || '').slice(0, 1500) }}\n- Author: u/{{ $json.author || 'unknown' }}\n- Subreddit: r/{{ $json.subreddit || 'unknown' }}\n- Score: {{ $json.score ?? 0 }} points\n- Comments: {{ $json.numComments ?? 0 }}\n\n**Analysis Results:**\n- Sentiment: {{ $json.sentiment || 'unknown' }}\n- Category: {{ $json.category || 'uncategorized' }}\n- Confidence: {{ $json.confidence ?? 0 }}\n- Reasoning: {{ $json.reasoning || '' }}\n\n**Reply Guidelines:**\nBased on the sentiment analysis, craft a response that:\n\n1. **For Positive/Neutral Posts:**\n   - Acknowledge their contribution\n   - Add valuable insights or ask thoughtful questions\n   - Share relevant experiences if appropriate\n\n2. **For Negative/Complaint Posts:**\n   - Show empathy and understanding\n   - Offer constructive solutions or alternatives\n   - Avoid being defensive\n\n3. **General Requirements:**\n   - Maintain a professional but friendly tone\n   - Be authentic and add genuine value\n   - Respect the r/{{ $json.subreddit || 'unknown' }} community culture\n   - Keep response concise but informative\n   - Include relevant information about our solutions only if it naturally fits\n\n**Critical:** Ensure your reply is contextually appropriate for r/{{ $json.subreddit || 'unknown' }} and genuinely helpful to the discussion.\n",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "id": "e30978f3-8a9f-4e39-8807-9f4b424653e6",
+      "name": "AI Reply Drafting Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        -2416,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {}
+      },
+      "id": "ee9ef0dd-1749-4c20-8f62-047481d27dcb",
+      "name": "Anthropic Chat Model2",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        -2464,
+        1104
+      ],
+      "credentials": {
+        "anthropicApi": {
+          "id": "wimFF0ah6AUU9Kgy",
+          "name": "Anthropic account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Format the final output with all analysis and recommendations (null-safe)\nconst finalOutput = $input.all().map(item => {\n  const d = item?.json ?? {};\n\n  // Normalize & guard\n  const title = (d.title ?? '').toString();\n  const author = (d.author ?? 'unknown').toString();\n  const subreddit = (d.subreddit ?? 'unknown').toString();\n  const permalink = (d.permalink ?? '').toString();\n\n  const rawSentiment = (d.sentiment ?? d.output?.sentiment ?? '').toString().trim();\n  const rawCategory  = (d.category  ?? d.output?.category  ?? '').toString().trim();\n  const sentimentLc  = rawSentiment.toLowerCase();\n  const categoryLc   = rawCategory.toLowerCase();\n\n  const confidence = Number(d.confidence ?? d.output?.confidence ?? 0);\n  const reasoning  = (d.reasoning ?? d.output?.reasoning ?? '').toString();\n\n  // AI-generated reply (if present)\n  const draftReply        = (d.output?.draftReply ?? '').toString() || 'No reply generated';\n  const replyTone         = (d.output?.tone ?? 'neutral').toString();\n  const recommendedAction = (d.output?.recommendedAction ?? 'review').toString();\n  const notes             = (d.output?.notes ?? '').toString();\n\n  // Determine action\n  const isNegativeOrComplaint =\n    sentimentLc === 'negative' || categoryLc === 'complaint';\n  const actionTaken = isNegativeOrComplaint ? 'alert_sent' : 'reply_drafted';\n\n  // Summary (defensive)\n  const sentimentForSummary = rawSentiment ? rawSentiment.toUpperCase() : 'UNKNOWN';\n  const categoryForSummary  = rawCategory || 'uncategorized';\n  const shortTitle = title.slice(0, 100) + (title.length > 100 ? '...' : '');\n\n  return {\n    json: {\n      // Post identification\n      postId: d.postId ?? d.id ?? null,\n      title,\n      author,\n      subreddit,\n      permalink,\n\n      // Analysis results\n      sentiment: rawSentiment || null,\n      category: rawCategory || null,\n      reasoning,\n      confidence,\n\n      // AI-generated reply\n      draftReply,\n      replyTone,\n      recommendedAction,\n      notes,\n\n      // Workflow metadata\n      processedAt: new Date().toISOString(),\n      workflowType: 'reddit_monitoring',\n      actionTaken,\n\n      // Summary\n      summary: `${sentimentForSummary} ${categoryForSummary} from u/${author} in r/${subreddit}: \"${shortTitle}\"`\n    }\n  };\n});\n\nreturn finalOutput;"
+      },
+      "id": "d42b9e2d-d740-450c-9491-bc69053cf70a",
+      "name": "Format Final Output",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1840,
+        880
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "018fb794-3436-44e5-95c3-e8373b3df0c4",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -4432,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "model": "sonar",
+        "messages": {
+          "message": [
+            {
+              "content": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('message0_Text', ``, 'string') }}"
+            }
+          ]
+        },
+        "options": {},
+        "requestOptions": {}
+      },
+      "id": "7fb1686b-a4e5-462b-8e61-000562d87597",
+      "name": "Perplexity Search1",
+      "type": "n8n-nodes-base.perplexityTool",
+      "typeVersion": 1,
+      "position": [
+        -2336,
+        1104
+      ],
+      "credentials": {
+        "perplexityApi": {
+          "id": "DqFeOzqrrnHcWDYc",
+          "name": "Perplexity account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {}
+      },
+      "id": "f37eae60-d51d-4486-b803-7cf5f65eeecc",
+      "name": "Anthropic Chat Model3",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        -2128,
+        1312
+      ],
+      "credentials": {
+        "anthropicApi": {
+          "id": "wimFF0ah6AUU9Kgy",
+          "name": "Anthropic account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"draftReply\": \"Thank you for your question! Here's some helpful information...\",\n  \"tone\": \"helpful\",\n  \"recommendedAction\": \"post_reply\",\n  \"notes\": \"Consider mentioning our support resources\"\n}",
+        "autoFix": true
+      },
+      "id": "cc132af9-dd35-45cc-adb6-fc8559c4718d",
+      "name": "Structured Output Parser1",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -2208,
+        1104
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Search Reddit Posts": {
+      "main": [
+        [
+          {
+            "node": "Process Reddit Posts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Reddit Posts": {
+      "main": [
+        [
+          {
+            "node": "AI Sentiment Analysis Agent",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge Analysis Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Sentiment Analysis Agent": {
+      "main": [
+        [
+          {
+            "node": "Merge Analysis Data",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Sentiment Analysis Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Sentiment Analysis Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Perplexity Search": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Sentiment Analysis Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Analysis Data": {
+      "main": [
+        [
+          {
+            "node": "Combine Post and Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combine Post and Analysis": {
+      "main": [
+        [
+          {
+            "node": "Check if Negative or Complaint",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check if Negative or Complaint": {
+      "main": [
+        [
+          {
+            "node": "Send Slack Alert",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Log Incident",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Reply Drafting Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Reply Drafting Agent": {
+      "main": [
+        [
+          {
+            "node": "Format Final Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Reply Drafting Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Search Reddit Posts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Perplexity Search1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Reply Drafting Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Reply Drafting Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Final Output": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b5fbd0db-5a24-4412-b7a6-b695bd77a15c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "4d2ac3ea620e1964ade0d56719483ce309d959ebe0a4c65ddf11a47cf31d408c"
+  },
+  "id": "sX9FCQdxX9whUR5W",
+  "tags": []
+}{
+  "name": "Reddit Brand Monitoring with AI Sentiment Analysis - Fixed",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "search",
+        "subreddit": "n8n",
+        "keyword": "Osly",
+        "limit": 10,
+        "additionalFields": {}
+      },
+      "id": "b0b495ba-3254-4e66-ba42-f482af8b74e0",
+      "name": "Search Reddit Posts",
+      "type": "n8n-nodes-base.reddit",
+      "typeVersion": 1,
+      "position": [
+        -4208,
+        480
+      ],
+      "credentials": {
+        "redditOAuth2Api": {
+          "id": "dUQYBbsjEirFJgnr",
+          "name": "Reddit account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Process Reddit posts and prepare for AI analysis\nconst processedPosts = $input.all().map(item => {\n  const post = item.json;\n  \n  return {\n    json: {\n      // Original post data\n      postId: post.id,\n      title: post.title || '',\n      content: post.selftext || post.title || '',\n      author: post.author,\n      subreddit: post.subreddit,\n      url: post.url,\n      permalink: `https://reddit.com${post.permalink}`,\n      score: post.score || 0,\n      numComments: post.num_comments || 0,\n      createdUtc: post.created_utc,\n      \n      // Prepare combined text for AI analysis\n      fullText: `Title: ${post.title || ''}\\n\\nContent: ${post.selftext || 'No content'}`,\n      \n      // Metadata\n      processedAt: new Date().toISOString(),\n      source: 'reddit'\n    }\n  };\n});\n\nreturn processedPosts;"
+      },
+      "id": "5ad2c0b0-39aa-4bfb-9a48-b7719a90cbd0",
+      "name": "Process Reddit Posts",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -3984,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "You are an expert social media analyst specializing in brand sentiment analysis. Analyze the following Reddit post for sentiment and categorization:\n\nPost Title: {{ $json.title }}\nPost Content: {{ $json.content }}\nAuthor: {{ $json.author }}\nSubreddit: {{ $json.subreddit }}\n\nPlease analyze this post and provide:\n1. Sentiment: positive, neutral, or negative\n2. Category: praise, question, complaint, or spam\n3. Brief reasoning for your analysis\n\nBe thorough in your analysis and consider context, tone, and intent. CRITICAL: Before responding, validate your output meets ALL specified requirements including exact sentiment classification and category assignment.",
+        "hasOutputParser": true,
+        "options": {
+          "systemMessage": "You are an expert social media analyst specializing in brand sentiment analysis. Analyze Reddit posts accurately and provide structured responses. CRITICAL: Before responding, validate your output meets ALL specified requirements including exact sentiment classification and category assignment.",
+          "maxIterations": 5
+        }
+      },
+      "id": "65561235-9676-4357-b122-1c7912407775",
+      "name": "AI Sentiment Analysis Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        -3712,
+        736
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {}
+      },
+      "id": "d9f68dc2-9c8a-4c2f-867a-7490b768429e",
+      "name": "Anthropic Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        -3760,
+        960
+      ],
+      "credentials": {
+        "anthropicApi": {
+          "id": "wimFF0ah6AUU9Kgy",
+          "name": "Anthropic account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"sentiment\": \"positive\",\n  \"category\": \"praise\",\n  \"reasoning\": \"The post expresses positive feedback about the brand\",\n  \"confidence\": 0.85\n}",
+        "autoFix": true
+      },
+      "id": "43ca2daa-521c-462c-b235-467db5b87f80",
+      "name": "Structured Output Parser",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -3504,
+        960
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {}
+      },
+      "id": "0df48579-cf36-4787-aaf6-ec67be5f3788",
+      "name": "Anthropic Chat Model1",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        -3424,
+        1168
+      ],
+      "credentials": {
+        "anthropicApi": {
+          "id": "wimFF0ah6AUU9Kgy",
+          "name": "Anthropic account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "sonar",
+        "messages": {
+          "message": [
+            {
+              "content": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('message0_Text', ``, 'string') }}"
+            }
+          ]
+        },
+        "options": {},
+        "requestOptions": {}
+      },
+      "id": "4932c0db-3329-4e41-8aa4-68b139efbbb0",
+      "name": "Perplexity Search",
+      "type": "n8n-nodes-base.perplexityTool",
+      "typeVersion": 1,
+      "position": [
+        -3632,
+        960
+      ],
+      "credentials": {
+        "perplexityApi": {
+          "id": "DqFeOzqrrnHcWDYc",
+          "name": "Perplexity account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "id": "5d6024dc-5653-4535-9ddc-8ce9b0716dbd",
+      "name": "Merge Analysis Data",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -3136,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "postId_field",
+              "name": "postId",
+              "type": "string",
+              "value": "={{ $input.item.json.postId }}"
+            },
+            {
+              "id": "title_field",
+              "name": "title",
+              "type": "string",
+              "value": "={{ $input.item.json.title }}"
+            },
+            {
+              "id": "content_field",
+              "name": "content",
+              "type": "string",
+              "value": "={{ $input.item.json.content }}"
+            },
+            {
+              "id": "author_field",
+              "name": "author",
+              "type": "string",
+              "value": "={{ $input.item.json.author }}"
+            },
+            {
+              "id": "subreddit_field",
+              "name": "subreddit",
+              "type": "string",
+              "value": "={{ $input.item.json.subreddit }}"
+            },
+            {
+              "id": "permalink_field",
+              "name": "permalink",
+              "type": "string",
+              "value": "={{ $input.item.json.permalink }}"
+            },
+            {
+              "id": "sentiment_field",
+              "name": "sentiment",
+              "type": "string",
+              "value": "={{ $input.item.json.output.sentiment }}"
+            },
+            {
+              "id": "category_field",
+              "name": "category",
+              "type": "string",
+              "value": "={{ $input.item.json.output.category }}"
+            },
+            {
+              "id": "reasoning_field",
+              "name": "reasoning",
+              "type": "string",
+              "value": "={{ $input.item.json.output.reasoning }}"
+            },
+            {
+              "id": "confidence_field",
+              "name": "confidence",
+              "type": "number",
+              "value": "={{ $input.item.json.output.confidence }}"
+            }
+          ]
+        },
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "id": "4c56dbfb-9cd1-4fba-bba2-a94b67bdcc52",
+      "name": "Combine Post and Analysis",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2912,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "negative-sentiment",
+              "leftValue": "={{ $json.sentiment }}",
+              "rightValue": "negative",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "complaint-category",
+              "leftValue": "={{ $json.category }}",
+              "rightValue": "complaint",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "c8aead37-7967-4ac1-8e25-dfed0df84e22",
+      "name": "Check if Negative or Complaint",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -2688,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "mode": "name",
+          "value": "alerts"
+        },
+        "text": "🚨 **NEGATIVE REDDIT MENTION DETECTED** 🚨\n\n**Post Details:**\n• **Title:** {{ $json.title }}\n• **Author:** u/{{ $json.author }}\n• **Subreddit:** r/{{ $json.subreddit }}\n• **Sentiment:** {{ $json.sentiment | upper }}\n• **Category:** {{ $json.category | upper }}\n\n**Content Preview:**\n{{ $json.content | truncate(300) }}\n\n**AI Analysis:**\n{{ $json.reasoning }}\n**Confidence:** {{ Math.round($json.confidence * 100) }}%\n\n**Actions Required:**\n• Review the post immediately\n• Consider crafting a response\n• Monitor for additional comments\n\n🔗 **[View Post]({{ $json.permalink }})**\n\n*Detected at {{ new Date().toLocaleString() }}*",
+        "otherOptions": {}
+      },
+      "id": "7b897c0b-b2e5-4c2e-a65b-1c171309202d",
+      "name": "Send Slack Alert",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.3,
+      "position": [
+        -2256,
+        288
+      ],
+      "webhookId": "51667a66-81d6-4b56-ad74-f3eb6c62e5c8",
+      "credentials": {
+        "slackApi": {
+          "id": "LSdI6HJX6LASQlgU",
+          "name": "Slack account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Log negative incidents for tracking and analysis\nconst incidents = $input.all().map(item => {\n  const data = item.json;\n  \n  return {\n    json: {\n      // Incident tracking\n      incidentId: `reddit_${data.postId}_${Date.now()}`,\n      timestamp: new Date().toISOString(),\n      platform: 'reddit',\n      \n      // Post details\n      postId: data.postId,\n      title: data.title,\n      content: data.content,\n      author: data.author,\n      subreddit: data.subreddit,\n      permalink: data.permalink,\n      \n      // Analysis results\n      sentiment: data.sentiment,\n      category: data.category,\n      reasoning: data.reasoning,\n      confidence: data.confidence,\n      \n      // Incident classification\n      severity: data.sentiment === 'negative' && data.confidence > 0.8 ? 'high' : 'medium',\n      status: 'new',\n      assignedTo: null,\n      \n      // Response tracking\n      responseRequired: true,\n      responseDeadline: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(), // 24 hours\n      \n      // Metadata\n      source: 'reddit_monitoring_workflow',\n      workflowExecutionId: $execution.id\n    }\n  };\n});\n\nreturn incidents;"
+      },
+      "id": "14cf2a03-4295-4a07-a941-5764f2b4a086",
+      "name": "Log Incident",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2272,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Draft a helpful and professional reply to this Reddit post:\n\n**Post Details:**\n- Title: {{ $json.title || '' }}\n- Content: {{ ($json.content || '').slice(0, 1500) }}\n- Author: u/{{ $json.author || 'unknown' }}\n- Subreddit: r/{{ $json.subreddit || 'unknown' }}\n- Score: {{ $json.score ?? 0 }} points\n- Comments: {{ $json.numComments ?? 0 }}\n\n**Analysis Results:**\n- Sentiment: {{ $json.sentiment || 'unknown' }}\n- Category: {{ $json.category || 'uncategorized' }}\n- Confidence: {{ $json.confidence ?? 0 }}\n- Reasoning: {{ $json.reasoning || '' }}\n\n**Reply Guidelines:**\nBased on the sentiment analysis, craft a response that:\n\n1. **For Positive/Neutral Posts:**\n   - Acknowledge their contribution\n   - Add valuable insights or ask thoughtful questions\n   - Share relevant experiences if appropriate\n\n2. **For Negative/Complaint Posts:**\n   - Show empathy and understanding\n   - Offer constructive solutions or alternatives\n   - Avoid being defensive\n\n3. **General Requirements:**\n   - Maintain a professional but friendly tone\n   - Be authentic and add genuine value\n   - Respect the r/{{ $json.subreddit || 'unknown' }} community culture\n   - Keep response concise but informative\n   - Include relevant information about our solutions only if it naturally fits\n\n**Critical:** Ensure your reply is contextually appropriate for r/{{ $json.subreddit || 'unknown' }} and genuinely helpful to the discussion.\n",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "id": "e30978f3-8a9f-4e39-8807-9f4b424653e6",
+      "name": "AI Reply Drafting Agent",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 1.6,
+      "position": [
+        -2416,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {}
+      },
+      "id": "ee9ef0dd-1749-4c20-8f62-047481d27dcb",
+      "name": "Anthropic Chat Model2",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        -2464,
+        1104
+      ],
+      "credentials": {
+        "anthropicApi": {
+          "id": "wimFF0ah6AUU9Kgy",
+          "name": "Anthropic account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Format the final output with all analysis and recommendations (null-safe)\nconst finalOutput = $input.all().map(item => {\n  const d = item?.json ?? {};\n\n  // Normalize & guard\n  const title = (d.title ?? '').toString();\n  const author = (d.author ?? 'unknown').toString();\n  const subreddit = (d.subreddit ?? 'unknown').toString();\n  const permalink = (d.permalink ?? '').toString();\n\n  const rawSentiment = (d.sentiment ?? d.output?.sentiment ?? '').toString().trim();\n  const rawCategory  = (d.category  ?? d.output?.category  ?? '').toString().trim();\n  const sentimentLc  = rawSentiment.toLowerCase();\n  const categoryLc   = rawCategory.toLowerCase();\n\n  const confidence = Number(d.confidence ?? d.output?.confidence ?? 0);\n  const reasoning  = (d.reasoning ?? d.output?.reasoning ?? '').toString();\n\n  // AI-generated reply (if present)\n  const draftReply        = (d.output?.draftReply ?? '').toString() || 'No reply generated';\n  const replyTone         = (d.output?.tone ?? 'neutral').toString();\n  const recommendedAction = (d.output?.recommendedAction ?? 'review').toString();\n  const notes             = (d.output?.notes ?? '').toString();\n\n  // Determine action\n  const isNegativeOrComplaint =\n    sentimentLc === 'negative' || categoryLc === 'complaint';\n  const actionTaken = isNegativeOrComplaint ? 'alert_sent' : 'reply_drafted';\n\n  // Summary (defensive)\n  const sentimentForSummary = rawSentiment ? rawSentiment.toUpperCase() : 'UNKNOWN';\n  const categoryForSummary  = rawCategory || 'uncategorized';\n  const shortTitle = title.slice(0, 100) + (title.length > 100 ? '...' : '');\n\n  return {\n    json: {\n      // Post identification\n      postId: d.postId ?? d.id ?? null,\n      title,\n      author,\n      subreddit,\n      permalink,\n\n      // Analysis results\n      sentiment: rawSentiment || null,\n      category: rawCategory || null,\n      reasoning,\n      confidence,\n\n      // AI-generated reply\n      draftReply,\n      replyTone,\n      recommendedAction,\n      notes,\n\n      // Workflow metadata\n      processedAt: new Date().toISOString(),\n      workflowType: 'reddit_monitoring',\n      actionTaken,\n\n      // Summary\n      summary: `${sentimentForSummary} ${categoryForSummary} from u/${author} in r/${subreddit}: \"${shortTitle}\"`\n    }\n  };\n});\n\nreturn finalOutput;"
+      },
+      "id": "d42b9e2d-d740-450c-9491-bc69053cf70a",
+      "name": "Format Final Output",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1840,
+        880
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "018fb794-3436-44e5-95c3-e8373b3df0c4",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -4432,
+        480
+      ]
+    },
+    {
+      "parameters": {
+        "model": "sonar",
+        "messages": {
+          "message": [
+            {
+              "content": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('message0_Text', ``, 'string') }}"
+            }
+          ]
+        },
+        "options": {},
+        "requestOptions": {}
+      },
+      "id": "7fb1686b-a4e5-462b-8e61-000562d87597",
+      "name": "Perplexity Search1",
+      "type": "n8n-nodes-base.perplexityTool",
+      "typeVersion": 1,
+      "position": [
+        -2336,
+        1104
+      ],
+      "credentials": {
+        "perplexityApi": {
+          "id": "DqFeOzqrrnHcWDYc",
+          "name": "Perplexity account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "claude-sonnet-4-20250514",
+          "mode": "list",
+          "cachedResultName": "Claude Sonnet 4"
+        },
+        "options": {}
+      },
+      "id": "f37eae60-d51d-4486-b803-7cf5f65eeecc",
+      "name": "Anthropic Chat Model3",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        -2128,
+        1312
+      ],
+      "credentials": {
+        "anthropicApi": {
+          "id": "wimFF0ah6AUU9Kgy",
+          "name": "Anthropic account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n  \"draftReply\": \"Thank you for your question! Here's some helpful information...\",\n  \"tone\": \"helpful\",\n  \"recommendedAction\": \"post_reply\",\n  \"notes\": \"Consider mentioning our support resources\"\n}",
+        "autoFix": true
+      },
+      "id": "cc132af9-dd35-45cc-adb6-fc8559c4718d",
+      "name": "Structured Output Parser1",
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        -2208,
+        1104
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Search Reddit Posts": {
+      "main": [
+        [
+          {
+            "node": "Process Reddit Posts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process Reddit Posts": {
+      "main": [
+        [
+          {
+            "node": "AI Sentiment Analysis Agent",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge Analysis Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Sentiment Analysis Agent": {
+      "main": [
+        [
+          {
+            "node": "Merge Analysis Data",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Sentiment Analysis Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Sentiment Analysis Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Perplexity Search": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Sentiment Analysis Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Analysis Data": {
+      "main": [
+        [
+          {
+            "node": "Combine Post and Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Combine Post and Analysis": {
+      "main": [
+        [
+          {
+            "node": "Check if Negative or Complaint",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check if Negative or Complaint": {
+      "main": [
+        [
+          {
+            "node": "Send Slack Alert",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Log Incident",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Reply Drafting Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Reply Drafting Agent": {
+      "main": [
+        [
+          {
+            "node": "Format Final Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Reply Drafting Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Search Reddit Posts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Perplexity Search1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Reply Drafting Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model3": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Structured Output Parser1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser1": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "AI Reply Drafting Agent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Final Output": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "b5fbd0db-5a24-4412-b7a6-b695bd77a15c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "4d2ac3ea620e1964ade0d56719483ce309d959ebe0a4c65ddf11a47cf31d408c"
+  },
+  "id": "sX9FCQdxX9whUR5W",
+  "tags": []
+}
