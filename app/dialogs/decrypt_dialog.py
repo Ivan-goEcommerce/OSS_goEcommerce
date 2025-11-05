@@ -548,9 +548,7 @@ class DecryptDialog(QDialog):
     def _prepare_sql_for_execution(self, decrypted_text: str) -> str:
         """
         Bereitet entschlüsselte Daten für SQL-Ausführung vor.
-        Die entschlüsselten Daten sollten bereits bereit für SQL-Ausführung sein.
-        Diese Methode entfernt nur störende Zeichen (BOM, Steuerzeichen),
-        behält aber die SQL-Struktur bei.
+        Verwendet die format_sql_for_execution Methode aus DecryptService.
         
         Args:
             decrypted_text: Roher entschlüsselter Text (sollte bereits SQL sein)
@@ -558,31 +556,11 @@ class DecryptDialog(QDialog):
         Returns:
             Bereinigter SQL-Query-String, bereit für Ausführung
         """
-        if not decrypted_text:
-            return ""
-        
-        import re
-        
-        # Entferne führende/abschließende Whitespace
-        sql = decrypted_text.strip()
-        
-        # Entferne mögliche BOM (Byte Order Mark) am Anfang
-        if sql.startswith('\ufeff'):
-            sql = sql[1:].strip()
-        
-        # Entferne mögliche Steuerzeichen (außer normale Whitespace wie \n, \r, \t, Leerzeichen)
-        # Behalte normale Whitespace-Zeichen für SQL-Formatierung
-        sql = re.sub(r'[\x00-\x08\x0B-\x0C\x0E-\x1F\x7F]', '', sql)
-        
-        # Entferne mögliche unsichtbare Unicode-Zeichen, die SQL stören könnten
-        # Behalte aber normale Zeichen und Whitespace
-        sql = re.sub(r'[\u200B-\u200D\uFEFF]', '', sql)  # Zero-Width Spaces, BOM
-        
-        # Finale Bereinigung: Entferne führende/abschließende Whitespace nochmal
-        # BEHALTE aber Leerzeichen innerhalb des SQL-Textes
-        sql = sql.strip()
-        
-        return sql
+        # Verwende die format_sql_for_execution Methode aus DecryptService
+        # und korrigiere dann die Trigger-Struktur
+        formatted_sql = self.decrypt_service.format_sql_for_execution(decrypted_text)
+        corrected_sql = self.decrypt_service.fix_trigger_structure(formatted_sql)
+        return corrected_sql
     
     def clear_inputs(self):
         """Löscht alle Eingaben"""

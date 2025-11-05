@@ -8,6 +8,7 @@ import json
 import os
 from typing import Dict, List, Optional, Tuple
 from datetime import datetime
+from app.core.debug_manager import debug_print
 
 
 class OSSSchemaManager:
@@ -119,10 +120,10 @@ class OSSSchemaManager:
                     cursor.execute(create_schema_sql)
                     connection.commit()
                     
-                    print(f"✅ OSS-Schema '{self.schema_name}' erstellt")
+                    debug_print(f"✅ OSS-Schema '{self.schema_name}' erstellt")
                     return True, f"Schema '{self.schema_name}' erfolgreich erstellt"
                 else:
-                    print(f"ℹ️ OSS-Schema '{self.schema_name}' existiert bereits")
+                    debug_print(f"ℹ️ OSS-Schema '{self.schema_name}' existiert bereits")
                     return True, f"Schema '{self.schema_name}' existiert bereits"
             
             connection.close()
@@ -175,12 +176,12 @@ class OSSSchemaManager:
                             try:
                                 cursor.execute(index_def)
                             except Exception as e:
-                                print(f"⚠️ Warnung: Index konnte nicht erstellt werden: {e}")
+                                debug_print(f"⚠️ Warnung: Index konnte nicht erstellt werden: {e}")
                         
                         connection.commit()
-                        print(f"✅ Tabelle '{table_name}' im Schema '{self.schema_name}' erstellt")
+                        debug_print(f"✅ Tabelle '{table_name}' im Schema '{self.schema_name}' erstellt")
                     else:
-                        print(f"ℹ️ Tabelle '{table_name}' im Schema '{self.schema_name}' existiert bereits")
+                        debug_print(f"ℹ️ Tabelle '{table_name}' im Schema '{self.schema_name}' existiert bereits")
             
             connection.close()
             return True, "Alle Tabellen erfolgreich erstellt/überprüft"
@@ -252,9 +253,9 @@ class OSSSchemaManager:
                             INSERT INTO options (name, value) 
                             VALUES (%s, %s)
                         """, (name, value))
-                        print(f"✅ Standard-Option '{name}' hinzugefügt")
+                        debug_print(f"✅ Standard-Option '{name}' hinzugefügt")
                     else:
-                        print(f"ℹ️ Option '{name}' existiert bereits")
+                        debug_print(f"ℹ️ Option '{name}' existiert bereits")
                 
                 connection.commit()
             
@@ -301,7 +302,7 @@ class OSSSchemaManager:
             connection.close()
             
         except Exception as e:
-            print(f"Fehler beim Abrufen der Option '{name}': {e}")
+            debug_print(f"Fehler beim Abrufen der Option '{name}': {e}")
             return None
     
     def set_option(self, name: str, value: str) -> bool:
@@ -346,7 +347,7 @@ class OSSSchemaManager:
             return True
             
         except Exception as e:
-            print(f"Fehler beim Setzen der Option '{name}': {e}")
+            debug_print(f"Fehler beim Setzen der Option '{name}': {e}")
             return False
     
     def get_all_options(self) -> Dict[str, str]:
@@ -384,7 +385,7 @@ class OSSSchemaManager:
             connection.close()
             
         except Exception as e:
-            print(f"Fehler beim Abrufen aller Optionen: {e}")
+            debug_print(f"Fehler beim Abrufen aller Optionen: {e}")
             return {}
     
     def update_execution_stats(self, search_term: str = None) -> bool:
@@ -422,7 +423,7 @@ class OSSSchemaManager:
             return True
             
         except Exception as e:
-            print(f"Fehler beim Aktualisieren der Ausführungsstatistiken: {e}")
+            debug_print(f"Fehler beim Aktualisieren der Ausführungsstatistiken: {e}")
             return False
     
     def get_taric_count_from_database(self) -> int:
@@ -479,5 +480,5 @@ class OSSSchemaManager:
             connection.close()
             
         except Exception as e:
-            print(f"Fehler beim Ermitteln der TARIC-Anzahl: {e}")
+            debug_print(f"Fehler beim Ermitteln der TARIC-Anzahl: {e}")
             return 0

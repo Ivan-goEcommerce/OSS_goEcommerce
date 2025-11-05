@@ -70,7 +70,7 @@ class DatabaseService:
             'server': r'.\JTLWAWI',
             'database': 'eazybusiness',
             'username': 'sa',
-            'driver': 'SQL Server',
+            'driver': 'ODBC Driver 17 for SQL Server',
             'last_tested': None
         }
     
@@ -79,7 +79,7 @@ class DatabaseService:
         server: str,
         username: str,
         database: str,
-        driver: str = 'SQL Server'
+        driver: str = 'ODBC Driver 17 for SQL Server'
     ) -> bool:
         """
         Speichert Verbindungseinstellungen in JSON-Datei.
@@ -366,14 +366,20 @@ class DatabaseService:
                     
                 except pyodbc.Error as e:
                     error_str = str(e)
-                    logger.error(f"Fehler in Batch {i}: {error_str}")
-                    cursor.close()
-                    connection.close()
+                    error_code = getattr(e, 'args', [None])[0] if hasattr(e, 'args') and len(e.args) > 0 else None
                     
-                    # Spezielle Behandlung für Fehler 42000 (Syntax-Fehler)
-                    if "42000" in error_str or "syntax" in error_str.lower():
-                        return False, f"SQL-Syntaxfehler in Batch {i}/{len(batches)}: {error_str}\n\nBatch: {batch[:200]}...", None
-                    return False, f"Fehler in Batch {i}/{len(batches)}: {error_str}", None
+                    logger.error(f"Fehler in Batch {i}/{len(batches)}: {error_str}")
+                    
+                    # Cleanup
+                    try:
+                        cursor.close()
+                        connection.close()
+                    except:
+                        pass
+                    
+                    # Detaillierte Fehleranalyse
+                    error_message = self._analyze_sql_error(error_str, error_code, batch, i, len(batches))
+                    return False, error_message, None
             
             # Finales Commit und Cleanup
             connection.commit()
@@ -393,22 +399,96 @@ class DatabaseService:
             
         except pyodbc.Error as e:
             error_str = str(e)
+            error_code = getattr(e, 'args', [None])[0] if hasattr(e, 'args') and len(e.args) > 0 else None
             logger.error(f"SQL Server-Fehler: {e}")
             
-            # Spezielle Behandlung für Fehler 18456 (Authentifizierungsfehler)
-            if "18456" in error_str or "Login failed" in error_str:
-                logger.error("Fehler 18456: SQL Server Authentifizierung fehlgeschlagen!")
-                logger.error(f"Verwendete Credentials - Server: {self.config.get('server')}, Username: {self.config.get('username')}")
-                logger.error("Mögliche Ursachen:")
-                logger.error("  - Passwort ist falsch oder fehlt im Keyring")
-                logger.error("  - Benutzername hat keine Berechtigung")
-                logger.error("  - SQL Server Authentifizierung ist nicht aktiviert")
-                return False, f"Authentifizierungsfehler (18456): Passwort oder Benutzername falsch. Bitte prüfen Sie die DB-Credentials in 'DB Credentials'. Details: {error_str}", None
-            
-            return False, f"SQL Server-Fehler: {error_str}", None
+            error_message = self._analyze_sql_error(error_str, error_code, sql_query[:200], 1, 1)
+            return False, error_message, None
         except Exception as e:
             logger.error(f"Verbindungsfehler: {e}")
             return False, f"Verbindungsfehler: {str(e)}", None
+    
+    def _analyze_sql_error(self, error_str: str, error_code: Optional[str], sql_batch: str, batch_num: int, total_batches: int) -> str:
+        """
+        Analysiert SQL-Fehler und gibt detaillierte Fehlermeldungen zurück.
+        
+        Args:
+            error_str: Fehler-String
+            error_code: ODBC-Fehlercode (falls vorhanden)
+            sql_batch: SQL-Batch, der den Fehler verursacht hat
+            batch_num: Batch-Nummer
+            total_batches: Gesamtanzahl Batches
+            
+        Returns:
+            Detaillierte Fehlermeldung
+        """
+        error_lower = error_str.lower()
+        
+        # 1. Authentifizierungsfehler (18456)
+        if "18456" in error_str or "login failed" in error_lower or "authentifizierungsfehler" in error_lower:
+            return (
+                f"❌ SQL Server Authentifizierungsfehler (Fehler 18456)\n\n"
+                f"Details: {error_str}\n\n"
+                f"Mögliche Ursachen:\n"
+                f"  • Passwort ist falsch oder fehlt im Keyring\n"
+                f"  • Benutzername hat keine Berechtigung\n"
+                f"  • SQL Server Authentifizierung ist nicht aktiviert\n\n"
+                f"Lösung: Prüfen Sie die DB-Credentials über 'DB Credentials' im Dashboard."
+            )
+        
+        # 2. Syntaxfehler (42000, 102, 156, etc.)
+        if "42000" in error_str or "102" in error_str or "156" in error_str or "syntax" in error_lower:
+            return (
+                f"❌ SQL-Syntaxfehler in Batch {batch_num}/{total_batches}\n\n"
+                f"Fehlercode: {error_code or '42000'}\n"
+                f"Details: {error_str}\n\n"
+                f"Häufige Ursachen:\n"
+                f"  • Falsche Schreibweise von SQL-Befehlen\n"
+                f"  • Fehlende oder zusätzliche Leerzeichen\n"
+                f"  • Fehlende Klammern oder Anführungszeichen\n"
+                f"  • Fehlendes BEGIN nach AS in CREATE TRIGGER\n"
+                f"  • Fehlendes END vor GO\n\n"
+                f"Fehlerhafter SQL-Batch:\n{sql_batch[:300]}{'...' if len(sql_batch) > 300 else ''}"
+            )
+        
+        # 3. Zugriffsverletzung / Berechtigungsfehler (229, 230, 300, etc.)
+        if "229" in error_str or "230" in error_str or "300" in error_str or "permission" in error_lower or "berechtigung" in error_lower or "zugriff" in error_lower:
+            return (
+                f"❌ Zugriffsverletzung / Berechtigungsfehler in Batch {batch_num}/{total_batches}\n\n"
+                f"Fehlercode: {error_code or '229/230'}\n"
+                f"Details: {error_str}\n\n"
+                f"Der Benutzer hat nicht die erforderlichen Berechtigungen:\n"
+                f"  • CREATE TRIGGER Berechtigung fehlt\n"
+                f"  • ALTER TABLE Berechtigung fehlt\n"
+                f"  • db_ddladmin Rolle fehlt\n\n"
+                f"Lösung:\n"
+                f"  1. Führen Sie als Administrator aus:\n"
+                f"     GRANT ALTER ON OBJECT::[dbo].[tArtikel] TO [IhrBenutzer];\n"
+                f"     ALTER ROLE db_ddladmin ADD MEMBER [IhrBenutzer];\n"
+                f"  2. Oder verwenden Sie das Skript: grant_trigger_permissions.sql"
+            )
+        
+        # 4. Objekt nicht gefunden (208, 2812)
+        if "208" in error_str or "2812" in error_str or ("object" in error_lower and "not found" in error_lower):
+            return (
+                f"❌ Objekt nicht gefunden in Batch {batch_num}/{total_batches}\n\n"
+                f"Fehlercode: {error_code or '208'}\n"
+                f"Details: {error_str}\n\n"
+                f"Das angeforderte Objekt (Tabelle, Trigger, etc.) existiert nicht.\n"
+                f"Prüfen Sie:\n"
+                f"  • Objektname ist korrekt geschrieben\n"
+                f"  • Datenbank ist korrekt\n"
+                f"  • Schema ist korrekt (z.B. dbo.tArtikel)"
+            )
+        
+        # 5. Allgemeiner SQL-Fehler
+        batch_info = f" (Batch {batch_num}/{total_batches})" if total_batches > 1 else ""
+        return (
+            f"❌ SQL Server-Fehler{batch_info}\n\n"
+            f"Fehlercode: {error_code or 'Unbekannt'}\n"
+            f"Details: {error_str}\n\n"
+            f"Fehlerhafter SQL-Batch:\n{sql_batch[:300]}{'...' if len(sql_batch) > 300 else ''}"
+        )
     
     def _split_sql_batches(self, sql_query: str) -> List[str]:
         """
@@ -425,7 +505,6 @@ class DatabaseService:
         
         # Teile bei GO (case-insensitive, mit oder ohne Semikolon davor)
         # GO muss am Anfang einer Zeile stehen (optional mit Whitespace davor)
-        # Unterstützt: GO, GO;, GO (mit Zeilenumbruch)
         pattern = r'^\s*GO\s*;?\s*$'
         
         batches = []

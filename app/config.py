@@ -4,22 +4,36 @@ Zentrale Konfigurationsdatei für alle Einstellungen
 """
 
 import os
+from app.core.debug_manager import get_debug_manager, debug_print
+
+# Initialisiere Debug-Manager
+# Hinweis: Debug-Status wird in app/__init__.py beim Programmstart durch Dialog gesetzt
+# Umgebungsvariable OSS_DEBUG=1 überschreibt den Dialog
+debug_manager = get_debug_manager()
+
+# Lade Debug-Status aus Umgebungsvariable (nur wenn gesetzt)
+# Wenn Umgebungsvariable gesetzt ist, wird sie verwendet (überschreibt späteren Dialog)
+# Ansonsten wird Debug-Status im main() durch Dialog abgefragt
+debug_from_env = os.getenv('OSS_DEBUG', '').lower()
+if debug_from_env in ('1', 'true', 'yes', 'on'):
+    debug_manager.enable()
+# Ansonsten bleibt Debug deaktiviert (wird später im main() durch Dialog gesetzt)
 
 # Supabase-Verbindung deaktiviert - nur n8n Workflow wird verwendet
 SUPABASE_AVAILABLE = False
-print("INFO: Supabase-Verbindung deaktiviert - nur n8n Workflow wird verwendet")
+debug_print("INFO: Supabase-Verbindung deaktiviert - nur n8n Workflow wird verwendet")
 
 # Import n8n Workflow Manager
 try:
     from n8n_workflow_manager import N8nWorkflowManager
     N8N_AVAILABLE = True
-    print("OK: n8n Workflow Manager erfolgreich importiert!")
+    debug_print("OK: n8n Workflow Manager erfolgreich importiert!")
 except ImportError as e:
     N8N_AVAILABLE = False
-    print(f"HINWEIS: n8n Workflow Manager nicht verfügbar: {e}")
+    debug_print(f"HINWEIS: n8n Workflow Manager nicht verfügbar: {e}")
 except Exception as e:
     N8N_AVAILABLE = False
-    print(f"HINWEIS: Fehler beim Laden von n8n Workflow Manager: {e}")
+    debug_print(f"HINWEIS: Fehler beim Laden von n8n Workflow Manager: {e}")
 
 # Standard-Konfiguration
 DEFAULT_CONFIG = {
@@ -60,3 +74,7 @@ def get_config():
 def get_color_scheme():
     """Gibt das Farbschema zurück"""
     return COLOR_SCHEME.copy()
+
+def get_debug_manager():
+    """Gibt den Debug-Manager zurück"""
+    return debug_manager

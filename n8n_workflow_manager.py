@@ -7,12 +7,14 @@ import requests
 import json
 from typing import Dict, List, Optional, Tuple
 from datetime import datetime
+from app.config.endpoints import EndpointConfig
+from app.core.debug_manager import debug_print
 
 class N8nWorkflowManager:
     """Manager für n8n Workflow-Integration"""
     
     def __init__(self, workflow_url: str = None, license_number: str = "123456", email: str = "ivan.levshyn@go-ecommerce.de"):
-        self.workflow_url = workflow_url or "https://agentic.go-ecommerce.de/webhook-test/v1/users/tarics"
+        self.workflow_url = workflow_url or EndpointConfig.get_endpoint("taric_search")
         self.license_number = license_number
         self.email = email
         self.session = requests.Session()
@@ -40,9 +42,9 @@ class N8nWorkflowManager:
             # URL mit Query-Parametern erstellen
             request_url = f"{self.workflow_url}?{urlencode(params)}"
             
-            print(f"n8n Workflow Request: {request_url}")
-            print(f"Request Params: {params}")
-            print(f"Headers: {dict(self.session.headers)}")
+            debug_print(f"n8n Workflow Request: {request_url}")
+            debug_print(f"Request Params: {params}")
+            debug_print(f"Headers: {dict(self.session.headers)}")
             
             # n8n Workflow mit GET aufrufen
             response = self.session.get(
@@ -53,19 +55,19 @@ class N8nWorkflowManager:
             if response.status_code == 200:
                 result_data = response.json()
                 
-                print(f"DEBUG: n8n Response Status: {response.status_code}")
-                print(f"DEBUG: n8n Response Headers: {dict(response.headers)}")
-                print(f"DEBUG: n8n Response Raw: {response.text}")
-                print(f"DEBUG: n8n Response Parsed: {json.dumps(result_data, indent=2)}")
+                debug_print(f"DEBUG: n8n Response Status: {response.status_code}")
+                debug_print(f"DEBUG: n8n Response Headers: {dict(response.headers)}")
+                debug_print(f"DEBUG: n8n Response Raw: {response.text}")
+                debug_print(f"DEBUG: n8n Response Parsed: {json.dumps(result_data, indent=2)}")
                 
                 # Prüfe verschiedene Response-Formate
                 if isinstance(result_data, list):
                     # Direktes Array von Ergebnissen
-                    print(f"DEBUG: Direktes Array mit {len(result_data)} Ergebnissen")
+                    debug_print(f"DEBUG: Direktes Array mit {len(result_data)} Ergebnissen")
                     return True, result_data, 'Suche erfolgreich'
                 elif isinstance(result_data, dict):
                     # Strukturierte Antwort
-                    print(f"DEBUG: Dictionary Response erhalten: {list(result_data.keys())}")
+                    debug_print(f"DEBUG: Dictionary Response erhalten: {list(result_data.keys())}")
                     
                     # Prüfe verschiedene Erfolgs-Indikatoren
                     if result_data.get('success', False):
@@ -75,15 +77,15 @@ class N8nWorkflowManager:
                     elif 'data' in result_data and isinstance(result_data.get('data'), list):
                         # Daten direkt im 'data' Feld
                         results = result_data.get('data', [])
-                        print(f"DEBUG: Daten im 'data' Feld gefunden: {len(results)} Ergebnissen")
+                        debug_print(f"DEBUG: Daten im 'data' Feld gefunden: {len(results)} Ergebnissen")
                         return True, results, 'Suche erfolgreich'
                     
                     # Prüfe ob es Steuerdaten sind (verschiedene Länder-Codes)
                     eu_countries = ['PL', 'PT', 'RO', 'SE', 'SI', 'SK', 'DE', 'FR', 'IT', 'ES', 'BE', 'BG', 'CY', 'CZ', 'DK', 'EE', 'FI', 'GB', 'GR', 'HR', 'HU', 'IE', 'LT', 'LU', 'LV', 'MT', 'NL']
                     if any(key in result_data for key in eu_countries):
                         # Steuerdaten direkt im Response gefunden
-                        print(f"DEBUG: Steuerdaten direkt im Response gefunden")
-                        print(f"DEBUG: Gefundene Länder: {[k for k in result_data.keys() if k in eu_countries]}")
+                        debug_print(f"DEBUG: Steuerdaten direkt im Response gefunden")
+                        debug_print(f"DEBUG: Gefundene Länder: {[k for k in result_data.keys() if k in eu_countries]}")
                         
                         # Konvertiere zu erwartetem Format
                         formatted_result = {
@@ -98,13 +100,13 @@ class N8nWorkflowManager:
                     
                     # Prüfe auf spezielle Felder die echte Daten enthalten könnten
                     elif 'myField' in result_data:
-                        print(f"DEBUG: 'myField' gefunden - prüfe Inhalt")
+                        debug_print(f"DEBUG: 'myField' gefunden - prüfe Inhalt")
                         my_field_value = result_data.get('myField')
-                        print(f"DEBUG: myField Wert: {my_field_value}")
+                        debug_print(f"DEBUG: myField Wert: {my_field_value}")
                         
                         # Wenn myField ein Dictionary mit Steuerdaten ist
                         if isinstance(my_field_value, dict) and any(key in my_field_value for key in eu_countries):
-                            print(f"DEBUG: Echte Steuerdaten in 'myField' gefunden")
+                            debug_print(f"DEBUG: Echte Steuerdaten in 'myField' gefunden")
                             formatted_result = {
                                 'taric_code': search_taric,
                                 'tax_rates': my_field_value,
@@ -118,7 +120,7 @@ class N8nWorkflowManager:
                     elif any(key in result_data for key in ['results', 'items', 'taric_data', 'response']):
                         data_key = next(key for key in ['results', 'items', 'taric_data', 'response'] if key in result_data)
                         data_value = result_data[data_key]
-                        print(f"DEBUG: Daten in '{data_key}' Feld gefunden: {type(data_value)}")
+                        debug_print(f"DEBUG: Daten in '{data_key}' Feld gefunden: {type(data_value)}")
                         
                         if isinstance(data_value, list):
                             return True, data_value, 'Suche erfolgreich'
@@ -127,8 +129,8 @@ class N8nWorkflowManager:
                     
                     # Wenn nichts anderes passt, aber es ist ein Dictionary ohne Fehler
                     elif not result_data.get('error') and not result_data.get('message', '').lower().startswith('error'):
-                        print(f"DEBUG: Unbekanntes Dictionary-Format, aber kein offensichtlicher Fehler")
-                        print(f"DEBUG: Versuche als einzelnes Ergebnis zu behandeln")
+                        debug_print(f"DEBUG: Unbekanntes Dictionary-Format, aber kein offensichtlicher Fehler")
+                        debug_print(f"DEBUG: Versuche als einzelnes Ergebnis zu behandeln")
                         formatted_result = {
                             'taric_code': search_taric,
                             'raw_data': result_data,
@@ -161,8 +163,8 @@ class N8nWorkflowManager:
                 "request_id": f"single_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
             }
             
-            print(f"n8n Single TARIC Request: {self.workflow_url}")
-            print(f"Request Data: {json.dumps(request_data, indent=2)}")
+            debug_print(f"n8n Single TARIC Request: {self.workflow_url}")
+            debug_print(f"Request Data: {json.dumps(request_data, indent=2)}")
             
             response = self.session.post(
                 self.workflow_url,
@@ -225,11 +227,11 @@ class N8nWorkflowManager:
             'X-Timestamp': datetime.now().isoformat()
         })
         
-        print(f"Lizenzdaten aktualisiert: {license_number} / {email}")
+        debug_print(f"Lizenzdaten aktualisiert: {license_number} / {email}")
     
     def send_products_to_webhook(self, products: List[Dict], webhook_url: str = None) -> Tuple[bool, str]:
         """Sendet Produktdaten an n8n Webhook"""
-        webhook_url = webhook_url or "https://agentic.go-ecommerce.de/webhook-test/post_customer_product"
+        webhook_url = webhook_url or EndpointConfig.get_endpoint("webhook_post_customer_product")
         
         try:
             request_data = {
@@ -238,8 +240,9 @@ class N8nWorkflowManager:
                 "timestamp": datetime.now().isoformat()
             }
             
-            print(f"📤 Sende Produktdaten an n8n Webhook: {webhook_url}")
-            print(f"   Anzahl Produkte: {len(products)}")
+            debug_print(f"📤 Sende Produktdaten an n8n Webhook: {webhook_url}")
+            debug_print(f"   Anzahl Produkte: {len(products)}")
+            debug_print(f"   Request Format: {{'products': [...], 'count': {len(products)}, 'timestamp': ...}}")
             
             response = self.session.post(
                 webhook_url,
@@ -248,24 +251,24 @@ class N8nWorkflowManager:
             )
             
             if response.status_code in [200, 201]:
-                print(f"✅ Daten erfolgreich an n8n gesendet (Status: {response.status_code})")
+                debug_print(f"✅ Daten erfolgreich an n8n gesendet (Status: {response.status_code})")
                 return True, f"Erfolgreich: {response.status_code}"
             else:
                 error_msg = f"HTTP Fehler: {response.status_code} - {response.text}"
-                print(f"❌ {error_msg}")
+                debug_print(f"❌ {error_msg}")
                 return False, error_msg
                 
         except requests.exceptions.Timeout:
             error_msg = "Timeout beim Senden der Daten"
-            print(f"❌ {error_msg}")
+            debug_print(f"❌ {error_msg}")
             return False, error_msg
         except requests.exceptions.RequestException as e:
             error_msg = f"Netzwerkfehler: {str(e)}"
-            print(f"❌ {error_msg}")
+            debug_print(f"❌ {error_msg}")
             return False, error_msg
         except Exception as e:
             error_msg = f"Unerwarteter Fehler: {str(e)}"
-            print(f"❌ {error_msg}")
+            debug_print(f"❌ {error_msg}")
             return False, error_msg
     
     def get_workflow_status(self) -> Dict:

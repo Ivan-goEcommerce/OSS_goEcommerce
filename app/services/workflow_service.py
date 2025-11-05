@@ -6,7 +6,7 @@ Wrapper um N8nWorkflowManager für Service-Architektur
 
 from typing import Dict, List, Optional, Tuple
 from app.core.logging_config import get_logger
-from app.managers.n8n_workflow_manager import N8nWorkflowManager
+from n8n_workflow_manager import N8nWorkflowManager
 
 logger = get_logger(__name__)
 

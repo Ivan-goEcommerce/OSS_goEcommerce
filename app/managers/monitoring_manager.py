@@ -8,6 +8,8 @@ import requests
 import json
 from typing import Dict, List, Optional, Tuple, Callable
 from datetime import datetime
+from app.config.endpoints import EndpointConfig
+from app.core.debug_manager import debug_print
 
 
 class MonitoringManager:
@@ -159,7 +161,7 @@ class MonitoringManager:
                 for idx, product in enumerate(products):
                     try:
                         # Sende einzelnes Produkt
-                        webhook_url = "https://agentic.go-ecommerce.de/webhook-test/post_customer_product"
+                        webhook_url = EndpointConfig.get_endpoint("webhook_post_customer_product")
                         success_send = self._send_single_product(product, webhook_url)
                         
                         if success_send:
@@ -177,7 +179,7 @@ class MonitoringManager:
                             )
                     
                     except Exception as e:
-                        print(f"Fehler beim Senden des Produkts {product.get('sku', 'Unknown')}: {e}")
+                        debug_print(f"Fehler beim Senden des Produkts {product.get('sku', 'Unknown')}: {e}")
                         failed_count += 1
                         
             else:
@@ -222,7 +224,7 @@ class MonitoringManager:
             return response.status_code == 200
             
         except Exception as e:
-            print(f"Fehler beim Senden des Produkts: {e}")
+            debug_print(f"Fehler beim Senden des Produkts: {e}")
             return False
     
     def fetch_and_save_tax_info(self) -> Tuple[bool, str, Dict]:
@@ -260,7 +262,7 @@ class MonitoringManager:
                     )
                     
                 except Exception as e:
-                    print(f"Fehler beim Holen der Steuer-Info für {country}: {e}")
+                    debug_print(f"Fehler beim Holen der Steuer-Info für {country}: {e}")
             
             self._report_progress("03. Steuer-Informationen holen", total_countries, total_countries, "completed")
             
@@ -424,9 +426,9 @@ class MonitoringManager:
         Returns:
             Tuple[bool, str, List[Dict]]: (success, message, results)
         """
-        print("=" * 60)
-        print("🚀 Starte vollständigen Abgleich-Prozess")
-        print("=" * 60)
+        debug_print("=" * 60)
+        debug_print("🚀 Starte vollständigen Abgleich-Prozess")
+        debug_print("=" * 60)
         
         results = []
         
@@ -440,35 +442,35 @@ class MonitoringManager:
         success, message, stats = self.send_product_data()
         results.append({"step": "02", "name": "Produktdaten senden", "success": success, "message": message, "stats": stats})
         if not success:
-            print(f"⚠️ Schritt 2 fehlgeschlagen: {message}")
+            debug_print(f"⚠️ Schritt 2 fehlgeschlagen: {message}")
         
         # Schritt 3: Steuer-Informationen holen
         success, message, stats = self.fetch_and_save_tax_info()
         results.append({"step": "03", "name": "Steuer-Informationen holen", "success": success, "message": message, "stats": stats})
         if not success:
-            print(f"⚠️ Schritt 3 fehlgeschlagen: {message}")
+            debug_print(f"⚠️ Schritt 3 fehlgeschlagen: {message}")
         
         # Schritt 4: OSS-Kombinationen holen
         success, message, stats = self.fetch_oss_combinations()
         results.append({"step": "04", "name": "OSS-Kombinationen holen", "success": success, "message": message, "stats": stats})
         if not success:
-            print(f"⚠️ Schritt 4 fehlgeschlagen: {message}")
+            debug_print(f"⚠️ Schritt 4 fehlgeschlagen: {message}")
         
         # Schritt 5: OSS-Kombinationen aktualisieren
         success, message, stats = self.update_oss_combinations()
         results.append({"step": "05", "name": "OSS-Kombinationen aktualisieren", "success": success, "message": message, "stats": stats})
         if not success:
-            print(f"⚠️ Schritt 5 fehlgeschlagen: {message}")
+            debug_print(f"⚠️ Schritt 5 fehlgeschlagen: {message}")
         
         # Schritt 6: Artikel aktualisieren
         success, message, stats = self.update_articles()
         results.append({"step": "06", "name": "Artikel aktualisieren", "success": success, "message": message, "stats": stats})
         if not success:
-            print(f"⚠️ Schritt 6 fehlgeschlagen: {message}")
+            debug_print(f"⚠️ Schritt 6 fehlgeschlagen: {message}")
         
-        print("=" * 60)
-        print("✅ Abgleich-Prozess abgeschlossen")
-        print("=" * 60)
+        debug_print("=" * 60)
+        debug_print("✅ Abgleich-Prozess abgeschlossen")
+        debug_print("=" * 60)
         
         overall_success = all(r["success"] for r in results)
         return overall_success, "Abgleich abgeschlossen", results

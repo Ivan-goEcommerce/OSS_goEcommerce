@@ -103,9 +103,10 @@ class LicenseService:
         license_number, email = self.load_license()
         
         # DEBUG: Zeige was geladen wurde
-        print(f"DEBUG check_license_via_endpoint: Geladene Daten aus Keyring:")
-        print(f"  License Number: {license_number}")
-        print(f"  Email: {email}")
+        from app.core.debug_manager import debug_print
+        debug_print(f"DEBUG check_license_via_endpoint: Geladene Daten aus Keyring:")
+        debug_print(f"  License Number: {license_number}")
+        debug_print(f"  Email: {email}")
         
         if not license_number or not email:
             error_msg = "Keine Lizenzdaten im Keyring gefunden"

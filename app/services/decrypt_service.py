@@ -171,4 +171,162 @@ class DecryptService:
         """Setzt das Standard-Passwort"""
         self.default_password = password
         logger.info("Standard-Passwort aktualisiert")
+    
+    def fix_trigger_structure(self, sql_text: str) -> str:
+        """
+        Korrigiert die Struktur eines SQL-Triggers automatisch.
+        
+        Hauptproblem: Nach 'AS' muss 'BEGIN' stehen, bevor andere Statements kommen.
+        Oft kommt nach 'AS' direkt 'SET NOCOUNT ON;' etc. (auch in einer Zeile).
+        
+        Args:
+            sql_text: SQL-Text mit möglicherweise fehlerhafter Trigger-Struktur
+            
+        Returns:
+            Korrigierter SQL-Text mit korrekter Trigger-Struktur
+        """
+        import re
+        
+        if not sql_text or not sql_text.strip():
+            return sql_text
+        
+        logger.debug("Prüfe Trigger-Struktur auf Korrekturen...")
+        
+        # Prüfe ob es ein CREATE TRIGGER Statement enthält
+        if not re.search(r'CREATE\s+TRIGGER', sql_text, re.IGNORECASE):
+            logger.debug("Kein CREATE TRIGGER gefunden - keine Korrektur nötig")
+            return sql_text
+        
+        corrected = sql_text
+        
+        # Hauptproblem: Nach AS kommt direkt SET ohne BEGIN
+        # Fall 1: AS gefolgt von SET in einer Zeile: "AS SET NOCOUNT ON; SET ANSI_NULLS ON; ... BEGIN ..."
+        # Finde AS gefolgt von SET-Statements bis zum ersten DECLARE oder BEGIN (im Trigger-Body)
+        # Pattern: AS (whitespace) SET ... (bis DECLARE oder BEGIN, aber nicht AS BEGIN)
+        pattern1 = r'(\bAS\b)\s+(SET\s+[^;]+?;.*?)(?=\s+DECLARE\b|\s+BEGIN\s+DECLARE|\s+IF\b)'
+        def fix_inline_set(match):
+            as_keyword = match.group(1)
+            set_statements = match.group(2).strip()
+            
+            # Teile die SET-Statements auf (bei Semikolon)
+            # Füge BEGIN nach AS ein und formatierte SET-Statements
+            set_lines = []
+            for stmt in set_statements.split(';'):
+                stmt = stmt.strip()
+                if stmt and stmt.upper().startswith('SET'):
+                    set_lines.append(f"    {stmt};")
+            
+            if set_lines:
+                fixed = f"{as_keyword}\nBEGIN\n" + "\n".join(set_lines) + "\n"
+                logger.info("Trigger-Struktur korrigiert: BEGIN nach AS eingefügt (Inline-SET)")
+                return fixed
+            return match.group(0)  # Keine Änderung wenn keine SET-Statements gefunden
+        
+        # Prüfe zuerst, ob bereits BEGIN nach AS vorhanden ist
+        if not re.search(r'\bAS\s+BEGIN\b', corrected, re.IGNORECASE):
+            # Ersetze AS SET durch AS\nBEGIN\n    SET
+            corrected = re.sub(pattern1, fix_inline_set, corrected, flags=re.IGNORECASE | re.DOTALL)
+        
+        # Fall 2: AS am Ende einer Zeile, SET in nächster Zeile (ohne BEGIN)
+        # Pattern: AS\nSET oder AS;\nSET
+        pattern2 = r'(\bAS\b)\s*;?\s*\n\s*(SET\s+NOCOUNT|SET\s+ANSI)'
+        def fix_multiline_set(match):
+            as_keyword = match.group(1)
+            set_statement = match.group(2)
+            fixed = f"{as_keyword}\nBEGIN\n    {set_statement}"
+            logger.info("Trigger-Struktur korrigiert: BEGIN nach AS eingefügt (Multi-Line)")
+            return fixed
+        
+        # Ersetze nur wenn nicht bereits BEGIN vorhanden ist
+        if not re.search(r'\bAS\s+BEGIN\b', corrected, re.IGNORECASE):
+            corrected = re.sub(pattern2, fix_multiline_set, corrected, flags=re.IGNORECASE)
+        
+        # Prüfe ob ein END vor GO fehlt (für den CREATE TRIGGER Block)
+        lines = corrected.split('\n')
+        in_trigger = False
+        trigger_start_idx = -1
+        begin_count = 0
+        end_count = 0
+        
+        for i, line in enumerate(lines):
+            # Prüfe ob CREATE TRIGGER beginnt
+            if re.search(r'CREATE\s+TRIGGER', line, re.IGNORECASE):
+                in_trigger = True
+                trigger_start_idx = i
+                begin_count = 0
+                end_count = 0
+                continue
+            
+            if in_trigger:
+                # Zähle BEGIN und END
+                if re.search(r'\bBEGIN\b', line, re.IGNORECASE):
+                    begin_count += 1
+                if re.search(r'\bEND\b', line, re.IGNORECASE):
+                    end_count += 1
+                
+                # Prüfe ob GO kommt und END fehlt
+                if re.search(r'^\s*GO\s*$', line, re.IGNORECASE):
+                    if begin_count > end_count:
+                        # Füge END vor GO ein
+                        for j in range(i - 1, trigger_start_idx, -1):
+                            if lines[j].strip() and not re.search(r'^\s*GO\s*$', lines[j], re.IGNORECASE):
+                                # Füge END ein
+                                if lines[j].strip().endswith(';'):
+                                    lines[j] = lines[j].rstrip()[:-1] + '\nEND;'
+                                else:
+                                    lines[j] = lines[j].rstrip() + '\nEND'
+                                logger.info("Trigger-Struktur korrigiert: END vor GO eingefügt")
+                                break
+                    in_trigger = False
+                    trigger_start_idx = -1
+                    begin_count = 0
+                    end_count = 0
+        
+        corrected = '\n'.join(lines)
+        
+        # Prüfe ob die Struktur jetzt korrekt ist
+        if corrected != sql_text:
+            logger.info("Trigger-Struktur wurde automatisch korrigiert")
+        else:
+            logger.debug("Trigger-Struktur war bereits korrekt")
+        
+        return corrected
+
+    def format_sql_for_execution(self, sql_text: str) -> str:
+        """
+        Formatiert entschlüsselte SQL-Daten für die Ausführung.
+        Entfernt störende Zeichen (BOM, Steuerzeichen), behält aber die SQL-Struktur bei.
+        
+        Args:
+            sql_text: Roher entschlüsselter SQL-Text
+            
+        Returns:
+            Bereinigter SQL-Query-String, bereit für Ausführung
+        """
+        import re
+        
+        if not sql_text or not sql_text.strip():
+            return ""
+        
+        # Entferne führende/abschließende Whitespace
+        sql = sql_text.strip()
+        
+        # Entferne mögliche BOM (Byte Order Mark) am Anfang
+        if sql.startswith('\ufeff'):
+            sql = sql[1:].strip()
+        
+        # Entferne mögliche Steuerzeichen (außer normale Whitespace wie \n, \r, \t, Leerzeichen)
+        # Behalte normale Whitespace-Zeichen für SQL-Formatierung
+        sql = re.sub(r'[\x00-\x08\x0B-\x0C\x0E-\x1F\x7F]', '', sql)
+        
+        # Entferne mögliche unsichtbare Unicode-Zeichen, die SQL stören könnten
+        # Behalte aber normale Zeichen und Whitespace
+        sql = re.sub(r'[\u200B-\u200D\uFEFF]', '', sql)  # Zero-Width Spaces, BOM
+        
+        # Finale Bereinigung: Entferne führende/abschließende Whitespace nochmal
+        # BEHALTE aber Leerzeichen innerhalb des SQL-Textes
+        sql = sql.strip()
+        
+        logger.debug(f"SQL formatiert: {len(sql)} Zeichen (ursprünglich: {len(sql_text)} Zeichen)")
+        return sql
 

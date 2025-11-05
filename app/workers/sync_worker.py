@@ -6,6 +6,8 @@ Background-Thread für OSS-Abgleich
 from PySide6.QtCore import QThread, Signal
 import sys
 import os
+from app.config.endpoints import EndpointConfig
+from app.core.debug_manager import debug_print
 
 
 class JTLToN8nSyncWorker(QThread):
@@ -15,7 +17,7 @@ class JTLToN8nSyncWorker(QThread):
     
     def __init__(self):
         super().__init__()
-        self.webhook_url = "https://agentic.go-ecommerce.de/webhook-test/post_customer_product"
+        self.webhook_url = EndpointConfig.get_endpoint("webhook_post_customer_product")
         
         # Lade Lizenzdaten aus Keyring
         self.license_number, self.email = self._load_license_from_keyring()
@@ -28,14 +30,14 @@ class JTLToN8nSyncWorker(QThread):
             license_number, email = license_service.load_license()
             
             if license_number and email:
-                print(f"INFO: Lizenzdaten aus Keyring geladen: {license_number[:4]}..., {email[:3]}...")
+                debug_print(f"INFO: Lizenzdaten aus Keyring geladen: {license_number[:4]}..., {email[:3]}...")
                 return license_number, email
             else:
-                print("WARNUNG: Keine Lizenzdaten im Keyring gefunden - verwende Standard-Werte")
+                debug_print("WARNUNG: Keine Lizenzdaten im Keyring gefunden - verwende Standard-Werte")
                 return "123456", "ivan.levshyn@go-ecommerce.de"
         except Exception as e:
-            print(f"FEHLER beim Laden der Lizenzdaten: {e}")
-            print("Verwende Standard-Werte")
+            debug_print(f"FEHLER beim Laden der Lizenzdaten: {e}")
+            debug_print("Verwende Standard-Werte")
             return "123456", "ivan.levshyn@go-ecommerce.de"
     
     def run(self):
@@ -94,6 +96,6 @@ class JTLToN8nSyncWorker(QThread):
         except Exception as e:
             error_message = f"Unerwarteter Fehler: {str(e)}"
             import traceback
-            print(traceback.format_exc())
+            debug_print(traceback.format_exc())
             self.finished.emit(False, error_message, 0)
 

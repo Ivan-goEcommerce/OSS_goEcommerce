@@ -10,6 +10,7 @@ from PySide6.QtCore import Qt, QTimer, QThread, Signal
 from PySide6.QtGui import QFont
 
 from app.services.license_service import LicenseService
+from app.core.debug_manager import debug_print
 
 
 class LicenseCheckThread(QThread):
@@ -257,12 +258,12 @@ class LicenseGUIWindow(QDialog):
     
     def start_license_check(self):
         """Startet die automatische Lizenzprüfung"""
-        print("INFO: Starte automatische Lizenzprüfung...")
+        debug_print("INFO: Starte automatische Lizenzprüfung...")
         
         # Prüfe ob Lizenzdaten vorhanden sind
         if not self.license_service.has_license():
             # Keine Lizenzdaten gefunden - zeige Eingabeformular
-            print("WARNUNG: Keine Lizenzdaten gefunden - zeige Eingabeformular")
+            debug_print("WARNUNG: Keine Lizenzdaten gefunden - zeige Eingabeformular")
             self.progress_bar.setVisible(False)
             self.status_label.setText("❌ Keine Lizenzdaten gefunden")
             self.status_label.setStyleSheet("color: #ff4444; text-align: center;")
@@ -274,7 +275,7 @@ class LicenseGUIWindow(QDialog):
     
     def check_existing_license(self):
         """Prüft vorhandene Lizenz über Endpoint"""
-        print("INFO: Prüfe vorhandene Lizenz über Endpoint...")
+        debug_print("INFO: Prüfe vorhandene Lizenz über Endpoint...")
         
         # Erstelle Worker-Thread für HTTP-Request
         self.check_thread = LicenseCheckThread(self.license_service)
@@ -289,8 +290,8 @@ class LicenseGUIWindow(QDialog):
             # Lizenzprüfung erfolgreich
             self.status_label.setText("✅ Lizenz gültig!")
             self.status_label.setStyleSheet("color: #00ff00; text-align: center;")
-            print(f"OK: Lizenzprüfung erfolgreich - {message}")
-            print(f"Response: {response_data}")
+            debug_print(f"OK: Lizenzprüfung erfolgreich - {message}")
+            debug_print(f"Response: {response_data}")
             self.license_valid = True
             
             # Schließe Dialog nach kurzer Zeit
@@ -299,8 +300,8 @@ class LicenseGUIWindow(QDialog):
             # Lizenzprüfung fehlgeschlagen - zeige NUR Fehlermeldung und Beenden-Button
             self.status_label.setText(f"❌ Lizenzprüfung fehlgeschlagen\n\n{message}")
             self.status_label.setStyleSheet("color: #ff4444; text-align: center;")
-            print(f"FEHLER: Lizenzprüfung fehlgeschlagen - {message}")
-            print(f"Response: {response_data}")
+            debug_print(f"FEHLER: Lizenzprüfung fehlgeschlagen - {message}")
+            debug_print(f"Response: {response_data}")
             
             # Zeige Buttons (Lizenz eingeben + Beenden), aber verstecke zunächst Eingabefelder
             self.error_buttons_frame.setVisible(True)
@@ -351,8 +352,8 @@ class LicenseGUIWindow(QDialog):
             # Lizenzprüfung erfolgreich
             self.status_label.setText("✅ Lizenz erfolgreich geprüft!")
             self.status_label.setStyleSheet("color: #00ff00; text-align: center;")
-            print(f"OK: Lizenz erfolgreich geprüft - {message}")
-            print(f"Response: {response_data}")
+            debug_print(f"OK: Lizenz erfolgreich geprüft - {message}")
+            debug_print(f"Response: {response_data}")
             self.license_valid = True
             
             # Schließe Dialog nach kurzer Zeit
@@ -367,4 +368,4 @@ class LicenseGUIWindow(QDialog):
                 f"Die Lizenzprüfung war nicht erfolgreich:\n\n{message}\n\n"
                 "Bitte überprüfen Sie Ihre Lizenzdaten und versuchen Sie es erneut."
             )
-            print(f"FEHLER: Lizenzprüfung fehlgeschlagen - {message}")
+            debug_print(f"FEHLER: Lizenzprüfung fehlgeschlagen - {message}")

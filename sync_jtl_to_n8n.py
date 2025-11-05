@@ -116,7 +116,7 @@ def sync_products_to_n8n(
         products, 
         webhook_url=n8n_webhook_url
     )
-    
+    print(f"called url: { n8n_webhook_url}")
     if not success_send:
         print(f"❌ Fehler beim Senden der Daten: {response_message}")
         return False
@@ -147,13 +147,13 @@ def main():
             print()
             print("Parameter:")
             print("  webhook_url     URL des n8n Webhooks (optional)")
-            print("                  Standard: https://agentic.go-ecommerce.de/webhook-test/post_customer_product")
+            print("                  Standard: https://agentic.go-ecommerce.de/webhook/post_customer_product")
             print("  license_number  Lizenznummer für n8n (optional)")
             print("  email           Email für n8n (optional)")
             print()
             print("Beispiele:")
             print("  python sync_jtl_to_n8n.py")
-            print("  python sync_jtl_to_n8n.py https://agentic.go-ecommerce.de/webhook-test/post_customer_product")
+            print("  python sync_jtl_to_n8n.py https://agentic.go-ecommerce.de/webhook/post_customer_product")
             print("  python sync_jtl_to_n8n.py <webhook_url> 123456 ivan.levshyn@go-ecommerce.de")
             return
         

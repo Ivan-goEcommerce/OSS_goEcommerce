@@ -4,11 +4,12 @@ Hauptmodul für die Anwendung
 """
 
 import sys
-from PySide6.QtWidgets import QApplication
+from PySide6.QtWidgets import QApplication, QMessageBox
 from PySide6.QtGui import QPalette, QColor
 
 from .ui.dashboard import DashboardWindow
 from .config import get_color_scheme
+from .core.debug_manager import get_debug_manager
 
 
 def setup_application():
@@ -41,6 +42,45 @@ def setup_application():
 def main():
     """Hauptfunktion der Anwendung"""
     app = setup_application()
+    
+    # Frage vor Programmstart, ob Debug aktiviert werden soll
+    debug_manager = get_debug_manager()
+    
+    # Zeige Dialog für Debug-Aktivierung (nur wenn nicht bereits durch Umgebungsvariable gesetzt)
+    import os
+    debug_from_env = os.getenv('OSS_DEBUG', '').lower()
+    if not debug_from_env in ('1', 'true', 'yes', 'on'):
+        # Erstelle temporäres unsichtbares Fenster für den Dialog
+        msg_box = QMessageBox()
+        msg_box.setWindowTitle("🔍 Debug-Modus")
+        msg_box.setText("Möchten Sie den Debug-Modus aktivieren?")
+        msg_box.setInformativeText(
+            "Bei aktiviertem Debug-Modus werden:\n"
+            "• Debug-Informationen in der Console angezeigt\n"
+            "• Debug-Info-Fenster eingeblendet"
+        )
+        msg_box.setIcon(QMessageBox.Question)
+        msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+        msg_box.setDefaultButton(QMessageBox.No)
+        
+        # Setze Farbschema für den Dialog
+        palette = app.palette()
+        msg_box.setPalette(palette)
+        
+        # Zeige Dialog
+        result = msg_box.exec()
+        
+        if result == QMessageBox.Yes:
+            debug_manager.enable()
+        else:
+            debug_manager.disable()
+    else:
+        # Debug wurde bereits durch Umgebungsvariable aktiviert
+        debug_manager.enable()
+    
+    # Aktualisiere alle Logger basierend auf Debug-Status
+    from app.core.logging_config import update_all_loggers_for_debug
+    update_all_loggers_for_debug()
     
     window = DashboardWindow()
     window.show()

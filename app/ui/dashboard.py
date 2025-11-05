@@ -12,6 +12,13 @@ from ..managers.license_manager import LicenseManager
 from ..managers.oss_schema_manager import OSSSchemaManager
 from ..dialogs import JTLConnectionDialog, LicenseDialog, LicenseGUIWindow, DecryptDialog
 from ..workers.sync_worker import JTLToN8nSyncWorker
+from ..workers.trigger_fetch_worker import TriggerFetchWorker
+from ..workers.oss_start_worker import OSSStartWorker
+from ..services.trigger_endpoint_service import TriggerEndpointService
+from ..core.logging_config import get_logger
+from ..core.debug_manager import debug_print, debug_info
+
+logger = get_logger(__name__)
 
 
 class DashboardWindow(QMainWindow):
@@ -51,6 +58,10 @@ class DashboardWindow(QMainWindow):
         
         # Sync Worker
         self.sync_worker = None
+        
+        # Service für Trigger-Update (verwendet automatisch Lizenz-Daten)
+        self.trigger_endpoint_service = TriggerEndpointService()
+        self.trigger_fetch_worker = None
         
         # Dark Theme Style
         self.setStyleSheet("""
@@ -527,7 +538,7 @@ class DashboardWindow(QMainWindow):
     
     def check_license_on_startup(self):
         """Prüft Lizenz beim Start - BLOCKIERT APP bis erfolgreich"""
-        print("INFO: Starte Lizenzprüfung beim Start...")
+        debug_print("INFO: Starte Lizenzprüfung beim Start...")
         
         # Zeige Lizenz-GUI-Fenster (blockierend)
         license_window = LicenseGUIWindow(self)
@@ -538,7 +549,10 @@ class DashboardWindow(QMainWindow):
             self.license_valid = True
             self.setEnabled(True)
             self.update_license_status(True)
-            print("OK: Lizenzprüfung erfolgreich - App freigegeben")
+            debug_print("OK: Lizenzprüfung erfolgreich - App freigegeben")
+            
+            # Starte automatischen Trigger-Update (sofort nach Lizenzprüfung)
+            QTimer.singleShot(500, self.start_trigger_update)
             
             # Starte DB-Verbindungstest
             QTimer.singleShot(1000, self.check_database_connection)
@@ -547,7 +561,7 @@ class DashboardWindow(QMainWindow):
             QTimer.singleShot(2000, self.load_database_stats)
         else:
             # Lizenzprüfung fehlgeschlagen - App beenden
-            print("FEHLER: Lizenzprüfung fehlgeschlagen - App wird beendet")
+            debug_print("FEHLER: Lizenzprüfung fehlgeschlagen - App wird beendet")
             QMessageBox.critical(
                 self,
                 "Lizenzfehler",
@@ -571,18 +585,19 @@ class DashboardWindow(QMainWindow):
                 if success:
                     self.db_connected = True
                     self.update_db_status(True)
-                    print("OK: DB-Verbindung erfolgreich")
+                    debug_print("OK: DB-Verbindung erfolgreich")
+                    debug_info(f"DB-Verbindung erfolgreich:\n{message}", self)
                 else:
                     self.db_connected = False
                     self.update_db_status(False)
-                    print(f"FEHLER: DB-Verbindung fehlgeschlagen: {message}")
+                    debug_print(f"FEHLER: DB-Verbindung fehlgeschlagen: {message}")
             else:
                 self.db_connected = False
                 self.update_db_status(False)
-                print("WARNUNG: Keine DB-Credentials konfiguriert")
+                debug_print("WARNUNG: Keine DB-Credentials konfiguriert")
                 
         except Exception as e:
-            print(f"FEHLER beim DB-Verbindungstest: {e}")
+            debug_print(f"FEHLER beim DB-Verbindungstest: {e}")
             self.db_connected = False
             self.update_db_status(False)
     
@@ -699,7 +714,7 @@ class DashboardWindow(QMainWindow):
                     self.articles_without_label.setText(formatted)
                     
         except Exception as e:
-            print(f"Fehler beim Laden der Statistiken: {e}")
+            debug_print(f"Fehler beim Laden der Statistiken: {e}")
             # Bei Fehler zeige Platzhalter
             if self.taric_total_label:
                 self.taric_total_label.setText("--")
@@ -766,12 +781,12 @@ class DashboardWindow(QMainWindow):
             self.start_sync_worker()
     
     def start_sync_worker(self):
-        """Startet den Synchronisations-Worker"""
+        """Startet den OSS Start Worker (verwendet OSSStart-Klasse)"""
         # Erstelle Worker
-        self.sync_worker = JTLToN8nSyncWorker()
+        self.sync_worker = OSSStartWorker()
         
         # Erstelle Progress-Dialog
-        self.progress_dialog = QProgressDialog("OSS-Abgleich wird durchgeführt...", "Abbrechen", 0, 0, self)
+        self.progress_dialog = QProgressDialog("OSS-Abgleich wird durchgeführt...", "Abbrechen", 0, 5, self)
         self.progress_dialog.setWindowTitle("OSS-Abgleich")
         self.progress_dialog.setWindowModality(Qt.WindowModal)
         self.progress_dialog.setCancelButton(None)  # Deaktiviere Abbrechen-Button
@@ -779,20 +794,24 @@ class DashboardWindow(QMainWindow):
         # Verbinde Signale
         self.sync_worker.progress.connect(self.on_sync_progress)
         self.sync_worker.finished.connect(self.on_sync_finished)
+        self.sync_worker.decrypted_sql_ready.connect(self.on_decrypted_sql_ready)
         
         # Starte Worker
         self.sync_worker.start()
         self.progress_dialog.show()
         
-        print("INFO: OSS-Abgleich Worker gestartet")
+        debug_print("INFO: OSS Start Worker gestartet")
     
-    def on_sync_progress(self, message):
+    def on_sync_progress(self, message, step=None, total=None):
         """Behandelt Progress-Updates vom Worker"""
-        print(f"Progress: {message}")
+        debug_print(f"Progress: {message} ({step}/{total if total else '?'})")
         if hasattr(self, 'progress_dialog') and self.progress_dialog:
             self.progress_dialog.setLabelText(message)
+            if step is not None and total is not None:
+                self.progress_dialog.setMaximum(total)
+                self.progress_dialog.setValue(step)
     
-    def on_sync_finished(self, success, message, product_count):
+    def on_sync_finished(self, success, message, results):
         """Behandelt das Ende der Synchronisation"""
         # Schließe Progress-Dialog
         if hasattr(self, 'progress_dialog') and self.progress_dialog:
@@ -809,24 +828,202 @@ class DashboardWindow(QMainWindow):
         
         # Zeige Ergebnis-Dialog
         if success:
-            QMessageBox.information(
-                self,
-                "OSS-Abgleich erfolgreich",
-                f"✅ {message}\n\n{product_count} Produkte wurden synchronisiert."
+            product_count = results.get("product_count", 0) if isinstance(results, dict) else 0
+            # Zeige Erfolgsmeldung nur im Debug-Modus
+            debug_info(
+                f"OSS-Abgleich erfolgreich\n\n✅ {message}",
+                self
             )
             
             # Aktualisiere Statistiken nach Sync
             QTimer.singleShot(500, self.load_database_stats)
         else:
-            QMessageBox.critical(
-                self,
-                "OSS-Abgleich fehlgeschlagen",
-                f"❌ {message}"
-            )
+            # Fehler-Dialog nur im Debug-Modus anzeigen
+            from app.core.debug_manager import is_debug_enabled
+            
+            if is_debug_enabled():
+                # Fehler-Dialog mit Möglichkeit SQL anzuzeigen
+                msg_box = QMessageBox(self)
+                msg_box.setWindowTitle("❌ OSS-Abgleich fehlgeschlagen")
+                msg_box.setText(f"❌ {message}")
+                msg_box.setIcon(QMessageBox.Critical)
+                
+                # Prüfe ob SQL-Statement vorhanden ist (bei SQL-Fehlern)
+                sql_statement = None
+                if isinstance(results, dict):
+                    # Debug: Logge alle verfügbaren Keys
+                    logger.debug(f"Results Keys: {list(results.keys())}")
+                    logger.debug(f"sql_statement: {results.get('sql_statement')}")
+                    logger.debug(f"decrypted_sql: {results.get('decrypted_sql')}")
+                    
+                    sql_statement = results.get("sql_statement") or results.get("decrypted_sql")
+                
+                if sql_statement and sql_statement.strip():
+                    logger.info(f"SQL-Statement gefunden ({len(sql_statement)} Zeichen), zeige Dialog (Debug-Modus)")
+                    msg_box.setInformativeText("Möchten Sie das SQL-Statement anzeigen?\n\nDas SQL kann kopiert und in SSMS getestet werden.")
+                    msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+                    msg_box.setDefaultButton(QMessageBox.Yes)  # Default auf Yes, damit es einfacher ist
+                    
+                    result = msg_box.exec()
+                    
+                    if result == QMessageBox.Yes:
+                        # Zeige SQL-Daten im DecryptDialog
+                        logger.info("Benutzer möchte SQL anzeigen")
+                        decrypt_dialog = DecryptDialog(self)
+                        decrypt_dialog.result_output.setPlainText(sql_statement)
+                        decrypt_dialog.result_output.setReadOnly(True)  # Read-only für Anzeige
+                        
+                        # Setze Dialog-Titel für bessere Erkennbarkeit
+                        decrypt_dialog.setWindowTitle("SQL-Statement (Tax Rates) - Zum Testen in SSMS kopieren")
+                        
+                        decrypt_dialog.exec()  # Zeige Dialog
+                else:
+                    # Keine SQL-Daten vorhanden
+                    logger.debug(f"Kein SQL-Statement gefunden. sql_statement={sql_statement}")
+                    if isinstance(results, dict):
+                        logger.debug(f"Verfügbare Keys im results: {list(results.keys())}")
+                    msg_box.setStandardButtons(QMessageBox.Ok)
+                    msg_box.exec()
+            else:
+                # Im normalen Modus: Nur loggen, keine Dialoge anzeigen
+                logger.info(f"OSS-Abgleich fehlgeschlagen: {message}")
+                if isinstance(results, dict):
+                    sql_statement = results.get("sql_statement") or results.get("decrypted_sql")
+                    if sql_statement and sql_statement.strip():
+                        logger.info(f"SQL-Statement vorhanden, aber Debug-Modus deaktiviert - keine Anzeige")
         
         # Cleanup Worker
         if self.sync_worker:
             self.sync_worker.deleteLater()
             self.sync_worker = None
         
-        print(f"OSS-Abgleich beendet: success={success}, message={message}")
+        debug_print(f"OSS-Abgleich beendet: success={success}, message={message}")
+    
+    def on_decrypted_sql_ready(self, decrypted_sql: str):
+        """Wird aufgerufen wenn SQL erfolgreich entschlüsselt wurde"""
+        logger.info(f"Entschlüsseltes SQL erhalten ({len(decrypted_sql)} Zeichen)")
+        
+        # Zeige Dialog mit entschlüsseltem SQL nur im Debug-Modus
+        from app.core.debug_manager import is_debug_enabled
+        
+        if is_debug_enabled():
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("✅ SQL erfolgreich entschlüsselt")
+            msg_box.setText("Das SQL-Statement wurde erfolgreich entschlüsselt.\n\nMöchten Sie das SQL-Statement anzeigen?")
+            msg_box.setInformativeText("Das SQL kann kopiert und in SSMS getestet werden, bevor es ausgeführt wird.")
+            msg_box.setIcon(QMessageBox.Information)
+            msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+            msg_box.setDefaultButton(QMessageBox.Yes)
+            
+            result = msg_box.exec()
+            
+            if result == QMessageBox.Yes:
+                # Zeige SQL-Daten im DecryptDialog
+                logger.info("Benutzer möchte SQL anzeigen")
+                decrypt_dialog = DecryptDialog(self)
+                decrypt_dialog.result_output.setPlainText(decrypted_sql)
+                decrypt_dialog.result_output.setReadOnly(True)  # Read-only für Anzeige
+                
+                # Setze Dialog-Titel für bessere Erkennbarkeit
+                decrypt_dialog.setWindowTitle("SQL-Statement (Tax Rates) - Zum Testen in SSMS kopieren")
+                
+                decrypt_dialog.exec()  # Zeige Dialog
+        else:
+            # Im normalen Modus: SQL-Daten NICHT anzeigen
+            logger.info("SQL entschlüsselt, aber Debug-Modus deaktiviert - keine Anzeige")
+    
+    def start_trigger_update(self):
+        """Startet automatischen Trigger-Update beim Programmstart"""
+        logger.info("Starte automatischen Trigger-Update...")
+        
+        # Prüfe ob Worker bereits läuft
+        if self.trigger_fetch_worker and self.trigger_fetch_worker.isRunning():
+            logger.warning("Trigger-Update läuft bereits")
+            return
+        
+        # Erstelle neuen Worker (Service wird automatisch erstellt wenn None)
+        self.trigger_fetch_worker = TriggerFetchWorker(
+            trigger_endpoint_service=self.trigger_endpoint_service,
+            password=None  # Verwendet Standard-Passwort "geh31m"
+        )
+        self.trigger_fetch_worker.finished.connect(self.on_trigger_update_finished)
+        self.trigger_fetch_worker.start()
+        
+        logger.info("Trigger-Update Worker gestartet")
+    
+    def on_trigger_update_finished(self, success: bool, message: str, decrypted_sql: str = ""):
+        """Wird aufgerufen wenn Trigger-Update abgeschlossen ist"""
+        logger.info(f"Trigger-Update abgeschlossen: success={success}")
+        
+        if success:
+            # Erfolgsfenster anzeigen nur im Debug-Modus
+            from app.core.debug_manager import is_debug_enabled
+            
+            if is_debug_enabled():
+                msg_box = QMessageBox(self)
+                msg_box.setWindowTitle("✅ Trigger-Update erfolgreich")
+                msg_box.setText(message)
+                msg_box.setIcon(QMessageBox.Information)
+                
+                # Zeige entschlüsselte SQL-Daten wenn vorhanden
+                if decrypted_sql and decrypted_sql.strip():
+                    msg_box.setInformativeText("Möchten Sie die ausgeführten SQL-Daten anzeigen?")
+                    msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+                    msg_box.setDefaultButton(QMessageBox.No)
+                    
+                    result = msg_box.exec()
+                    
+                    if result == QMessageBox.Yes:
+                        # Zeige SQL-Daten im DecryptDialog
+                        decrypt_dialog = DecryptDialog(self)
+                        # Setze entschlüsselte Daten in das Ergebnis-Feld
+                        decrypt_dialog.result_output.setPlainText(decrypted_sql)
+                        decrypt_dialog.result_output.setReadOnly(True)  # Read-only für Anzeige
+                        decrypt_dialog.exec()  # Zeige Dialog
+                else:
+                    # Keine SQL-Daten vorhanden, zeige nur Erfolgsmeldung
+                    msg_box.setStandardButtons(QMessageBox.Ok)
+                    msg_box.exec()
+            else:
+                # Im normalen Modus: Keine SQL-Daten anzeigen
+                if decrypted_sql and decrypted_sql.strip():
+                    logger.info("SQL-Daten vorhanden, aber Debug-Modus deaktiviert - keine Anzeige")
+        else:
+            # Fehlerfenster anzeigen (nur bei kritischen Fehlern)
+            # Bei Netzwerkfehlern oder fehlenden Credentials nicht so kritisch
+            msg_box = QMessageBox(self)
+            
+            if "Netzwerkfehler" in message or "Timeout" in message or "Credentials" in message:
+                # Zeige Warnung statt Fehler
+                msg_box.setWindowTitle("⚠️ Trigger-Update nicht möglich")
+                msg_box.setText(f"{message}\n\nDie App funktioniert weiterhin normal.\nSie können den Trigger manuell über 'Entschlüsselung' aktualisieren.")
+                msg_box.setIcon(QMessageBox.Warning)
+            else:
+                # Kritischer Fehler
+                msg_box.setWindowTitle("❌ Trigger-Update fehlgeschlagen")
+                msg_box.setText(message)
+                msg_box.setIcon(QMessageBox.Critical)
+            
+            # Zeige entschlüsselte SQL-Daten wenn vorhanden (auch bei Fehlern)
+            if decrypted_sql and decrypted_sql.strip():
+                msg_box.setInformativeText("Möchten Sie die entschlüsselten SQL-Daten anzeigen?")
+                msg_box.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
+                msg_box.setDefaultButton(QMessageBox.No)
+                
+                result = msg_box.exec()
+                
+                if result == QMessageBox.Yes:
+                    # Zeige SQL-Daten im DecryptDialog
+                    decrypt_dialog = DecryptDialog(self)
+                    decrypt_dialog.result_output.setPlainText(decrypted_sql)
+                    decrypt_dialog.result_output.setReadOnly(True)  # Read-only für Anzeige
+                    decrypt_dialog.exec()  # Zeige Dialog
+            else:
+                # Keine SQL-Daten vorhanden
+                msg_box.setStandardButtons(QMessageBox.Ok)
+                msg_box.exec()
+        
+        # Cleanup Worker
+        if self.trigger_fetch_worker:
+            self.trigger_fetch_worker.deleteLater()
+            self.trigger_fetch_worker = None
