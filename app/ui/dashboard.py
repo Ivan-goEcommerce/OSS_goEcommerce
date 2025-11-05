@@ -10,7 +10,7 @@ from PySide6.QtGui import QFont, QPainter, QColor
 
 from ..managers.license_manager import LicenseManager
 from ..managers.oss_schema_manager import OSSSchemaManager
-from ..dialogs import JTLConnectionDialog, LicenseDialog, LicenseGUIWindow
+from ..dialogs import JTLConnectionDialog, LicenseDialog, LicenseGUIWindow, DecryptDialog
 from ..workers.sync_worker import JTLToN8nSyncWorker
 
 
@@ -304,8 +304,22 @@ class DashboardWindow(QMainWindow):
             }
         """)
         
+        btn_decrypt = QPushButton("🔓 Entschlüsseln")
+        btn_decrypt.clicked.connect(self.show_decrypt_dialog)
+        btn_decrypt.setStyleSheet("""
+            QPushButton {
+                background-color: #333333;
+                color: #b0b0b0;
+                border: 1px solid #555555;
+            }
+            QPushButton:hover {
+                background-color: #444444;
+            }
+        """)
+        
         status_layout.addWidget(btn_lizenz)
         status_layout.addWidget(btn_db)
+        status_layout.addWidget(btn_decrypt)
         
         title_layout.addLayout(status_layout)
         
@@ -315,6 +329,13 @@ class DashboardWindow(QMainWindow):
         """4 Daten-Cards in 2x2 Grid"""
         cards_grid = QGridLayout()
         cards_grid.setSpacing(20)
+        
+        # Setze gleiche Höhe für alle Zeilen
+        cards_grid.setRowStretch(0, 1)
+        cards_grid.setRowStretch(1, 1)
+        # Setze gleiche Breite für alle Spalten
+        cards_grid.setColumnStretch(0, 1)
+        cards_grid.setColumnStretch(1, 1)
         
         # Card 1: Gesamtanzahl Taric-Nummern
         card1 = self.create_data_card("Gesamtanzahl Taric-Nummern", "2 543")
@@ -702,6 +723,11 @@ class DashboardWindow(QMainWindow):
             # Nach erfolgreichem Dialog DB-Status prüfen
             QTimer.singleShot(500, self.check_database_connection)
             QTimer.singleShot(1000, self.load_database_stats)
+    
+    def show_decrypt_dialog(self):
+        """Zeigt Entschlüsselungs-Dialog"""
+        dialog = DecryptDialog(self)
+        dialog.exec()
     
     def start_oss_sync(self):
         """Startet OSS-Abgleich"""

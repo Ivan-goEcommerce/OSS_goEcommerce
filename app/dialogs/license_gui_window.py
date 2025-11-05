@@ -6,8 +6,35 @@ Zeigt Lizenzstatus und ermöglicht Lizenz-Eingabe
 from PySide6.QtWidgets import (QDialog, QVBoxLayout, QHBoxLayout, QLabel, 
                                QLineEdit, QPushButton, QFormLayout, QMessageBox,
                                QProgressBar, QFrame)
-from PySide6.QtCore import Qt, QTimer
+from PySide6.QtCore import Qt, QTimer, QThread, Signal
 from PySide6.QtGui import QFont
+
+from app.services.license_service import LicenseService
+
+
+class LicenseCheckThread(QThread):
+    """Worker-Thread für Lizenzprüfung über Endpoint"""
+    finished = Signal(bool, dict, str)  # success, response_data, message
+    
+    def __init__(self, license_service, license_number=None, email=None):
+        super().__init__()
+        self.license_service = license_service
+        self.license_number = license_number
+        self.email = email
+        self.check_new_license = license_number is not None and email is not None
+    
+    def run(self):
+        """Führt die Lizenzprüfung aus"""
+        try:
+            if self.check_new_license:
+                # Speichere neue Lizenzdaten zuerst
+                self.license_service.save_license(self.license_number, self.email)
+            
+            # Prüfe über Endpoint
+            success, response_data, message = self.license_service.check_license_via_endpoint()
+            self.finished.emit(success, response_data, message)
+        except Exception as e:
+            self.finished.emit(False, {}, f"Fehler: {str(e)}")
 
 
 class LicenseGUIWindow(QDialog):
@@ -20,6 +47,8 @@ class LicenseGUIWindow(QDialog):
         self.setModal(True)
         
         self.license_valid = False
+        self.license_service = LicenseService()
+        self.check_thread = None
         self.setup_ui()
     
     def setup_ui(self):
@@ -78,7 +107,57 @@ class LicenseGUIWindow(QDialog):
         
         layout.addWidget(status_frame)
         
-        # Lizenz-Formular (versteckt bis benötigt)
+        # Error-Buttons-Frame (nur für Fehler bei automatischer Prüfung)
+        self.error_buttons_frame = QFrame()
+        self.error_buttons_frame.setVisible(False)
+        error_buttons_layout = QHBoxLayout(self.error_buttons_frame)
+        error_buttons_layout.setContentsMargins(0, 15, 0, 0)
+        error_buttons_layout.setSpacing(10)
+        
+        self.enter_license_button = QPushButton("🔑 Lizenz eingeben")
+        self.enter_license_button.clicked.connect(self.show_license_form_on_error)
+        self.enter_license_button.setStyleSheet("""
+            QPushButton {
+                background-color: #ff8c00;
+                color: #000000;
+                border: none;
+                border-radius: 8px;
+                padding: 10px 20px;
+                font-size: 12px;
+                font-weight: bold;
+            }
+            QPushButton:hover {
+                background-color: #ffaa00;
+            }
+            QPushButton:pressed {
+                background-color: #ff6600;
+            }
+        """)
+        
+        self.close_button = QPushButton("❌ Beenden")
+        self.close_button.clicked.connect(self.reject)
+        self.close_button.setStyleSheet("""
+            QPushButton {
+                background-color: #2a2a2a;
+                color: #ff8c00;
+                border: 2px solid #ff8c00;
+                border-radius: 8px;
+                padding: 10px 20px;
+                font-size: 12px;
+            }
+            QPushButton:hover {
+                background-color: #ff8c00;
+                color: #000000;
+            }
+        """)
+        error_buttons_layout.addStretch()
+        error_buttons_layout.addWidget(self.enter_license_button)
+        error_buttons_layout.addWidget(self.close_button)
+        error_buttons_layout.addStretch()
+        
+        layout.addWidget(self.error_buttons_frame)
+        
+        # Lizenz-Formular (versteckt bis benötigt - nur wenn KEINE Lizenzdaten vorhanden)
         self.license_form = QFrame()
         self.license_form.setVisible(False)
         form_layout = QVBoxLayout(self.license_form)
@@ -180,29 +259,65 @@ class LicenseGUIWindow(QDialog):
         """Startet die automatische Lizenzprüfung"""
         print("INFO: Starte automatische Lizenzprüfung...")
         
-        # Simuliere Lizenzprüfung
-        QTimer.singleShot(2000, self.check_existing_license)
+        # Prüfe ob Lizenzdaten vorhanden sind
+        if not self.license_service.has_license():
+            # Keine Lizenzdaten gefunden - zeige Eingabeformular
+            print("WARNUNG: Keine Lizenzdaten gefunden - zeige Eingabeformular")
+            self.progress_bar.setVisible(False)
+            self.status_label.setText("❌ Keine Lizenzdaten gefunden")
+            self.status_label.setStyleSheet("color: #ff4444; text-align: center;")
+            self.license_form.setVisible(True)
+            return
+        
+        # Prüfe vorhandene Lizenz über Endpoint
+        QTimer.singleShot(500, self.check_existing_license)
     
     def check_existing_license(self):
-        """Prüft vorhandene Lizenz"""
-        print("INFO: Prüfe vorhandene Lizenz...")
+        """Prüft vorhandene Lizenz über Endpoint"""
+        print("INFO: Prüfe vorhandene Lizenz über Endpoint...")
         
-        # Simuliere Lizenzprüfung
-        import time
-        time.sleep(1)
-        
-        # Simuliere erfolgreiche Lizenzprüfung
+        # Erstelle Worker-Thread für HTTP-Request
+        self.check_thread = LicenseCheckThread(self.license_service)
+        self.check_thread.finished.connect(self.on_license_check_finished)
+        self.check_thread.start()
+    
+    def on_license_check_finished(self, success, response_data, message):
+        """Wird aufgerufen wenn automatische Lizenzprüfung abgeschlossen ist"""
         self.progress_bar.setVisible(False)
-        self.status_label.setText("✅ Lizenz gültig!")
-        self.status_label.setStyleSheet("color: #00ff00; text-align: center;")
         
-        print("OK: Lizenzprüfung erfolgreich")
-        
-        # Schließe Dialog nach kurzer Zeit
-        QTimer.singleShot(1500, self.accept)
+        if success:
+            # Lizenzprüfung erfolgreich
+            self.status_label.setText("✅ Lizenz gültig!")
+            self.status_label.setStyleSheet("color: #00ff00; text-align: center;")
+            print(f"OK: Lizenzprüfung erfolgreich - {message}")
+            print(f"Response: {response_data}")
+            self.license_valid = True
+            
+            # Schließe Dialog nach kurzer Zeit
+            QTimer.singleShot(1500, self.accept)
+        else:
+            # Lizenzprüfung fehlgeschlagen - zeige NUR Fehlermeldung und Beenden-Button
+            self.status_label.setText(f"❌ Lizenzprüfung fehlgeschlagen\n\n{message}")
+            self.status_label.setStyleSheet("color: #ff4444; text-align: center;")
+            print(f"FEHLER: Lizenzprüfung fehlgeschlagen - {message}")
+            print(f"Response: {response_data}")
+            
+            # Zeige Buttons (Lizenz eingeben + Beenden), aber verstecke zunächst Eingabefelder
+            self.error_buttons_frame.setVisible(True)
+            self.license_form.setVisible(False)
+    
+    def show_license_form_on_error(self):
+        """Zeigt Eingabeformular wenn User auf 'Lizenz eingeben' klickt"""
+        # Verstecke Fehler-Buttons
+        self.error_buttons_frame.setVisible(False)
+        # Zeige Eingabeformular
+        self.license_form.setVisible(True)
+        # Aktualisiere Status-Label
+        self.status_label.setText("Bitte geben Sie neue Lizenzdaten ein:")
+        self.status_label.setStyleSheet("color: #ff8c00; text-align: center;")
     
     def verify_license(self):
-        """Prüft eingegebene Lizenz"""
+        """Prüft eingegebene Lizenz über Endpoint"""
         license_number = self.license_input.text().strip()
         email = self.email_input.text().strip()
         
@@ -210,19 +325,46 @@ class LicenseGUIWindow(QDialog):
             QMessageBox.warning(self, "Fehler", "Bitte geben Sie Lizenznummer und E-Mail ein!")
             return
         
-        # Simuliere Lizenzprüfung
+        # Deaktiviere Button während Prüfung
         self.verify_button.setEnabled(False)
-        self.verify_button.setText("🔄 Prüfe...")
+        self.verify_button.setText("🔄 Prüfe über Server...")
+        self.status_label.setText("🔄 Prüfe Lizenz über Server...")
+        self.status_label.setStyleSheet("color: #ff8c00; text-align: center;")
+        self.progress_bar.setVisible(True)
         
-        QTimer.singleShot(2000, lambda: self.finish_license_check(license_number, email))
+        # Erstelle Worker-Thread für HTTP-Request
+        self.check_thread = LicenseCheckThread(
+            self.license_service, 
+            license_number=license_number, 
+            email=email
+        )
+        self.check_thread.finished.connect(self.finish_license_check)
+        self.check_thread.start()
     
-    def finish_license_check(self, license_number, email):
+    def finish_license_check(self, success, response_data, message):
         """Beendet die Lizenzprüfung"""
-        # Simuliere erfolgreiche Prüfung
-        self.status_label.setText("✅ Lizenz erfolgreich geprüft!")
-        self.status_label.setStyleSheet("color: #00ff00; text-align: center;")
+        self.progress_bar.setVisible(False)
+        self.verify_button.setEnabled(True)
+        self.verify_button.setText("🔍 Lizenz prüfen")
         
-        print(f"OK: Lizenz erfolgreich geprüft: {license_number}")
-        
-        # Schließe Dialog
-        QTimer.singleShot(1000, self.accept)
+        if success:
+            # Lizenzprüfung erfolgreich
+            self.status_label.setText("✅ Lizenz erfolgreich geprüft!")
+            self.status_label.setStyleSheet("color: #00ff00; text-align: center;")
+            print(f"OK: Lizenz erfolgreich geprüft - {message}")
+            print(f"Response: {response_data}")
+            self.license_valid = True
+            
+            # Schließe Dialog nach kurzer Zeit
+            QTimer.singleShot(1500, self.accept)
+        else:
+            # Lizenzprüfung fehlgeschlagen
+            self.status_label.setText(f"❌ Lizenzprüfung fehlgeschlagen\n{message}")
+            self.status_label.setStyleSheet("color: #ff4444; text-align: center;")
+            QMessageBox.warning(
+                self, 
+                "Lizenzprüfung fehlgeschlagen", 
+                f"Die Lizenzprüfung war nicht erfolgreich:\n\n{message}\n\n"
+                "Bitte überprüfen Sie Ihre Lizenzdaten und versuchen Sie es erneut."
+            )
+            print(f"FEHLER: Lizenzprüfung fehlgeschlagen - {message}")

@@ -2,6 +2,6 @@
   "server": ".\\JTLWAWI",
   "username": "sa",
   "database": "eazybusiness",
-  "driver": "ODBC Driver 17 for SQL Server",
-  "last_tested": "2025-10-17T15:00:44.263878"
+  "driver": "SQL Server",
+  "last_tested": "2025-11-03T15:53:10.720031"
 }

@@ -8,6 +8,8 @@ from PySide6.QtWidgets import (QDialog, QVBoxLayout, QHBoxLayout, QLabel,
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont
 
+from app.services.license_service import LicenseService
+
 
 class LicenseDialog(QDialog):
     """Dialog für Lizenz-Eingabe"""
@@ -17,6 +19,9 @@ class LicenseDialog(QDialog):
         self.setWindowTitle("🔑 Lizenz eingeben")
         self.setFixedSize(400, 300)
         self.setModal(True)
+        
+        # License Service für Speicherung
+        self.license_service = LicenseService()
         
         self.setup_ui()
     
@@ -60,6 +65,35 @@ class LicenseDialog(QDialog):
         self.setLayout(layout)
     
     def save_license(self):
-        """Speichert die Lizenz"""
-        QMessageBox.information(self, "Lizenz", "Lizenzdaten würden hier gespeichert werden")
-        self.accept()
+        """Speichert die Lizenz im Keyring"""
+        license_number = self.license_input.text().strip()
+        email = self.email_input.text().strip()
+        
+        # Validierung
+        if not license_number or not email:
+            QMessageBox.warning(
+                self, 
+                "Fehler", 
+                "Bitte geben Sie sowohl Lizenznummer als auch E-Mail ein!"
+            )
+            return
+        
+        # Speichere im Keyring über LicenseService
+        success = self.license_service.save_license(license_number, email)
+        
+        if success:
+            QMessageBox.information(
+                self, 
+                "Erfolg", 
+                f"Lizenzdaten wurden erfolgreich gespeichert:\n\n"
+                f"Lizenznummer: {license_number}\n"
+                f"E-Mail: {email}"
+            )
+            self.accept()
+        else:
+            QMessageBox.critical(
+                self, 
+                "Fehler", 
+                "Fehler beim Speichern der Lizenzdaten im Keyring.\n\n"
+                "Bitte versuchen Sie es erneut oder kontaktieren Sie den Support."
+            )

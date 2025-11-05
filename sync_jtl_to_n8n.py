@@ -6,23 +6,64 @@ Führt SQL-Abfrage aus und sendet Ergebnisse an n8n
 
 import sys
 import json
+import os
+from pathlib import Path
+
+# Füge app-Verzeichnis zum Python-Pfad hinzu für Imports
+current_dir = Path(__file__).parent
+sys.path.insert(0, str(current_dir))
+
 from jtl_database_manager import JTLDatabaseManager
 from n8n_workflow_manager import N8nWorkflowManager
 
+# Import LicenseService für Keyring-Zugriff
+try:
+    from app.services.license_service import LicenseService
+    LICENSE_SERVICE_AVAILABLE = True
+except ImportError:
+    LICENSE_SERVICE_AVAILABLE = False
+    print("WARNUNG: LicenseService nicht verfügbar - verwende Standard-Werte")
+
 
 def sync_products_to_n8n(
-    n8n_webhook_url: str = "https://agentic.go-ecommerce.de/webhook-test/post_customer_product",
-    license_number: str = "123456",
-    email: str = "ivan.levshyn@go-ecommerce.de"
+    n8n_webhook_url: str = "https://agentic.go-ecommerce.de/webhook/post_customer_product",
+    license_number: str = None,
+    email: str = None
 ):
     """
     Synchronisiert Produktdaten von JTL-Datenbank zu n8n Webhook
     
     Args:
         n8n_webhook_url: URL des n8n Webhooks
-        license_number: Lizenznummer für n8n
-        email: Email für n8n
+        license_number: Lizenznummer für n8n (optional, wird aus Keyring geladen falls nicht angegeben)
+        email: Email für n8n (optional, wird aus Keyring geladen falls nicht angegeben)
     """
+    # Lade Lizenzdaten aus Keyring falls nicht angegeben
+    if license_number is None or email is None:
+        if LICENSE_SERVICE_AVAILABLE:
+            print("🔑 Lade Lizenzdaten aus Keyring...")
+            license_service = LicenseService()
+            loaded_license, loaded_email = license_service.load_license()
+            
+            if loaded_license and loaded_email:
+                if license_number is None:
+                    license_number = loaded_license
+                if email is None:
+                    email = loaded_email
+                print(f"   ✓ Lizenzdaten geladen: {loaded_license[:4]}..., {loaded_email[:3]}...")
+            else:
+                print("   ⚠️ Keine Lizenzdaten im Keyring gefunden!")
+                print("   Verwende Standard-Werte (können falsch sein)")
+                if license_number is None:
+                    license_number = "123456"
+                if email is None:
+                    email = "ivan.levshyn@go-ecommerce.de"
+        else:
+            print("   ⚠️ LicenseService nicht verfügbar - verwende Standard-Werte")
+            if license_number is None:
+                license_number = "123456"
+            if email is None:
+                email = "ivan.levshyn@go-ecommerce.de"
     print("=" * 60)
     print("🚀 JTL zu n8n Produkt-Synchronisation")
     print("=" * 60)
@@ -118,8 +159,8 @@ def main():
         
         # Optionale Parameter parsen
         webhook_url = sys.argv[1] if len(sys.argv) > 1 else None
-        license_number = sys.argv[2] if len(sys.argv) > 2 else "123456"
-        email = sys.argv[3] if len(sys.argv) > 3 else "ivan.levshyn@go-ecommerce.de"
+        license_number = sys.argv[2] if len(sys.argv) > 2 else None  # None = aus Keyring laden
+        email = sys.argv[3] if len(sys.argv) > 3 else None  # None = aus Keyring laden
         
         # Synchronisation durchführen
         success = sync_products_to_n8n(

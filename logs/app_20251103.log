@@ -1,0 +1,851 @@
+2025-11-03 11:43:44 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 11:43:45 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 11:43:46 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 11:43:46 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 11:43:46 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook-test/v1/check-license
+2025-11-03 11:43:46 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 11:43:46 - app.services.license_service - INFO - License-Check Response Status: 404
+2025-11-03 11:43:46 - app.services.license_service - DEBUG - Response Data: {'code': 404, 'message': 'The requested webhook "v1/check-license" is not registered.', 'hint': "Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)"}
+2025-11-03 11:43:46 - app.services.license_service - ERROR - License-Check fehlgeschlagen: HTTP 404
+2025-11-03 11:44:07 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 11:44:08 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 11:44:08 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 11:44:08 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 11:44:08 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook-test/v1/check-license
+2025-11-03 11:44:08 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 11:44:09 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 11:44:09 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 11:44:09 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 11:44:43 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 11:44:44 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 11:44:45 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 11:44:45 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 11:44:45 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook-test/v1/check-license
+2025-11-03 11:44:45 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 11:44:45 - app.services.license_service - INFO - License-Check Response Status: 404
+2025-11-03 11:44:45 - app.services.license_service - DEBUG - Response Data: {'code': 404, 'message': 'The requested webhook "v1/check-license" is not registered.', 'hint': "Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)"}
+2025-11-03 11:44:45 - app.services.license_service - ERROR - License-Check fehlgeschlagen: HTTP 404
+2025-11-03 11:45:32 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 11:45:33 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 11:45:34 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 11:45:34 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 11:45:34 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook-test/v1/check-license
+2025-11-03 11:45:34 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 11:45:34 - app.services.license_service - INFO - License-Check Response Status: 404
+2025-11-03 11:45:34 - app.services.license_service - DEBUG - Response Data: {'code': 404, 'message': 'The requested webhook "v1/check-license" is not registered.', 'hint': "Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)"}
+2025-11-03 11:45:34 - app.services.license_service - ERROR - License-Check fehlgeschlagen: HTTP 404
+2025-11-03 11:45:44 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 11:45:45 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 11:45:46 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 11:45:46 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 11:45:46 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook-test/v1/check-license
+2025-11-03 11:45:46 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 11:45:46 - app.services.license_service - INFO - License-Check Response Status: 404
+2025-11-03 11:45:46 - app.services.license_service - DEBUG - Response Data: {'code': 404, 'message': 'The requested webhook "v1/check-license" is not registered.', 'hint': "Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)"}
+2025-11-03 11:45:46 - app.services.license_service - ERROR - License-Check fehlgeschlagen: HTTP 404
+2025-11-03 11:48:18 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 11:48:18 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 11:48:18 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 11:48:18 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 11:48:18 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook-test/v1/check-license
+2025-11-03 11:48:18 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 11:48:19 - app.services.license_service - INFO - License-Check Response Status: 404
+2025-11-03 11:48:19 - app.services.license_service - DEBUG - Response Data: {'code': 404, 'message': 'The requested webhook "v1/check-license" is not registered.', 'hint': "Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)"}
+2025-11-03 11:48:19 - app.services.license_service - ERROR - License-Check fehlgeschlagen: HTTP 404
+2025-11-03 11:52:30 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 11:52:31 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 11:52:31 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 11:52:31 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 11:52:31 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook-test/v1/check-license
+2025-11-03 11:52:31 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 11:52:31 - app.services.license_service - INFO - License-Check Response Status: 404
+2025-11-03 11:52:31 - app.services.license_service - DEBUG - Response Data: {'code': 404, 'message': 'The requested webhook "v1/check-license" is not registered.', 'hint': "Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)"}
+2025-11-03 11:52:31 - app.services.license_service - ERROR - License-Check fehlgeschlagen: HTTP 404
+2025-11-03 11:52:46 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 11:52:47 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 11:52:47 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 11:52:47 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 11:52:47 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook-test/v1/check-license
+2025-11-03 11:52:47 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 11:52:48 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 11:52:48 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 11:52:48 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 11:54:48 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 11:54:49 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 11:54:50 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 11:54:50 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 11:54:50 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook-test/v1/check-license
+2025-11-03 11:54:50 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 11:54:50 - app.services.license_service - INFO - License-Check Response Status: 404
+2025-11-03 11:54:50 - app.services.license_service - DEBUG - Response Data: {'code': 404, 'message': 'The requested webhook "v1/check-license" is not registered.', 'hint': "Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)"}
+2025-11-03 11:54:50 - app.services.license_service - ERROR - License-Check fehlgeschlagen: HTTP 404
+2025-11-03 11:56:31 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 11:56:32 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 11:56:32 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 11:56:32 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 11:56:32 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook-test/v1/check-license
+2025-11-03 11:56:32 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 11:56:32 - app.services.license_service - INFO - License-Check Response Status: 404
+2025-11-03 11:56:32 - app.services.license_service - DEBUG - Response Data: {'code': 404, 'message': 'The requested webhook "v1/check-license" is not registered.', 'hint': "Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)"}
+2025-11-03 11:56:32 - app.services.license_service - ERROR - License-Check fehlgeschlagen: HTTP 404
+2025-11-03 12:02:12 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:02:13 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:02:13 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:02:13 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:02:13 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook-test/v1/check-license
+2025-11-03 12:02:13 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:02:13 - app.services.license_service - INFO - License-Check Response Status: 404
+2025-11-03 12:02:13 - app.services.license_service - DEBUG - Response Data: {'code': 404, 'message': 'The requested webhook "v1/check-license" is not registered.', 'hint': "Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)"}
+2025-11-03 12:02:13 - app.services.license_service - ERROR - License-Check fehlgeschlagen: HTTP 404
+2025-11-03 12:02:17 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:02:18 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:02:18 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:02:18 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:02:18 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook-test/v1/check-license
+2025-11-03 12:02:18 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:02:19 - app.services.license_service - INFO - License-Check Response Status: 404
+2025-11-03 12:02:19 - app.services.license_service - DEBUG - Response Data: {'code': 404, 'message': 'The requested webhook "v1/check-license" is not registered.', 'hint': "Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)"}
+2025-11-03 12:02:19 - app.services.license_service - ERROR - License-Check fehlgeschlagen: HTTP 404
+2025-11-03 12:02:46 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:02:47 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:02:48 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:02:48 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:02:48 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook-test/v1/check-license
+2025-11-03 12:02:48 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:02:48 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:02:48 - app.services.license_service - WARNING - Response ist kein JSON, verwende Text
+2025-11-03 12:02:48 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:03:03 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:03:04 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:03:05 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:03:05 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:03:05 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook-test/v1/check-license
+2025-11-03 12:03:05 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:03:05 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:03:05 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 12:03:05 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:04:28 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:04:29 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:04:29 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:04:29 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:04:29 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook-test/v1/check-license
+2025-11-03 12:04:29 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:04:30 - app.services.license_service - INFO - License-Check Response Status: 404
+2025-11-03 12:04:30 - app.services.license_service - DEBUG - Response Data: {'code': 404, 'message': 'The requested webhook "v1/check-license" is not registered.', 'hint': "Click the 'Execute workflow' button on the canvas, then try again. (In test mode, the webhook only works for one call after you click this button)"}
+2025-11-03 12:04:30 - app.services.license_service - ERROR - License-Check fehlgeschlagen: HTTP 404
+2025-11-03 12:12:19 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:12:20 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:12:21 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:12:21 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:12:21 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:12:21 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:12:21 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:12:21 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 12:12:21 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:12:37 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:12:38 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:12:38 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:12:38 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:12:38 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:12:38 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:12:39 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:12:39 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 12:12:39 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:14:11 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:14:12 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:14:12 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:14:12 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:14:12 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:14:12 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:14:13 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:14:13 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 12:14:13 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:14:43 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:14:44 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:14:45 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:14:45 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:14:45 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:14:45 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:14:45 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:14:45 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 12:14:45 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:15:58 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:15:59 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:15:59 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:15:59 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:15:59 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:15:59 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:16:00 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:16:00 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 12:16:00 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:18:49 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:18:50 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:18:50 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:18:50 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:18:50 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:18:50 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:18:51 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:18:51 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 12:18:51 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:19:05 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:19:06 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:19:06 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:19:06 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:19:06 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:19:06 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:19:07 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:19:07 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 12:19:07 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:20:20 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:20:21 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:20:22 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:20:22 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:20:22 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:20:22 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:20:22 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:20:22 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 12:20:22 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:25:51 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:25:52 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:25:53 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:25:53 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:25:53 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:25:53 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:25:53 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:25:53 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 12:25:53 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:25:56 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:25:57 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:25:58 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:25:58 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:25:58 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:25:58 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:25:58 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:25:58 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 12:25:58 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:26:08 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:26:09 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:26:09 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:26:09 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:26:09 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:26:09 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:26:10 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:26:10 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 12:26:10 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:31:20 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:31:21 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:31:21 - app.services.license_service - INFO - Lade Lizenzdaten aus Keyring für Endpoint-Prüfung...
+2025-11-03 12:31:21 - app.services.license_service - DEBUG - Lade Lizenzdaten aus Keyring...
+2025-11-03 12:31:21 - app.services.license_service - INFO - Lizenzdaten geladen: 1234..., E-Mail: iva...
+2025-11-03 12:31:21 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:31:21 - app.services.license_service - INFO - Verwende Lizenzdaten: Lizenznummer=1234..., E-Mail=iva...
+2025-11-03 12:31:21 - app.services.license_service - DEBUG - Vollständige Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 12:31:22 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:31:22 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 12:31:22 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:31:49 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:31:50 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:31:51 - app.services.license_service - INFO - Lade Lizenzdaten aus Keyring für Endpoint-Prüfung...
+2025-11-03 12:31:51 - app.services.license_service - DEBUG - Lade Lizenzdaten aus Keyring...
+2025-11-03 12:31:51 - app.services.license_service - INFO - Lizenzdaten geladen: 1234..., E-Mail: iva...
+2025-11-03 12:31:51 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:31:51 - app.services.license_service - INFO - Verwende Lizenzdaten: Lizenznummer=1234..., E-Mail=iva...
+2025-11-03 12:31:51 - app.services.license_service - DEBUG - Vollständige Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 12:31:51 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:31:51 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 12:31:51 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:33:59 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:34:00 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:34:00 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:34:00 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:34:00 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:34:00 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 12:34:00 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:34:01 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:34:01 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 12:34:01 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:35:01 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:35:02 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:35:03 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:35:03 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:35:03 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:35:03 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 12:35:03 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:35:03 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:35:03 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 12:35:03 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:43:15 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:43:16 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:43:17 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:43:17 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:43:17 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:43:17 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 12:43:17 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:43:17 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:43:17 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 12:43:17 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:43:23 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:43:25 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:43:30 - app.services.license_service - INFO - Speichere Lizenz: ivan.levshyn@go-ecommerce.de
+2025-11-03 12:43:30 - app.services.license_service - INFO - Lizenz erfolgreich gespeichert
+2025-11-03 12:43:38 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:43:44 - app.services.license_service - INFO - Speichere Lizenz: 123234654374
+2025-11-03 12:43:44 - app.services.license_service - INFO - Lizenz erfolgreich gespeichert
+2025-11-03 12:44:01 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:44:02 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:44:03 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:44:03 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:44:03 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:44:03 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123234654374, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 12:44:03 - app.services.license_service - DEBUG - Lizenznummer: 1232..., E-Mail: iva...
+2025-11-03 12:44:03 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:44:03 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-03 12:44:03 - app.services.license_service - INFO - Lizenz erfolgreich geprüft
+2025-11-03 12:47:56 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:47:57 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:47:57 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:47:57 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:47:57 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:47:57 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123234654374, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 12:47:57 - app.services.license_service - DEBUG - Lizenznummer: 1232..., E-Mail: iva...
+2025-11-03 12:47:58 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:47:58 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-03 12:47:58 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-03 12:54:09 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:54:10 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:54:11 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:54:11 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:54:11 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:54:11 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123234654374, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 12:54:11 - app.services.license_service - DEBUG - Lizenznummer: 1232..., E-Mail: iva...
+2025-11-03 12:54:11 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:54:11 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-03 12:54:11 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-03 12:56:59 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 12:57:00 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 12:57:01 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:57:01 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:57:01 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:57:01 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123234654374, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 12:57:01 - app.services.license_service - DEBUG - Lizenznummer: 1232..., E-Mail: iva...
+2025-11-03 12:57:01 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:57:01 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-03 12:57:01 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-03 12:57:28 - app.services.license_service - INFO - Speichere Lizenz: 123456789
+2025-11-03 12:57:28 - app.services.license_service - INFO - Lizenz erfolgreich gespeichert
+2025-11-03 12:57:28 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 12:57:28 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 12:57:28 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 12:57:28 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 12:57:28 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 12:57:29 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 12:57:29 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 12:57:29 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 13:01:03 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 13:05:59 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 13:06:00 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 13:06:01 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 13:06:01 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 13:06:01 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 13:06:01 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 13:06:01 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 13:06:01 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 13:06:01 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 13:06:01 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 13:08:41 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 13:08:42 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 13:08:43 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 13:08:43 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 13:08:43 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 13:08:43 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 13:08:43 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 13:08:43 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 13:08:43 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 13:08:43 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 13:10:39 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 13:10:40 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 13:10:41 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 13:10:41 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 13:10:41 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 13:10:41 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 13:10:41 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 13:10:41 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 13:10:41 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 13:10:41 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 13:12:02 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 13:12:04 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 13:12:04 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 13:12:04 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 13:12:04 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 13:12:04 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 13:12:04 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 13:12:04 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 13:12:04 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 13:12:04 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 13:13:55 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 13:13:57 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 13:13:57 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 13:13:57 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 13:13:57 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 13:13:57 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 13:13:57 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 13:13:58 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 13:13:58 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 13:13:58 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 13:14:04 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 13:14:04 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 13:14:04 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 13:16:51 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 13:16:52 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 13:16:52 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 13:16:52 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 13:16:52 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 13:16:52 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 13:16:52 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 13:16:53 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 13:16:53 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 13:16:53 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 13:18:04 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 13:18:05 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 13:18:06 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 13:18:06 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 13:18:06 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 13:18:06 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 13:18:06 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 13:18:06 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 13:18:06 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 13:18:06 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 13:20:34 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 13:20:34 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 13:20:34 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 13:25:17 - app.services.decrypt_service - WARNING - decrypt_utils nicht verfügbar - verwende Fallback
+2025-11-03 13:25:18 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 13:25:19 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 13:25:19 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 13:25:19 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 13:25:19 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 13:25:19 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 13:25:19 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 13:25:20 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 13:25:20 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 13:25:20 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 13:26:47 - app.services.decrypt_service - WARNING - decrypt_utils nicht verfügbar - verwende Fallback
+2025-11-03 13:26:47 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 13:26:48 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 13:26:49 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 13:26:49 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 13:26:49 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 13:26:49 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 13:26:49 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 13:26:49 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 13:26:49 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 13:26:49 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 13:26:57 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 13:31:51 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 13:31:52 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 13:31:52 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 13:31:52 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 13:31:52 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 13:31:52 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 13:31:52 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 13:31:53 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 13:31:53 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 13:31:53 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 13:32:00 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 13:32:32 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 13:32:32 - app.services.decrypt_service - ERROR - Entschlüsselungsfehler: Item 0: 'iv' Feld fehlt
+2025-11-03 13:34:21 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 13:34:22 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 13:34:23 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 13:34:23 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 13:34:23 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 13:34:23 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 13:34:23 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 13:34:23 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 13:34:23 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 13:34:23 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 13:34:27 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 13:34:32 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 13:34:32 - app.services.decrypt_service - ERROR - Entschlüsselungsfehler: IV fehlt im Item
+2025-11-03 13:34:58 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 13:34:58 - app.services.decrypt_service - ERROR - Entschlüsselungsfehler: IV fehlt im Item
+2025-11-03 13:35:01 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 13:35:01 - app.services.decrypt_service - ERROR - Entschlüsselungsfehler: IV fehlt im Item
+2025-11-03 13:39:54 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 13:41:55 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 13:47:36 - app.services.decrypt_service - WARNING - decrypt_utils nicht verfügbar - verwende Fallback
+2025-11-03 13:47:37 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 13:47:38 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 13:47:39 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 13:47:39 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 13:47:39 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 13:47:39 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 13:47:39 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 13:47:39 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 13:47:39 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 13:47:39 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 13:47:42 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 13:48:38 - app.services.decrypt_service - WARNING - decrypt_utils nicht verfügbar - verwende Fallback
+2025-11-03 13:48:38 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 13:48:39 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 13:48:40 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 13:48:40 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 13:48:40 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 13:48:40 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 13:48:40 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 13:48:40 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 13:48:40 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 13:48:40 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 13:48:43 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 13:50:11 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 13:50:12 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 13:50:13 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 13:50:13 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 13:50:13 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 13:50:13 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 13:50:13 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 13:50:14 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 13:50:14 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 13:50:14 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 13:50:19 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 13:50:25 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 13:50:25 - app.services.decrypt_service - ERROR - Entschlüsselungsfehler: IV fehlt im Item
+2025-11-03 13:52:30 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 13:52:31 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 13:52:31 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 13:52:31 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 13:52:31 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 13:52:31 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 13:52:31 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 13:52:32 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 13:52:32 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 13:52:32 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 13:52:37 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 13:52:47 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 13:52:47 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 5551 Zeichen
+2025-11-03 15:23:08 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 15:23:09 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 15:23:10 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 15:23:10 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 15:23:10 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 15:23:10 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 15:23:10 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 15:23:10 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 15:23:10 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 15:23:10 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 15:23:14 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 15:23:14 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-03 15:23:14 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-03 15:24:39 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 15:24:39 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6339 Zeichen
+2025-11-03 15:25:03 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 15:25:03 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 5551 Zeichen
+2025-11-03 15:25:06 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:25:06 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:25:06 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-03 15:25:06 - app.services.database_service - ERROR - SQL Server-Fehler: ('28000', '[28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Fehler bei der Anmeldung für den Benutzer "". (18456) (SQLDriverConnect); [28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Fehler bei der Anmeldung für den Benutzer "". (18456)')
+2025-11-03 15:29:49 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 15:29:50 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 15:29:51 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 15:29:51 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 15:29:51 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 15:29:51 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 15:29:51 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 15:29:51 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 15:29:51 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 15:29:51 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 15:29:55 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 15:29:55 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-03 15:29:55 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-03 15:30:36 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 15:30:36 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 5551 Zeichen
+2025-11-03 15:30:43 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:30:43 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:30:43 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-03 15:30:43 - app.services.database_service - ERROR - SQL Server-Fehler: ('28000', '[28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Fehler bei der Anmeldung für den Benutzer "". (18456) (SQLDriverConnect); [28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Fehler bei der Anmeldung für den Benutzer "". (18456)')
+2025-11-03 15:31:23 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 15:31:23 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-03 15:31:23 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-03 15:31:33 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 15:31:33 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 5551 Zeichen
+2025-11-03 15:31:34 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:31:34 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:31:34 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-03 15:31:34 - app.services.database_service - ERROR - SQL Server-Fehler: ('28000', '[28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Fehler bei der Anmeldung für den Benutzer "". (18456) (SQLDriverConnect); [28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Fehler bei der Anmeldung für den Benutzer "". (18456)')
+2025-11-03 15:31:40 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 15:31:41 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 15:31:42 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 15:31:42 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 15:31:42 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 15:31:42 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 15:31:42 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 15:31:43 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 15:31:43 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 15:31:43 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 15:31:49 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 15:31:49 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-03 15:31:49 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-03 15:31:56 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 15:31:56 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 5551 Zeichen
+2025-11-03 15:32:02 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:32:02 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:32:02 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-03 15:32:02 - app.services.database_service - ERROR - SQL Server-Fehler: ('28000', '[28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Fehler bei der Anmeldung für den Benutzer "". (18456) (SQLDriverConnect); [28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Fehler bei der Anmeldung für den Benutzer "". (18456)')
+2025-11-03 15:37:19 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 15:37:20 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 15:37:21 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 15:37:21 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 15:37:21 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 15:37:21 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 15:37:21 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 15:37:21 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 15:37:21 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 15:37:21 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 15:37:25 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 15:37:25 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-03 15:37:25 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-03 15:37:31 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 15:37:31 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 5551 Zeichen
+2025-11-03 15:37:40 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:37:40 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:37:40 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-03 15:37:40 - app.services.database_service - ERROR - SQL Server-Fehler: ('28000', '[28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Fehler bei der Anmeldung für den Benutzer "". (18456) (SQLDriverConnect); [28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Fehler bei der Anmeldung für den Benutzer "". (18456)')
+2025-11-03 15:38:48 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 15:38:48 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-03 15:38:48 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-03 15:38:58 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 15:38:58 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 5551 Zeichen
+2025-11-03 15:39:01 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:39:01 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:39:01 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-03 15:39:01 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-03 15:39:01 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:39:01 - app.services.database_service - DEBUG - Führe SQL-Abfrage aus: SET QUOTED_IDENTIFIER ON
+GO
+
+IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[db...
+2025-11-03 15:39:01 - app.services.database_service - INFO - Mehrere SQL-Befehle gefunden (4), führe sie einzeln aus...
+2025-11-03 15:39:02 - app.services.database_service - ERROR - SQL Server-Fehler: ('42000', '[42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Falsche Syntax in der Nähe von ";". (102) (SQLExecDirectW)')
+2025-11-03 15:39:58 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 15:39:58 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-03 15:39:58 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-03 15:40:07 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 15:40:07 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 5551 Zeichen
+2025-11-03 15:40:15 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:40:15 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:40:15 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-03 15:40:15 - app.services.database_service - ERROR - SQL Server-Fehler: ('28000', '[28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Fehler bei der Anmeldung für den Benutzer "". (18456) (SQLDriverConnect); [28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Fehler bei der Anmeldung für den Benutzer "". (18456)')
+2025-11-03 15:40:40 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:40:40 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:40:40 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-03 15:40:40 - app.services.database_service - ERROR - SQL Server-Fehler: ('28000', '[28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Fehler bei der Anmeldung für den Benutzer "". (18456) (SQLDriverConnect); [28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Fehler bei der Anmeldung für den Benutzer "". (18456)')
+2025-11-03 15:43:04 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 15:43:05 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 15:43:05 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 15:43:05 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 15:43:05 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 15:43:05 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 15:43:05 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 15:43:06 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 15:43:06 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 15:43:06 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 15:43:10 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 15:43:10 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-03 15:43:10 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-03 15:43:19 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 15:43:19 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 5551 Zeichen
+2025-11-03 15:43:20 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:43:20 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:43:20 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-03 15:43:20 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-03 15:43:20 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-03 15:43:20 - app.services.database_service - ERROR - SQL Server-Fehler: ('28000', '[28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Fehler bei der Anmeldung für den Benutzer "". (18456) (SQLDriverConnect); [28000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]Fehler bei der Anmeldung für den Benutzer "". (18456)')
+2025-11-03 15:43:20 - app.services.database_service - ERROR - Fehler 18456: SQL Server Authentifizierung fehlgeschlagen!
+2025-11-03 15:43:20 - app.services.database_service - ERROR - Verwendete Credentials - Server: .\JTLWAWI, Username: sa
+2025-11-03 15:43:20 - app.services.database_service - ERROR - Mögliche Ursachen:
+2025-11-03 15:43:20 - app.services.database_service - ERROR -   - Passwort ist falsch oder fehlt im Keyring
+2025-11-03 15:43:20 - app.services.database_service - ERROR -   - Benutzername hat keine Berechtigung
+2025-11-03 15:43:20 - app.services.database_service - ERROR -   - SQL Server Authentifizierung ist nicht aktiviert
+2025-11-03 15:52:37 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 15:52:38 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 15:52:39 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 15:52:39 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 15:52:39 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 15:52:39 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 15:52:39 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 15:52:40 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 15:52:40 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 15:52:40 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 15:53:13 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 15:53:13 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-03 15:53:13 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-03 15:53:19 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 15:53:19 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 5551 Zeichen
+2025-11-03 15:53:21 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:53:21 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:53:21 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-03 15:53:21 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-03 15:53:21 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-03 15:53:21 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-03 15:53:21 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 15:53:21 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-03 15:53:21 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-03 15:53:21 - app.services.database_service - DEBUG - Führe SQL-Abfrage aus: SET QUOTED_IDENTIFIER ON
+GO
+
+IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[db...
+2025-11-03 15:53:21 - app.services.database_service - ERROR - SQL Server-Fehler: ('42000', '[42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Falsche Syntax in der Nähe von "GO". (102) (SQLExecDirectW); [42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Falsche Syntax in der Nähe von "GO". (102); [42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Falsche Syntax in der Nähe von ";". (102)')
+2025-11-03 16:06:58 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 16:06:58 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 16:06:58 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 16:07:18 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 16:07:18 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-03 16:07:18 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-03 16:09:46 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 16:09:47 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 16:09:48 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 16:09:48 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 16:09:48 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 16:09:48 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 16:09:48 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 16:09:48 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 16:09:48 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 16:09:48 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 16:09:52 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 16:09:52 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-03 16:09:52 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-03 16:11:41 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 16:11:41 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 5551 Zeichen
+2025-11-03 16:11:45 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 16:11:45 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 16:11:45 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-03 16:11:45 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-03 16:11:45 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-03 16:11:45 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-03 16:11:45 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 16:11:45 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-03 16:11:45 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-03 16:11:45 - app.services.database_service - DEBUG - Führe SQL-Abfrage aus: SET QUOTED_IDENTIFIER ON
+GO
+
+IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[db...
+2025-11-03 16:11:45 - app.services.database_service - ERROR - SQL Server-Fehler: ('42000', '[42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Falsche Syntax in der Nähe von "GO". (102) (SQLExecDirectW); [42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Falsche Syntax in der Nähe von "GO". (102); [42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Falsche Syntax in der Nähe von ";". (102)')
+2025-11-03 16:14:08 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 16:14:08 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 16:14:08 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-03 16:14:08 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-03 16:14:08 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-03 16:14:08 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-03 16:14:08 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 16:14:08 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-03 16:14:08 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-03 16:14:08 - app.services.database_service - DEBUG - Führe SQL-Abfrage aus: SET QUOTED_IDENTIFIER ON
+GO
+
+IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[db...
+2025-11-03 16:14:08 - app.services.database_service - ERROR - SQL Server-Fehler: ('42000', '[42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Falsche Syntax in der Nähe von "GO". (102) (SQLExecDirectW); [42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Falsche Syntax in der Nähe von "GO". (102); [42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Falsche Syntax in der Nähe von ";". (102)')
+2025-11-03 16:17:28 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 16:17:29 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 16:17:30 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 16:17:30 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 16:17:30 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 16:17:30 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 16:17:30 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 16:17:30 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 16:17:30 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 16:17:30 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 16:17:34 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 16:17:34 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-03 16:17:34 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-03 16:17:57 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 16:17:57 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 5551 Zeichen
+2025-11-03 16:17:59 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 16:17:59 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 16:17:59 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-03 16:17:59 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-03 16:17:59 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-03 16:17:59 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-03 16:17:59 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 16:17:59 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-03 16:17:59 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-03 16:17:59 - app.services.database_service - DEBUG - Führe 3 SQL-Batch(es) aus...
+2025-11-03 16:17:59 - app.services.database_service - DEBUG - Führe Batch 1/3 aus: SET QUOTED_IDENTIFIER ON...
+2025-11-03 16:17:59 - app.services.database_service - DEBUG - Führe Batch 2/3 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-03 16:17:59 - app.services.database_service - DEBUG - Führe Batch 3/3 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP] ON [dbo].[tArtikel] AFTER INSERT, UPDATE AS SET NO...
+2025-11-03 16:17:59 - app.services.database_service - ERROR - Fehler in Batch 3: ('42000', '[42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Falsche Syntax in der Nähe von ";". (102) (SQLExecDirectW)')
+2025-11-03 16:21:21 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 16:21:21 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 16:21:21 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-03 16:21:21 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-03 16:21:21 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-03 16:21:21 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-03 16:21:21 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 16:21:21 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-03 16:21:21 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-03 16:21:21 - app.services.database_service - DEBUG - Führe 3 SQL-Batch(es) aus...
+2025-11-03 16:21:21 - app.services.database_service - DEBUG - Führe Batch 1/3 aus: SET QUOTED_IDENTIFIER ON...
+2025-11-03 16:21:21 - app.services.database_service - DEBUG - Führe Batch 2/3 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-03 16:21:21 - app.services.database_service - DEBUG - Führe Batch 3/3 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP] ON [dbo].[tArtikel] AFTER INSERT, UPDATE AS SET NO...
+2025-11-03 16:21:21 - app.services.database_service - ERROR - Fehler in Batch 3: ('42000', '[42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Falsche Syntax in der Nähe von ";". (102) (SQLExecDirectW)')
+2025-11-03 16:27:43 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 16:27:43 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-03 16:27:43 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-03 16:27:48 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 16:27:48 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 23 Zeichen
+2025-11-03 16:27:51 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 16:27:51 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 16:27:51 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-03 16:27:51 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-03 16:27:51 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-03 16:27:51 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-03 16:27:51 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 16:27:51 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-03 16:27:51 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-03 16:27:51 - app.services.database_service - DEBUG - Führe 1 SQL-Batch(es) aus...
+2025-11-03 16:27:51 - app.services.database_service - DEBUG - Führe Batch 1/1 aus: SELECT * FROM tArtikel;...
+2025-11-03 16:27:51 - app.services.database_service - INFO - Alle Batches erfolgreich ausgeführt - 661 Ergebnisse
+2025-11-03 16:28:57 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 16:28:57 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 5551 Zeichen
+2025-11-03 16:29:15 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 16:29:15 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 16:29:15 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-03 16:29:15 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-03 16:29:15 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-03 16:29:15 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-03 16:29:15 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 16:29:15 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-03 16:29:15 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-03 16:29:15 - app.services.database_service - DEBUG - Führe 3 SQL-Batch(es) aus...
+2025-11-03 16:29:15 - app.services.database_service - DEBUG - Führe Batch 1/3 aus: SET QUOTED_IDENTIFIER ON...
+2025-11-03 16:29:15 - app.services.database_service - DEBUG - Führe Batch 2/3 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-03 16:29:15 - app.services.database_service - DEBUG - Führe Batch 3/3 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP] ON [dbo].[tArtikel] AFTER INSERT, UPDATE AS SET NO...
+2025-11-03 16:29:15 - app.services.database_service - ERROR - Fehler in Batch 3: ('42000', '[42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Falsche Syntax in der Nähe von ";". (102) (SQLExecDirectW)')
+2025-11-03 17:59:29 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-03 17:59:30 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-03 17:59:31 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-03 17:59:31 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-03 17:59:31 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-03 17:59:31 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-03 17:59:31 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-03 17:59:32 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-03 17:59:32 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-03 17:59:32 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-03 17:59:44 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-03 17:59:44 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-03 17:59:44 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-03 18:00:29 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-03 18:00:29 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 5551 Zeichen
+2025-11-03 18:00:32 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 18:00:32 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 18:00:32 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-03 18:00:32 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-03 18:00:32 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-03 18:00:32 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-03 18:00:32 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-03 18:00:32 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-03 18:00:32 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-03 18:00:32 - app.services.database_service - DEBUG - Führe 3 SQL-Batch(es) aus...
+2025-11-03 18:00:32 - app.services.database_service - DEBUG - Führe Batch 1/3 aus: SET QUOTED_IDENTIFIER ON...
+2025-11-03 18:00:32 - app.services.database_service - DEBUG - Führe Batch 2/3 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-03 18:00:32 - app.services.database_service - DEBUG - Führe Batch 3/3 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP] ON [dbo].[tArtikel] AFTER INSERT, UPDATE AS SET NO...
+2025-11-03 18:00:32 - app.services.database_service - ERROR - Fehler in Batch 3: ('42000', '[42000] [Microsoft][ODBC SQL Server Driver][SQL Server]Falsche Syntax in der Nähe von ";". (102) (SQLExecDirectW)')
