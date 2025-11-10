@@ -5,6 +5,17 @@ import pyodbc
 from datetime import datetime
 from typing import Dict, List, Optional, Tuple
 
+# Importiere Fehlerbehandlung
+try:
+    from app.core.error_handler import handle_error, ErrorCode
+    from app.core.logging_config import get_logger
+    logger = get_logger(__name__)
+    ERROR_HANDLING_AVAILABLE = True
+except ImportError:
+    # Fallback wenn app-Module nicht verfügbar sind
+    ERROR_HANDLING_AVAILABLE = False
+    logger = None
+
 class JTLDatabaseManager:
     """Manager für JTL-Datenbankverbindung mit sicherer Passwort-Speicherung"""
     
@@ -19,7 +30,39 @@ class JTLDatabaseManager:
             try:
                 with open(self.config_file, 'r', encoding='utf-8') as f:
                     return json.load(f)
+            except json.JSONDecodeError as e:
+                if ERROR_HANDLING_AVAILABLE:
+                    error = handle_error(
+                        e,
+                        error_code=ErrorCode.CONFIG_INVALID_JSON,
+                        context={'config_file': self.config_file, 'operation': 'load_config'},
+                        log_level="error"
+                    )
+                    if logger:
+                        logger.error(f"JSON-Fehler beim Laden der Konfiguration: {error.message}")
+                print(f"Fehler beim Laden der Konfiguration: {e}")
+                return self._get_default_config()
+            except FileNotFoundError as e:
+                if ERROR_HANDLING_AVAILABLE:
+                    error = handle_error(
+                        e,
+                        error_code=ErrorCode.CONFIG_FILE_NOT_FOUND,
+                        context={'config_file': self.config_file, 'operation': 'load_config'},
+                        log_level="warning"
+                    )
+                    if logger:
+                        logger.warning(f"Konfigurationsdatei nicht gefunden: {error.message}")
+                return self._get_default_config()
             except Exception as e:
+                if ERROR_HANDLING_AVAILABLE:
+                    error = handle_error(
+                        e,
+                        error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                        context={'config_file': self.config_file, 'operation': 'load_config'},
+                        log_level="error"
+                    )
+                    if logger:
+                        logger.error(f"Fehler beim Laden der Konfiguration: {error.message}", exc_info=True)
                 print(f"Fehler beim Laden der Konfiguration: {e}")
                 return self._get_default_config()
         return self._get_default_config()
@@ -30,11 +73,11 @@ class JTLDatabaseManager:
             'server': '.\\JTLWAWI',
             'database': 'eazybusiness',
             'username': 'sa',
-            'driver': 'ODBC Driver 17 for SQL Server',
+            'driver': 'py-mssql',  # Immer py-mssql Driver verwenden
             'last_tested': None
         }
     
-    def save_config(self, server: str, username: str, database: str, driver: str = 'ODBC Driver 17 for SQL Server') -> bool:
+    def save_config(self, server: str, username: str, database: str, driver: str = 'py-mssql') -> bool:
         """Speichert Verbindungseinstellungen in JSON-Datei"""
         try:
             self.config = {
@@ -49,7 +92,43 @@ class JTLDatabaseManager:
                 json.dump(self.config, f, indent=2, ensure_ascii=False)
             
             return True
+        except (IOError, OSError) as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.CONFIG_FILE_NOT_FOUND,
+                    context={'config_file': self.config_file, 'operation': 'save_config'},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"Datei-Fehler beim Speichern der Konfiguration: {error.message}")
+                return False
+            print(f"Fehler beim Speichern der Konfiguration: {e}")
+            return False
+        except json.JSONEncodeError as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.CONFIG_INVALID_JSON,
+                    context={'config_file': self.config_file, 'operation': 'save_config'},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"JSON-Fehler beim Speichern der Konfiguration: {error.message}")
+                return False
+            print(f"Fehler beim Speichern der Konfiguration: {e}")
+            return False
         except Exception as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                    context={'config_file': self.config_file, 'operation': 'save_config'},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"Fehler beim Speichern der Konfiguration: {error.message}", exc_info=True)
+                return False
             print(f"Fehler beim Speichern der Konfiguration: {e}")
             return False
     
@@ -59,7 +138,30 @@ class JTLDatabaseManager:
             username_key = f"{self.config['server']}:{self.config['username']}"
             keyring.set_password(self.service_name, username_key, password)
             return True
+        except keyring.errors.KeyringError as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.CONFIG_KEYRING_ERROR,
+                    context={'operation': 'save_password'},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"Keyring-Fehler beim Speichern des Passworts: {error.message}")
+                return False
+            print(f"Fehler beim Speichern des Passworts: {e}")
+            return False
         except Exception as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                    context={'operation': 'save_password'},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"Fehler beim Speichern des Passworts: {error.message}", exc_info=True)
+                return False
             print(f"Fehler beim Speichern des Passworts: {e}")
             return False
     
@@ -69,7 +171,30 @@ class JTLDatabaseManager:
             username_key = f"{self.config['server']}:{self.config['username']}"
             password = keyring.get_password(self.service_name, username_key)
             return password
+        except keyring.errors.KeyringError as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.CONFIG_KEYRING_ERROR,
+                    context={'operation': 'get_password'},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"Keyring-Fehler beim Abrufen des Passworts: {error.message}")
+                return None
+            print(f"Fehler beim Abrufen des Passworts: {e}")
+            return None
         except Exception as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                    context={'operation': 'get_password'},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"Fehler beim Abrufen des Passworts: {error.message}", exc_info=True)
+                return None
             print(f"Fehler beim Abrufen des Passworts: {e}")
             return None
     
@@ -109,9 +234,57 @@ class JTLDatabaseManager:
             
             return True, "Verbindung erfolgreich"
             
+        except pyodbc.OperationalError as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error_str = str(e)
+                if "18456" in error_str or "Login failed" in error_str:
+                    error_code = ErrorCode.DB_AUTHENTICATION_FAILED
+                elif "timeout" in error_str.lower():
+                    error_code = ErrorCode.DB_TIMEOUT
+                else:
+                    error_code = ErrorCode.DB_CONNECTION_FAILED
+                
+                error = handle_error(
+                    e,
+                    error_code=error_code,
+                    context={
+                        'operation': 'test_connection',
+                        'server': test_server,
+                        'username': test_username
+                    },
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"SQL Server-Verbindungsfehler: {error.message}")
+                return False, error.message
+            return False, f"SQL Server-Fehler: {str(e)}"
         except pyodbc.Error as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.DB_CONNECTION_FAILED,
+                    context={
+                        'operation': 'test_connection',
+                        'server': test_server,
+                        'username': test_username
+                    },
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"SQL Server-Fehler: {error.message}")
+                return False, error.message
             return False, f"SQL Server-Fehler: {str(e)}"
         except Exception as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                    context={'operation': 'test_connection'},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"Verbindungsfehler: {error.message}", exc_info=True)
+                return False, error.message
             return False, f"Verbindungsfehler: {str(e)}"
     
     def get_available_databases(self, server: str = None, username: str = None, 
@@ -147,10 +320,43 @@ class JTLDatabaseManager:
             
             return databases
             
+        except pyodbc.OperationalError as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.DB_CONNECTION_FAILED,
+                    context={'operation': 'get_available_databases'},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"Verbindungsfehler beim Abrufen der Datenbanken: {error.message}")
+                return []
+            print(f"Fehler beim Abrufen der Datenbanken: {e}")
+            return []
         except pyodbc.Error as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.DB_CONNECTION_FAILED,
+                    context={'operation': 'get_available_databases'},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"SQL-Fehler beim Abrufen der Datenbanken: {error.message}")
+                return []
             print(f"Fehler beim Abrufen der Datenbanken: {e}")
             return []
         except Exception as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                    context={'operation': 'get_available_databases'},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"Verbindungsfehler: {error.message}", exc_info=True)
+                return []
             print(f"Verbindungsfehler: {e}")
             return []
     
@@ -180,9 +386,61 @@ class JTLDatabaseManager:
             
             return True, "Abfrage erfolgreich", results
             
+        except pyodbc.ProgrammingError as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.DB_QUERY_SYNTAX_ERROR,
+                    context={'operation': 'execute_jtl_query', 'sql_query': sql_query[:200]},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"SQL-Syntaxfehler: {error.message}")
+                return False, error.message, None
+            return False, f"SQL Server-Fehler: {str(e)}", None
+        except pyodbc.OperationalError as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error_str = str(e)
+                if "18456" in error_str or "Login failed" in error_str:
+                    error_code = ErrorCode.DB_AUTHENTICATION_FAILED
+                elif "timeout" in error_str.lower():
+                    error_code = ErrorCode.DB_TIMEOUT
+                else:
+                    error_code = ErrorCode.DB_CONNECTION_FAILED
+                
+                error = handle_error(
+                    e,
+                    error_code=error_code,
+                    context={'operation': 'execute_jtl_query', 'sql_query': sql_query[:200]},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"SQL Server-Verbindungsfehler: {error.message}")
+                return False, error.message, None
+            return False, f"SQL Server-Fehler: {str(e)}", None
         except pyodbc.Error as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.DB_CONNECTION_FAILED,
+                    context={'operation': 'execute_jtl_query', 'sql_query': sql_query[:200]},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"SQL Server-Fehler: {error.message}")
+                return False, error.message, None
             return False, f"SQL Server-Fehler: {str(e)}", None
         except Exception as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                    context={'operation': 'execute_jtl_query'},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"Verbindungsfehler: {error.message}", exc_info=True)
+                return False, error.message, None
             return False, f"Verbindungsfehler: {str(e)}", None
     
     def get_article_count_with_ctaric(self) -> Tuple[bool, str, Optional[int]]:
@@ -245,9 +503,41 @@ class JTLDatabaseManager:
             
             return True, f"Artikel gefunden: {len(results)}", results
             
+        except pyodbc.OperationalError as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.DB_CONNECTION_FAILED,
+                    context={'operation': 'get_products_with_taric_info'},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"SQL Server-Verbindungsfehler: {error.message}")
+                return False, error.message, None
+            return False, f"SQL Server-Fehler: {str(e)}", None
         except pyodbc.Error as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.DB_CONNECTION_FAILED,
+                    context={'operation': 'get_products_with_taric_info'},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"SQL Server-Fehler: {error.message}")
+                return False, error.message, None
             return False, f"SQL Server-Fehler: {str(e)}", None
         except Exception as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                    context={'operation': 'get_products_with_taric_info'},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"Verbindungsfehler: {error.message}", exc_info=True)
+                return False, error.message, None
             return False, f"Verbindungsfehler: {str(e)}", None
     
     def has_saved_credentials(self) -> bool:
@@ -272,6 +562,29 @@ class JTLDatabaseManager:
             self.config = self._get_default_config()
             
             return True
+        except keyring.errors.KeyringError as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.CONFIG_KEYRING_ERROR,
+                    context={'operation': 'clear_credentials'},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"Keyring-Fehler beim Löschen der Anmeldedaten: {error.message}")
+                return False
+            print(f"Fehler beim Löschen der Anmeldedaten: {e}")
+            return False
         except Exception as e:
+            if ERROR_HANDLING_AVAILABLE:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                    context={'operation': 'clear_credentials'},
+                    log_level="error"
+                )
+                if logger:
+                    logger.error(f"Fehler beim Löschen der Anmeldedaten: {error.message}", exc_info=True)
+                return False
             print(f"Fehler beim Löschen der Anmeldedaten: {e}")
             return False

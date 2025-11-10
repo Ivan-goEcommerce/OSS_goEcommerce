@@ -14,6 +14,7 @@ import keyring
 import pyodbc
 
 from app.core.logging_config import get_logger
+from app.core.error_handler import handle_error, ErrorCode
 
 logger = get_logger(__name__)
 
@@ -54,8 +55,32 @@ class DatabaseService:
                     config = json.load(f)
                     logger.info("Konfiguration erfolgreich geladen")
                     return config
+            except json.JSONDecodeError as e:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.CONFIG_INVALID_JSON,
+                    context={'config_file': str(self.config_file), 'operation': 'load_config'},
+                    log_level="error"
+                )
+                logger.error(f"JSON-Fehler beim Laden der Konfiguration: {error.message}")
+                return self._get_default_config()
+            except FileNotFoundError as e:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.CONFIG_FILE_NOT_FOUND,
+                    context={'config_file': str(self.config_file), 'operation': 'load_config'},
+                    log_level="warning"
+                )
+                logger.warning(f"Konfigurationsdatei nicht gefunden: {error.message}")
+                return self._get_default_config()
             except Exception as e:
-                logger.error(f"Fehler beim Laden der Konfiguration: {e}")
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                    context={'config_file': str(self.config_file), 'operation': 'load_config'},
+                    log_level="error"
+                )
+                logger.error(f"Fehler beim Laden der Konfiguration: {error.message}", exc_info=True)
                 return self._get_default_config()
         return self._get_default_config()
     
@@ -70,7 +95,7 @@ class DatabaseService:
             'server': r'.\JTLWAWI',
             'database': 'eazybusiness',
             'username': 'sa',
-            'driver': 'ODBC Driver 17 for SQL Server',
+            'driver': 'py-mssql',  # Immer py-mssql Driver verwenden
             'last_tested': None
         }
     
@@ -79,7 +104,7 @@ class DatabaseService:
         server: str,
         username: str,
         database: str,
-        driver: str = 'ODBC Driver 17 for SQL Server'
+        driver: str = 'py-mssql'  # Immer py-mssql Driver verwenden
     ) -> bool:
         """
         Speichert Verbindungseinstellungen in JSON-Datei.
@@ -108,8 +133,32 @@ class DatabaseService:
             
             logger.info("Konfiguration erfolgreich gespeichert")
             return True
+        except (IOError, OSError) as e:
+            error = handle_error(
+                e,
+                error_code=ErrorCode.CONFIG_FILE_NOT_FOUND,
+                context={'config_file': str(self.config_file), 'operation': 'save_config'},
+                log_level="error"
+            )
+            logger.error(f"Datei-Fehler beim Speichern der Konfiguration: {error.message}")
+            return False
+        except json.JSONEncodeError as e:
+            error = handle_error(
+                e,
+                error_code=ErrorCode.CONFIG_INVALID_JSON,
+                context={'config_file': str(self.config_file), 'operation': 'save_config'},
+                log_level="error"
+            )
+            logger.error(f"JSON-Fehler beim Speichern der Konfiguration: {error.message}")
+            return False
         except Exception as e:
-            logger.error(f"Fehler beim Speichern der Konfiguration: {e}")
+            error = handle_error(
+                e,
+                error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                context={'config_file': str(self.config_file), 'operation': 'save_config'},
+                log_level="error"
+            )
+            logger.error(f"Fehler beim Speichern der Konfiguration: {error.message}", exc_info=True)
             return False
     
     def save_password(self, password: str) -> bool:
@@ -127,8 +176,23 @@ class DatabaseService:
             keyring.set_password(self.service_name, username_key, password)
             logger.info("Passwort erfolgreich im Keyring gespeichert")
             return True
+        except keyring.errors.KeyringError as e:
+            error = handle_error(
+                e,
+                error_code=ErrorCode.CONFIG_KEYRING_ERROR,
+                context={'operation': 'save_password'},
+                log_level="error"
+            )
+            logger.error(f"Keyring-Fehler beim Speichern des Passworts: {error.message}")
+            return False
         except Exception as e:
-            logger.error(f"Fehler beim Speichern des Passworts: {e}")
+            error = handle_error(
+                e,
+                error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                context={'operation': 'save_password'},
+                log_level="error"
+            )
+            logger.error(f"Fehler beim Speichern des Passworts: {error.message}", exc_info=True)
             return False
     
     def get_password(self) -> Optional[str]:
@@ -146,8 +210,23 @@ class DatabaseService:
             else:
                 logger.warning("Kein Passwort im Keyring gefunden")
             return password
+        except keyring.errors.KeyringError as e:
+            error = handle_error(
+                e,
+                error_code=ErrorCode.CONFIG_KEYRING_ERROR,
+                context={'operation': 'get_password'},
+                log_level="error"
+            )
+            logger.error(f"Keyring-Fehler beim Abrufen des Passworts: {error.message}")
+            return None
         except Exception as e:
-            logger.error(f"Fehler beim Abrufen des Passworts: {e}")
+            error = handle_error(
+                e,
+                error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                context={'operation': 'get_password'},
+                log_level="error"
+            )
+            logger.error(f"Fehler beim Abrufen des Passworts: {error.message}", exc_info=True)
             return None
     
     def _build_connection_string(
@@ -240,9 +319,28 @@ class DatabaseService:
             logger.info("Verbindungstest erfolgreich")
             return True, "Verbindung erfolgreich"
             
-        except pyodbc.Error as e:
+        except pyodbc.OperationalError as e:
             error_str = str(e)
-            logger.error(f"SQL Server-Fehler: {e}")
+            # Bestimme spezifischen ErrorCode
+            if "18456" in error_str or "Login failed" in error_str:
+                error_code = ErrorCode.DB_AUTHENTICATION_FAILED
+            elif "timeout" in error_str.lower():
+                error_code = ErrorCode.DB_TIMEOUT
+            else:
+                error_code = ErrorCode.DB_CONNECTION_FAILED
+            
+            error = handle_error(
+                e,
+                error_code=error_code,
+                context={
+                    'operation': 'test_connection',
+                    'server': server or self.config.get('server'),
+                    'username': username or self.config.get('username'),
+                    'connection_string': connection_string[:100] if 'connection_string' in locals() else None
+                },
+                log_level="error"
+            )
+            logger.error(f"SQL Server-Fehler: {error.message}")
             
             # Spezielle Behandlung für Fehler 18456 (Authentifizierungsfehler)
             if "18456" in error_str or "Login failed" in error_str:
@@ -250,16 +348,31 @@ class DatabaseService:
                 used_username = username or self.config.get('username')
                 logger.error("Fehler 18456: SQL Server Authentifizierung fehlgeschlagen!")
                 logger.error(f"Verwendete Credentials - Server: {used_server}, Username: {used_username}")
-                logger.error("Mögliche Ursachen:")
-                logger.error("  - Passwort ist falsch oder fehlt im Keyring")
-                logger.error("  - Benutzername hat keine Berechtigung")
-                logger.error("  - SQL Server Authentifizierung ist nicht aktiviert")
                 return False, f"Authentifizierungsfehler (18456): Passwort oder Benutzername falsch. Bitte prüfen Sie die DB-Credentials. Details: {error_str}"
             
-            return False, f"SQL Server-Fehler: {error_str}"
+            return False, error.message
+        except pyodbc.Error as e:
+            error = handle_error(
+                e,
+                error_code=ErrorCode.DB_CONNECTION_FAILED,
+                context={
+                    'operation': 'test_connection',
+                    'server': server or self.config.get('server'),
+                    'username': username or self.config.get('username')
+                },
+                log_level="error"
+            )
+            logger.error(f"SQL Server-Fehler: {error.message}")
+            return False, error.message
         except Exception as e:
-            logger.error(f"Verbindungsfehler: {e}")
-            return False, f"Verbindungsfehler: {str(e)}"
+            error = handle_error(
+                e,
+                error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                context={'operation': 'test_connection'},
+                log_level="error"
+            )
+            logger.error(f"Verbindungsfehler: {error.message}", exc_info=True)
+            return False, error.message
     
     def get_available_databases(
         self,
@@ -305,11 +418,32 @@ class DatabaseService:
             logger.info(f"{len(databases)} Datenbanken gefunden")
             return databases
             
+        except pyodbc.OperationalError as e:
+            error = handle_error(
+                e,
+                error_code=ErrorCode.DB_CONNECTION_FAILED,
+                context={'operation': 'get_available_databases'},
+                log_level="error"
+            )
+            logger.error(f"Verbindungsfehler beim Abrufen der Datenbanken: {error.message}")
+            return []
         except pyodbc.Error as e:
-            logger.error(f"Fehler beim Abrufen der Datenbanken: {e}")
+            error = handle_error(
+                e,
+                error_code=ErrorCode.DB_CONNECTION_FAILED,
+                context={'operation': 'get_available_databases'},
+                log_level="error"
+            )
+            logger.error(f"SQL-Fehler beim Abrufen der Datenbanken: {error.message}")
             return []
         except Exception as e:
-            logger.error(f"Verbindungsfehler: {e}")
+            error = handle_error(
+                e,
+                error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                context={'operation': 'get_available_databases'},
+                log_level="error"
+            )
+            logger.error(f"Verbindungsfehler: {error.message}", exc_info=True)
             return []
     
     def execute_query(self, sql_query: str) -> Tuple[bool, str, Optional[List]]:
@@ -364,11 +498,64 @@ class DatabaseService:
                     
                     executed_batches += 1
                     
+                except pyodbc.ProgrammingError as e:
+                    error_str = str(e)
+                    error_code = getattr(e, 'args', [None])[0] if hasattr(e, 'args') and len(e.args) > 0 else None
+                    
+                    # Verwende unser Fehlerbehandlungssystem
+                    app_error = handle_error(
+                        e,
+                        error_code=ErrorCode.DB_QUERY_SYNTAX_ERROR,
+                        context={
+                            'operation': 'execute_query',
+                            'batch_num': i,
+                            'total_batches': len(batches),
+                            'sql_batch': batch[:200]
+                        },
+                        log_level="error"
+                    )
+                    logger.error(f"SQL-Syntaxfehler in Batch {i}/{len(batches)}: {app_error.message}")
+                    
+                    # Cleanup
+                    try:
+                        cursor.close()
+                        connection.close()
+                    except:
+                        pass
+                    
+                    # Detaillierte Fehleranalyse
+                    error_message = self._analyze_sql_error(error_str, error_code, batch, i, len(batches))
+                    return False, error_message, None
                 except pyodbc.Error as e:
                     error_str = str(e)
                     error_code = getattr(e, 'args', [None])[0] if hasattr(e, 'args') and len(e.args) > 0 else None
                     
-                    logger.error(f"Fehler in Batch {i}/{len(batches)}: {error_str}")
+                    # Bestimme ErrorCode basierend auf Fehlertyp
+                    if "18456" in error_str or "Login failed" in error_str:
+                        db_error_code = ErrorCode.DB_AUTHENTICATION_FAILED
+                    elif "229" in error_str or "230" in error_str or "permission" in error_str.lower():
+                        db_error_code = ErrorCode.DB_PERMISSION_DENIED
+                    elif "208" in error_str or "2812" in error_str:
+                        db_error_code = ErrorCode.DB_OBJECT_NOT_FOUND
+                    elif "timeout" in error_str.lower():
+                        db_error_code = ErrorCode.DB_TIMEOUT
+                    else:
+                        db_error_code = ErrorCode.DB_CONNECTION_FAILED
+                    
+                    # Verwende unser Fehlerbehandlungssystem
+                    app_error = handle_error(
+                        e,
+                        error_code=db_error_code,
+                        context={
+                            'operation': 'execute_query',
+                            'batch_num': i,
+                            'total_batches': len(batches),
+                            'sql_batch': batch[:200],
+                            'error_code': error_code
+                        },
+                        log_level="error"
+                    )
+                    logger.error(f"SQL-Fehler in Batch {i}/{len(batches)}: {app_error.message}")
                     
                     # Cleanup
                     try:
@@ -397,16 +584,68 @@ class DatabaseService:
             logger.info(result_message)
             return True, result_message, results if results is not None else last_rowcount
             
+        except pyodbc.OperationalError as e:
+            error_str = str(e)
+            error_code = getattr(e, 'args', [None])[0] if hasattr(e, 'args') and len(e.args) > 0 else None
+            
+            # Bestimme ErrorCode
+            if "18456" in error_str or "Login failed" in error_str:
+                db_error_code = ErrorCode.DB_AUTHENTICATION_FAILED
+            elif "timeout" in error_str.lower():
+                db_error_code = ErrorCode.DB_TIMEOUT
+            else:
+                db_error_code = ErrorCode.DB_CONNECTION_FAILED
+            
+            app_error = handle_error(
+                e,
+                error_code=db_error_code,
+                context={
+                    'operation': 'execute_query',
+                    'sql_query': sql_query[:200]
+                },
+                log_level="error"
+            )
+            logger.error(f"SQL Server-Verbindungsfehler: {app_error.message}")
+            
+            error_message = self._analyze_sql_error(error_str, error_code, sql_query[:200], 1, 1)
+            return False, error_message, None
         except pyodbc.Error as e:
             error_str = str(e)
             error_code = getattr(e, 'args', [None])[0] if hasattr(e, 'args') and len(e.args) > 0 else None
-            logger.error(f"SQL Server-Fehler: {e}")
+            
+            # Bestimme ErrorCode
+            if "42000" in error_str or "syntax" in error_str.lower():
+                db_error_code = ErrorCode.DB_QUERY_SYNTAX_ERROR
+            elif "229" in error_str or "230" in error_str or "permission" in error_str.lower():
+                db_error_code = ErrorCode.DB_PERMISSION_DENIED
+            elif "208" in error_str or "2812" in error_str:
+                db_error_code = ErrorCode.DB_OBJECT_NOT_FOUND
+            else:
+                db_error_code = ErrorCode.DB_CONNECTION_FAILED
+            
+            app_error = handle_error(
+                e,
+                error_code=db_error_code,
+                context={
+                    'operation': 'execute_query',
+                    'sql_query': sql_query[:200],
+                    'error_code': error_code
+                },
+                log_level="error"
+            )
+            logger.error(f"SQL Server-Fehler: {app_error.message}")
             
             error_message = self._analyze_sql_error(error_str, error_code, sql_query[:200], 1, 1)
             return False, error_message, None
         except Exception as e:
-            logger.error(f"Verbindungsfehler: {e}")
-            return False, f"Verbindungsfehler: {str(e)}", None
+            error = handle_error(
+                e,
+                error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                context={'operation': 'execute_query'},
+                log_level="error"
+            )
+            logger.error(f"Verbindungsfehler: {error.message}", exc_info=True)
+            return False, error.message, None
     
     def _analyze_sql_error(self, error_str: str, error_code: Optional[str], sql_batch: str, batch_num: int, total_batches: int) -> str:
         """
@@ -601,12 +840,33 @@ class DatabaseService:
             logger.info(f"{len(results)} Artikel mit TARIC-Informationen gefunden")
             return True, f"Artikel gefunden: {len(results)}", results
             
+        except pyodbc.OperationalError as e:
+            error = handle_error(
+                e,
+                error_code=ErrorCode.DB_CONNECTION_FAILED,
+                context={'operation': 'get_products_with_taric_info'},
+                log_level="error"
+            )
+            logger.error(f"SQL Server-Verbindungsfehler: {error.message}")
+            return False, error.message, None
         except pyodbc.Error as e:
-            logger.error(f"SQL Server-Fehler: {e}")
-            return False, f"SQL Server-Fehler: {str(e)}", None
+            error = handle_error(
+                e,
+                error_code=ErrorCode.DB_CONNECTION_FAILED,
+                context={'operation': 'get_products_with_taric_info'},
+                log_level="error"
+            )
+            logger.error(f"SQL Server-Fehler: {error.message}")
+            return False, error.message, None
         except Exception as e:
-            logger.error(f"Verbindungsfehler: {e}")
-            return False, f"Verbindungsfehler: {str(e)}", None
+            error = handle_error(
+                e,
+                error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                context={'operation': 'get_products_with_taric_info'},
+                log_level="error"
+            )
+            logger.error(f"Verbindungsfehler: {error.message}", exc_info=True)
+            return False, error.message, None
     
     def has_saved_credentials(self) -> bool:
         """

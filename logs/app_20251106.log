@@ -1,0 +1,280 @@
+2025-11-06 07:59:05 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-06 07:59:05 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-06 07:59:05 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-06 07:59:05 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-06 07:59:05 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-06 07:59:06 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-06 07:59:07 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-06 07:59:08 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-06 07:59:08 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-06 07:59:08 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-06 07:59:08 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-06 07:59:08 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-06 07:59:09 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-06 07:59:09 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-06 07:59:09 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-06 07:59:11 - app.ui.dashboard - INFO - Starte automatischen Trigger-Update...
+2025-11-06 07:59:11 - app.ui.dashboard - INFO - Trigger-Update Worker gestartet
+2025-11-06 07:59:11 - app.workers.trigger_fetch_worker - INFO - Starte Trigger-Update über TriggerEndpointService...
+2025-11-06 07:59:11 - app.services.trigger_endpoint_service - INFO - Rufe Trigger-Endpunkt ab: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-06 07:59:11 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-06 07:59:11 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-06 07:59:11 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-06 07:59:12 - app.services.trigger_endpoint_service - INFO - Response erhalten: <class 'list'>
+2025-11-06 07:59:12 - app.services.trigger_endpoint_service - INFO - Entschlüssele 1 Items...
+2025-11-06 07:59:12 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-06 07:59:12 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-06 07:59:12 - app.services.trigger_endpoint_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-06 07:59:12 - app.services.trigger_endpoint_service - INFO - Formatiere SQL für Ausführung...
+2025-11-06 07:59:12 - app.services.decrypt_service - DEBUG - SQL formatiert: 6117 Zeichen (ursprünglich: 6119 Zeichen)
+2025-11-06 07:59:12 - app.services.trigger_endpoint_service - INFO - Korrigiere Trigger-Struktur...
+2025-11-06 07:59:12 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-06 07:59:12 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: BEGIN nach AS eingefügt (Inline-SET)
+2025-11-06 07:59:12 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: END vor GO eingefügt
+2025-11-06 07:59:12 - app.services.decrypt_service - INFO - Trigger-Struktur wurde automatisch korrigiert
+2025-11-06 07:59:12 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 07:59:12 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 07:59:12 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-06 07:59:12 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-06 07:59:12 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-06 07:59:12 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-06 07:59:12 - app.services.trigger_endpoint_service - INFO - Führe SQL aus...
+2025-11-06 07:59:12 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 07:59:12 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-06 07:59:12 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-06 07:59:12 - app.services.database_service - DEBUG - Führe 2 SQL-Batch(es) aus...
+2025-11-06 07:59:12 - app.services.database_service - DEBUG - Führe Batch 1/2 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-06 07:59:12 - app.services.database_service - DEBUG - Führe Batch 2/2 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP]
+		ON     [dbo].[tArtikel]
+		AFTER  INSERT, UPDATE
+...
+2025-11-06 07:59:12 - app.services.database_service - INFO - Alle 2 Batch(es) erfolgreich ausgeführt
+2025-11-06 07:59:12 - app.services.trigger_endpoint_service - INFO - Trigger-Update erfolgreich abgeschlossen
+2025-11-06 07:59:13 - app.ui.dashboard - INFO - Trigger-Update abgeschlossen: success=True
+2025-11-06 07:59:15 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-06 07:59:15 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-06 07:59:15 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-06 07:59:38 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-06 07:59:38 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-06 07:59:38 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-06 07:59:38 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-06 07:59:38 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-06 07:59:38 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 07:59:38 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 07:59:38 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-06 07:59:38 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-06 07:59:38 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-06 07:59:38 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-06 07:59:38 - app.services.workflow_service - DEBUG - WorkflowService initialisiert - URL: https://agentic.go-ecommerce.de/webhook/v1/users/tarics
+2025-11-06 07:59:38 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-06 07:59:38 - app.managers.oss_start - INFO - OSSStart initialisiert - License: 1234..., Email: iva...
+2025-11-06 07:59:38 - app.managers.oss_start - INFO - 🚀 Starte OSS-Abgleich...
+2025-11-06 07:59:38 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 07:59:38 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 07:59:38 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-06 07:59:38 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-06 07:59:38 - app.services.database_service - DEBUG - Lade Produkte mit TARIC-Informationen...
+2025-11-06 07:59:38 - app.services.database_service - INFO - 5 Artikel mit TARIC-Informationen gefunden
+2025-11-06 07:59:38 - app.managers.oss_start - INFO - 📤 Sende 5 Produkte...
+2025-11-06 07:59:38 - app.services.workflow_service - INFO - Sende 5 Produkte an Webhook
+2025-11-06 07:59:41 - app.managers.oss_start - INFO -    ✓ Produkte erfolgreich gesendet: Erfolgreich: 200
+2025-11-06 07:59:41 - app.managers.oss_start - INFO - 📊 Hole aktuelle Steuersätze...
+2025-11-06 07:59:41 - app.managers.oss_start - INFO - Rufe Tax-Rates Endpoint auf: https://agentic.go-ecommerce.de/webhook/v1/tax-rates
+2025-11-06 07:59:42 - app.managers.oss_start - INFO - Verschlüsselte Daten erhalten: <class 'list'>
+2025-11-06 07:59:42 - app.managers.oss_start - INFO -    ✓ 1 verschlüsselte Items erhalten
+2025-11-06 07:59:42 - app.managers.oss_start - INFO - 🔓 Entschlüssele Daten...
+2025-11-06 07:59:42 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-06 07:59:42 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6440 Zeichen
+2025-11-06 07:59:42 - app.managers.oss_start - INFO - Entschlüsselung erfolgreich: 6440 Zeichen
+2025-11-06 07:59:42 - app.managers.oss_start - INFO -    ✓ Entschlüsselung erfolgreich (6440 Zeichen)
+2025-11-06 07:59:42 - app.managers.oss_start - INFO - 📝 Formatiere SQL...
+2025-11-06 07:59:42 - app.services.decrypt_service - DEBUG - SQL formatiert: 6440 Zeichen (ursprünglich: 6440 Zeichen)
+2025-11-06 07:59:42 - app.managers.oss_start - INFO - SQL formatiert: 6440 Zeichen
+2025-11-06 07:59:42 - app.managers.oss_start - INFO -    ✓ SQL formatiert (6440 Zeichen)
+2025-11-06 07:59:42 - app.managers.oss_start - INFO - decrypted_sql_callback aufgerufen
+2025-11-06 07:59:42 - app.ui.dashboard - INFO - Entschlüsseltes SQL erhalten (6440 Zeichen)
+2025-11-06 07:59:42 - app.managers.oss_start - INFO - 💾 Führe SQL Statement aus...
+2025-11-06 07:59:42 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 07:59:42 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-06 07:59:42 - app.services.decrypt_service - DEBUG - Kein CREATE TRIGGER gefunden - keine Korrektur nötig
+2025-11-06 07:59:42 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 07:59:42 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-06 07:59:42 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-06 07:59:42 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-06 07:59:42 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-06 07:59:42 - app.managers.oss_start - INFO - Führe SQL aus (6440 Zeichen):
+/* ============================================================*/
+/* Automatisch generiert am: 2025-11-06T06:59:42.038Z */
+/* Steuersatz-Update für 27 Länder */
+/* Batch-Größe: Alle 10 Statements ein GO */
+/* ============================================================*/
+
+/* Update für AT */
+UPDATE [eazybusiness].[dbo].[tLandSteuersatz]
+SET 
+    [fStarkErmaessigterSatz] = 0,
+    [fErmaessigterSatzNiedrig] = 13,
+    [fErmaessigterSatz] = 10,
+    [fNormalerSatz] = 20
+WHERE [cISOLand] = 'AT';
+
+/* U...
+2025-11-06 07:59:42 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 07:59:42 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-06 07:59:42 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-06 07:59:42 - app.services.database_service - DEBUG - Führe 3 SQL-Batch(es) aus...
+2025-11-06 07:59:42 - app.services.database_service - DEBUG - Führe Batch 1/3 aus: /* ============================================================*/
+/* Automatisch generiert am: 2025-...
+2025-11-06 07:59:42 - app.services.database_service - DEBUG - Führe Batch 2/3 aus: /* Update für FR */
+UPDATE [eazybusiness].[dbo].[tLandSteuersatz]
+SET 
+    [fStarkErmaessigterSatz] ...
+2025-11-06 07:59:42 - app.services.database_service - DEBUG - Führe Batch 3/3 aus: /* Update für NL */
+UPDATE [eazybusiness].[dbo].[tLandSteuersatz]
+SET 
+    [fStarkErmaessigterSatz] ...
+2025-11-06 07:59:42 - app.services.database_service - INFO - Alle Batches erfolgreich ausgeführt - 1 Zeilen betroffen
+2025-11-06 07:59:42 - app.managers.oss_start - INFO -    ✓ SQL erfolgreich ausgeführt: Alle Batches erfolgreich ausgeführt - 1 Zeilen betroffen
+2025-11-06 07:59:42 - app.managers.oss_start - INFO - SQL-Ausführung: success=True, sql_statement vorhanden=True
+2025-11-06 08:53:51 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-06 08:53:51 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-06 08:53:51 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-06 08:53:51 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-06 08:53:51 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-06 08:53:51 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-06 08:53:53 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-06 08:53:53 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-06 08:53:53 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-06 08:53:53 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-06 08:53:53 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-06 08:53:53 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-06 08:53:54 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-06 08:53:54 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-06 08:53:54 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-06 08:53:56 - app.ui.dashboard - INFO - Starte automatischen Trigger-Update...
+2025-11-06 08:53:56 - app.ui.dashboard - INFO - Trigger-Update Worker gestartet
+2025-11-06 08:53:56 - app.workers.trigger_fetch_worker - INFO - Starte Trigger-Update über TriggerEndpointService...
+2025-11-06 08:53:56 - app.services.trigger_endpoint_service - INFO - Rufe Trigger-Endpunkt ab: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-06 08:53:56 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-06 08:53:57 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-06 08:53:57 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-06 08:53:58 - app.services.trigger_endpoint_service - INFO - Response erhalten: <class 'list'>
+2025-11-06 08:53:58 - app.services.trigger_endpoint_service - INFO - Entschlüssele 1 Items...
+2025-11-06 08:53:58 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-06 08:53:58 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-06 08:53:58 - app.services.trigger_endpoint_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-06 08:53:58 - app.services.trigger_endpoint_service - INFO - Formatiere SQL für Ausführung...
+2025-11-06 08:53:58 - app.services.decrypt_service - DEBUG - SQL formatiert: 6117 Zeichen (ursprünglich: 6119 Zeichen)
+2025-11-06 08:53:58 - app.services.trigger_endpoint_service - INFO - Korrigiere Trigger-Struktur...
+2025-11-06 08:53:58 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-06 08:53:58 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: BEGIN nach AS eingefügt (Inline-SET)
+2025-11-06 08:53:58 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: END vor GO eingefügt
+2025-11-06 08:53:58 - app.services.decrypt_service - INFO - Trigger-Struktur wurde automatisch korrigiert
+2025-11-06 08:53:58 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 08:53:58 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 08:53:58 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-06 08:53:58 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-06 08:53:58 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-06 08:53:58 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-06 08:53:58 - app.services.trigger_endpoint_service - INFO - Führe SQL aus...
+2025-11-06 08:53:58 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 08:53:58 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-06 08:53:58 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-06 08:53:58 - app.services.database_service - DEBUG - Führe 2 SQL-Batch(es) aus...
+2025-11-06 08:53:58 - app.services.database_service - DEBUG - Führe Batch 1/2 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-06 08:53:58 - app.services.database_service - DEBUG - Führe Batch 2/2 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP]
+		ON     [dbo].[tArtikel]
+		AFTER  INSERT, UPDATE
+...
+2025-11-06 08:53:58 - app.services.database_service - INFO - Alle 2 Batch(es) erfolgreich ausgeführt
+2025-11-06 08:53:58 - app.services.trigger_endpoint_service - INFO - Trigger-Update erfolgreich abgeschlossen
+2025-11-06 08:53:58 - app.ui.dashboard - INFO - Trigger-Update abgeschlossen: success=True
+2025-11-06 08:54:01 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-06 08:54:01 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-06 08:54:01 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-06 08:54:06 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-06 08:54:06 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-06 08:54:06 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-06 08:54:06 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-06 08:54:06 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-06 08:54:06 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 08:54:06 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 08:54:06 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-06 08:54:06 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-06 08:54:06 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-06 08:54:06 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-06 08:54:06 - app.services.workflow_service - DEBUG - WorkflowService initialisiert - URL: https://agentic.go-ecommerce.de/webhook/v1/users/tarics
+2025-11-06 08:54:06 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-06 08:54:06 - app.managers.oss_start - INFO - OSSStart initialisiert - License: 1234..., Email: iva...
+2025-11-06 08:54:06 - app.managers.oss_start - INFO - 🚀 Starte OSS-Abgleich...
+2025-11-06 08:54:06 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 08:54:06 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 08:54:06 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-06 08:54:06 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-06 08:54:06 - app.services.database_service - DEBUG - Lade Produkte mit TARIC-Informationen...
+2025-11-06 08:54:06 - app.services.database_service - INFO - 5 Artikel mit TARIC-Informationen gefunden
+2025-11-06 08:54:06 - app.managers.oss_start - INFO - 📤 Sende 5 Produkte...
+2025-11-06 08:54:06 - app.services.workflow_service - INFO - Sende 5 Produkte an Webhook
+2025-11-06 08:54:08 - app.managers.oss_start - INFO -    ✓ Produkte erfolgreich gesendet: Erfolgreich: 200
+2025-11-06 08:54:08 - app.managers.oss_start - INFO - 📊 Hole aktuelle Steuersätze...
+2025-11-06 08:54:08 - app.managers.oss_start - INFO - Rufe Tax-Rates Endpoint auf: https://agentic.go-ecommerce.de/webhook/v1/tax-rates
+2025-11-06 08:54:09 - app.managers.oss_start - INFO - Verschlüsselte Daten erhalten: <class 'list'>
+2025-11-06 08:54:09 - app.managers.oss_start - INFO -    ✓ 1 verschlüsselte Items erhalten
+2025-11-06 08:54:09 - app.managers.oss_start - INFO - 🔓 Entschlüssele Daten...
+2025-11-06 08:54:09 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-06 08:54:09 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6440 Zeichen
+2025-11-06 08:54:09 - app.managers.oss_start - INFO - Entschlüsselung erfolgreich: 6440 Zeichen
+2025-11-06 08:54:09 - app.managers.oss_start - INFO -    ✓ Entschlüsselung erfolgreich (6440 Zeichen)
+2025-11-06 08:54:09 - app.managers.oss_start - INFO - 📝 Formatiere SQL...
+2025-11-06 08:54:09 - app.services.decrypt_service - DEBUG - SQL formatiert: 6440 Zeichen (ursprünglich: 6440 Zeichen)
+2025-11-06 08:54:09 - app.managers.oss_start - INFO - SQL formatiert: 6440 Zeichen
+2025-11-06 08:54:09 - app.managers.oss_start - INFO -    ✓ SQL formatiert (6440 Zeichen)
+2025-11-06 08:54:09 - app.managers.oss_start - INFO - decrypted_sql_callback aufgerufen
+2025-11-06 08:54:09 - app.managers.oss_start - INFO - 💾 Führe SQL Statement aus...
+2025-11-06 08:54:09 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 08:54:09 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-06 08:54:09 - app.services.decrypt_service - DEBUG - Kein CREATE TRIGGER gefunden - keine Korrektur nötig
+2025-11-06 08:54:09 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 08:54:09 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-06 08:54:09 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-06 08:54:09 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-06 08:54:09 - app.ui.dashboard - INFO - Entschlüsseltes SQL erhalten (6440 Zeichen)
+2025-11-06 08:54:10 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-06 08:54:10 - app.managers.oss_start - INFO - Führe SQL aus (6440 Zeichen):
+/* ============================================================*/
+/* Automatisch generiert am: 2025-11-06T07:54:09.607Z */
+/* Steuersatz-Update für 27 Länder */
+/* Batch-Größe: Alle 10 Statements ein GO */
+/* ============================================================*/
+
+/* Update für AT */
+UPDATE [eazybusiness].[dbo].[tLandSteuersatz]
+SET 
+    [fStarkErmaessigterSatz] = 0,
+    [fErmaessigterSatzNiedrig] = 13,
+    [fErmaessigterSatz] = 10,
+    [fNormalerSatz] = 20
+WHERE [cISOLand] = 'AT';
+
+/* U...
+2025-11-06 08:54:10 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-06 08:54:10 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-06 08:54:10 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-06 08:54:10 - app.services.database_service - DEBUG - Führe 3 SQL-Batch(es) aus...
+2025-11-06 08:54:10 - app.services.database_service - DEBUG - Führe Batch 1/3 aus: /* ============================================================*/
+/* Automatisch generiert am: 2025-...
+2025-11-06 08:54:10 - app.services.database_service - DEBUG - Führe Batch 2/3 aus: /* Update für FR */
+UPDATE [eazybusiness].[dbo].[tLandSteuersatz]
+SET 
+    [fStarkErmaessigterSatz] ...
+2025-11-06 08:54:10 - app.services.database_service - DEBUG - Führe Batch 3/3 aus: /* Update für NL */
+UPDATE [eazybusiness].[dbo].[tLandSteuersatz]
+SET 
+    [fStarkErmaessigterSatz] ...
+2025-11-06 08:54:10 - app.services.database_service - INFO - Alle Batches erfolgreich ausgeführt - 1 Zeilen betroffen
+2025-11-06 08:54:10 - app.managers.oss_start - INFO -    ✓ SQL erfolgreich ausgeführt: Alle Batches erfolgreich ausgeführt - 1 Zeilen betroffen
+2025-11-06 08:54:10 - app.managers.oss_start - INFO - SQL-Ausführung: success=True, sql_statement vorhanden=True
+2025-11-06 08:54:12 - app.ui.dashboard - INFO - Benutzer möchte SQL anzeigen
+2025-11-06 08:54:12 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-06 08:54:12 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-06 08:54:12 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI

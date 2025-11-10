@@ -7,6 +7,10 @@ import os
 import json
 import keyring
 from app.core.debug_manager import debug_print
+from app.core.error_handler import handle_error, ErrorCode
+from app.core.logging_config import get_logger
+
+logger = get_logger(__name__)
 
 
 class LicenseManager:
@@ -67,12 +71,50 @@ class LicenseManager:
                 "version": "1.0"
             }
             
-            with open(self.license_file, 'w') as f:
-                json.dump(config, f, indent=2)
+            try:
+                with open(self.license_file, 'w', encoding='utf-8') as f:
+                    json.dump(config, f, indent=2)
+            except (IOError, OSError) as e:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.CONFIG_FILE_NOT_FOUND,
+                    context={'operation': 'save_license', 'file': self.license_file},
+                    log_level="warning"
+                )
+                debug_print(f"Warnung: Konnte JSON-Datei nicht speichern: {error.message}")
+                logger.warning(f"Konnte JSON-Datei nicht speichern: {error.message}")
+                # Keyring-Speicherung war erfolgreich, also ist das OK
+            except json.JSONEncodeError as e:
+                error = handle_error(
+                    e,
+                    error_code=ErrorCode.CONFIG_INVALID_JSON,
+                    context={'operation': 'save_license', 'file': self.license_file},
+                    log_level="warning"
+                )
+                debug_print(f"Warnung: JSON-Encode-Fehler: {error.message}")
+                logger.warning(f"JSON-Encode-Fehler: {error.message}")
+                # Keyring-Speicherung war erfolgreich, also ist das OK
             
             return True
+        except keyring.errors.KeyringError as e:
+            error = handle_error(
+                e,
+                error_code=ErrorCode.CONFIG_KEYRING_ERROR,
+                context={'operation': 'save_license'},
+                log_level="error"
+            )
+            debug_print(f"Fehler beim Speichern der Lizenz: {error.message}")
+            logger.error(f"Keyring-Fehler beim Speichern der Lizenz: {error.message}", exc_info=True)
+            return False
         except Exception as e:
-            debug_print(f"Fehler beim Speichern der Lizenz: {e}")
+            error = handle_error(
+                e,
+                error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                context={'operation': 'save_license'},
+                log_level="error"
+            )
+            debug_print(f"Fehler beim Speichern der Lizenz: {error.message}")
+            logger.error(f"Unerwarteter Fehler beim Speichern der Lizenz: {error.message}", exc_info=True)
             return False
     
     def load_license(self):
@@ -92,8 +134,25 @@ class LicenseManager:
             else:
                 debug_print(f"DEBUG: Unvollständige Daten - License: {license_number is not None}, Email: {email is not None}")
                 return None, None
+        except keyring.errors.KeyringError as e:
+            error = handle_error(
+                e,
+                error_code=ErrorCode.CONFIG_KEYRING_ERROR,
+                context={'operation': 'load_license'},
+                log_level="error"
+            )
+            debug_print(f"Keyring-Fehler beim Laden der Lizenz: {error.message}")
+            logger.error(f"Keyring-Fehler beim Laden der Lizenz: {error.message}", exc_info=True)
+            return None, None
         except Exception as e:
-            debug_print(f"Fehler beim Laden der Lizenz: {e}")
+            error = handle_error(
+                e,
+                error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                context={'operation': 'load_license'},
+                log_level="error"
+            )
+            debug_print(f"Fehler beim Laden der Lizenz: {error.message}")
+            logger.error(f"Unerwarteter Fehler beim Laden der Lizenz: {error.message}", exc_info=True)
             import traceback
             traceback.print_exc()
             return None, None
@@ -113,7 +172,24 @@ class LicenseManager:
                 os.remove(self.license_file)
             
             return True
+        except keyring.errors.KeyringError as e:
+            error = handle_error(
+                e,
+                error_code=ErrorCode.CONFIG_KEYRING_ERROR,
+                context={'operation': 'clear_license'},
+                log_level="error"
+            )
+            debug_print(f"Keyring-Fehler beim Löschen der Lizenz: {error.message}")
+            logger.error(f"Keyring-Fehler beim Löschen der Lizenz: {error.message}", exc_info=True)
+            return False
         except Exception as e:
-            debug_print(f"Fehler beim Löschen der Lizenz: {e}")
+            error = handle_error(
+                e,
+                error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                context={'operation': 'clear_license'},
+                log_level="error"
+            )
+            debug_print(f"Fehler beim Löschen der Lizenz: {error.message}")
+            logger.error(f"Unerwarteter Fehler beim Löschen der Lizenz: {error.message}", exc_info=True)
             return False
 

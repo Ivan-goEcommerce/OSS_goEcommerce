@@ -7,6 +7,7 @@ Wrapper um LicenseManager für Service-Architektur
 import requests
 from typing import Optional, Tuple, Dict, Any
 from app.core.logging_config import get_logger
+from app.core.error_handler import handle_error, ErrorCode
 from app.managers.license_manager import LicenseManager
 
 logger = get_logger(__name__)
@@ -110,6 +111,16 @@ class LicenseService:
         
         if not license_number or not email:
             error_msg = "Keine Lizenzdaten im Keyring gefunden"
+            # Erstelle strukturierten Fehler
+            from app.core.error_handler import AppError, ErrorCode
+            error = AppError(
+                code=ErrorCode.CONFIG_CREDENTIALS_MISSING,
+                message=error_msg,
+                context={'operation': 'license_check', 'endpoint_url': endpoint_url}
+            )
+            # Logge und sende an Webhook
+            from app.core.error_handler import ErrorHandler
+            ErrorHandler._log_error(error, log_level="warning")
             logger.warning(error_msg)
             return False, {}, error_msg
         
@@ -157,8 +168,22 @@ class LicenseService:
             # Prüfe HTTP-Status
             if response.status_code != 200:
                 error_msg = f"License-Check fehlgeschlagen: HTTP {response.status_code}"
-                logger.error(error_msg)
-                return False, response_data, error_msg
+                # Erstelle strukturierten Fehler
+                from requests.exceptions import HTTPError
+                http_error = HTTPError(f"HTTP {response.status_code}: {error_msg}")
+                error = handle_error(
+                    http_error,
+                    error_code=ErrorCode.NET_HTTP_ERROR,
+                    context={
+                        'endpoint_url': endpoint_url,
+                        'operation': 'license_check',
+                        'status_code': response.status_code,
+                        'response_data': response_data
+                    },
+                    log_level="error"
+                )
+                logger.error(f"{error_msg}: {error.message}")
+                return False, response_data, error.message
             
             # Prüfe auch die Response-Daten auf Gültigkeit
             # Server kann 200 zurückgeben, aber status: 'invalid' in der Response haben
@@ -172,8 +197,23 @@ class LicenseService:
                 elif status == 'invalid':
                     reason = response_data.get('reason', 'Unbekannter Grund')
                     error_msg = f"Lizenz ungültig: {reason}"
+                    # Erstelle strukturierten Fehler
+                    from app.core.error_handler import AppError, ErrorCode
+                    error = AppError(
+                        code=ErrorCode.GEN_PERMISSION_DENIED,
+                        message=error_msg,
+                        details=reason,
+                        context={
+                            'operation': 'license_check',
+                            'endpoint_url': endpoint_url,
+                            'response_data': response_data
+                        }
+                    )
+                    # Logge und sende an Webhook
+                    from app.core.error_handler import ErrorHandler
+                    ErrorHandler._log_error(error, log_level="error")
                     logger.error(f"License-Check: {error_msg} - Response: {response_data}")
-                    return False, response_data, error_msg
+                    return False, response_data, error.message
                 else:
                     # Status unbekannt - prüfe ob 'valid' irgendwo in den Daten ist
                     logger.warning(f"Unbekannter Status in Response: {status}, Response: {response_data}")
@@ -187,16 +227,40 @@ class LicenseService:
                 logger.info(success_msg)
                 return True, response_data, success_msg
                 
-        except requests.exceptions.Timeout:
-            error_msg = "Timeout beim License-Check"
-            logger.error(error_msg)
-            return False, {}, error_msg
+        except requests.exceptions.Timeout as e:
+            error = handle_error(
+                e,
+                error_code=ErrorCode.NET_TIMEOUT,
+                context={'endpoint_url': endpoint_url, 'operation': 'license_check'},
+                log_level="error"
+            )
+            logger.error(f"Timeout beim License-Check: {error.message}")
+            return False, {}, error.message
+        except requests.exceptions.ConnectionError as e:
+            error = handle_error(
+                e,
+                error_code=ErrorCode.NET_CONNECTION_REFUSED,
+                context={'endpoint_url': endpoint_url, 'operation': 'license_check'},
+                log_level="error"
+            )
+            logger.error(f"Verbindungsfehler beim License-Check: {error.message}")
+            return False, {}, error.message
         except requests.exceptions.RequestException as e:
-            error_msg = f"Netzwerkfehler beim License-Check: {str(e)}"
-            logger.error(error_msg)
-            return False, {}, error_msg
+            error = handle_error(
+                e,
+                error_code=ErrorCode.NET_HTTP_ERROR,
+                context={'endpoint_url': endpoint_url, 'operation': 'license_check'},
+                log_level="error"
+            )
+            logger.error(f"Netzwerkfehler beim License-Check: {error.message}")
+            return False, {}, error.message
         except Exception as e:
-            error_msg = f"Unerwarteter Fehler beim License-Check: {str(e)}"
-            logger.error(error_msg, exc_info=True)
-            return False, {}, error_msg
+            error = handle_error(
+                e,
+                error_code=ErrorCode.GEN_UNEXPECTED_ERROR,
+                context={'endpoint_url': endpoint_url, 'operation': 'license_check'},
+                log_level="error"
+            )
+            logger.error(f"Unerwarteter Fehler beim License-Check: {error.message}", exc_info=True)
+            return False, {}, error.message
 

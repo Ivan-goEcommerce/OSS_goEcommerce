@@ -1,0 +1,399 @@
+---
+description: Best Practices für Fehlerbehandlung (try-catch) in der OSS_goEcommerce Python-Anwendung
+globs: ["**/*.py"]
+alwaysApply: true
+---
+
+# Error Handling Best Practices
+
+## Grundprinzipien
+
+### 1. Immer spezifische Exceptions fangen
+- **NIEMALS** nur `except Exception:` verwenden
+- Fange spezifische Exception-Typen: `pyodbc.Error`, `requests.exceptions.Timeout`, etc.
+- Verwende `except Exception as e:` nur als letzten Fallback
+
+### 2. Verwende das zentrale Error-Handling-System
+- Importiere `from app.core.error_handler import handle_error, ErrorCode`
+- Verwende `handle_error()` für strukturierte Fehlerbehandlung
+- Verwende `ErrorCode` Enum für konsistente Fehlercodes
+
+### 3. Logging bei Fehlern
+- **IMMER** Fehler loggen mit `logger.error()`
+- Verwende `exc_info=True` für vollständige Tracebacks
+- Logge Kontext-Informationen (SQL-Query, URL, etc.)
+
+## Try-Catch Patterns
+
+### Pattern 1: Datenbank-Operationen
+
+```python
+from app.core.error_handler import handle_error, ErrorCode
+from app.core.logging_config import get_logger
+import pyodbc
+
+logger = get_logger(__name__)
+
+def execute_database_query(sql_query: str):
+    try:
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+        cursor.execute(sql_query)
+        results = cursor.fetchall()
+        cursor.close()
+        connection.close()
+        return True, "Erfolg", results
+        
+    except pyodbc.Error as e:
+        # Spezifische pyodbc-Fehler
+        error = handle_error(
+            e,
+            error_code=ErrorCode.DB_QUERY_SYNTAX_ERROR,
+            context={'sql_query': sql_query[:200]},  # Nur ersten 200 Zeichen
+            log_level="error"
+        )
+        logger.error(f"SQL-Fehler: {error.message}", exc_info=True)
+        return False, error.message, None
+        
+    except Exception as e:
+        # Unerwartete Fehler
+        error = handle_error(e, context={'operation': 'execute_query'})
+        logger.error(f"Unerwarteter Fehler: {error.message}", exc_info=True)
+        return False, error.message, None
+```
+
+### Pattern 2: Netzwerk-Operationen
+
+```python
+import requests
+from app.core.error_handler import handle_error, ErrorCode
+from app.core.logging_config import get_logger
+
+logger = get_logger(__name__)
+
+def fetch_data_from_api(url: str):
+    try:
+        response = requests.get(url, timeout=30)
+        response.raise_for_status()
+        return True, response.json(), None
+        
+    except requests.exceptions.Timeout as e:
+        error = handle_error(
+            e,
+            error_code=ErrorCode.NET_TIMEOUT,
+            context={'url': url},
+            log_level="error"
+        )
+        logger.error(f"Timeout beim Abrufen von {url}")
+        return False, error.message, None
+        
+    except requests.exceptions.ConnectionError as e:
+        error = handle_error(
+            e,
+            error_code=ErrorCode.NET_CONNECTION_REFUSED,
+            context={'url': url},
+            log_level="error"
+        )
+        logger.error(f"Verbindungsfehler: {url}")
+        return False, error.message, None
+        
+    except requests.exceptions.HTTPError as e:
+        error = handle_error(
+            e,
+            error_code=ErrorCode.NET_HTTP_ERROR,
+            context={'url': url, 'status_code': e.response.status_code},
+            log_level="error"
+        )
+        logger.error(f"HTTP-Fehler {e.response.status_code}: {url}")
+        return False, error.message, None
+        
+    except Exception as e:
+        error = handle_error(e, context={'url': url})
+        logger.error(f"Unerwarteter Fehler beim Abrufen von {url}", exc_info=True)
+        return False, error.message, None
+```
+
+### Pattern 3: Konfigurations-Laden
+
+```python
+import json
+from pathlib import Path
+from app.core.error_handler import handle_error, ErrorCode
+from app.core.logging_config import get_logger
+
+logger = get_logger(__name__)
+
+def load_config(config_file: Path):
+    try:
+        with open(config_file, 'r', encoding='utf-8') as f:
+            config = json.load(f)
+        return True, config, None
+        
+    except FileNotFoundError as e:
+        error = handle_error(
+            e,
+            error_code=ErrorCode.CONFIG_FILE_NOT_FOUND,
+            context={'config_file': str(config_file)},
+            log_level="warning"
+        )
+        logger.warning(f"Konfigurationsdatei nicht gefunden: {config_file}")
+        return False, error.message, None
+        
+    except json.JSONDecodeError as e:
+        error = handle_error(
+            e,
+            error_code=ErrorCode.CONFIG_INVALID_JSON,
+            context={'config_file': str(config_file)},
+            log_level="error"
+        )
+        logger.error(f"Ungültige JSON-Konfiguration: {config_file}")
+        return False, error.message, None
+        
+    except Exception as e:
+        error = handle_error(e, context={'config_file': str(config_file)})
+        logger.error(f"Fehler beim Laden der Konfiguration", exc_info=True)
+        return False, error.message, None
+```
+
+### Pattern 4: Validierung
+
+```python
+from app.core.error_handler import handle_error, ErrorCode
+from app.core.logging_config import get_logger
+
+logger = get_logger(__name__)
+
+def validate_input(data: dict):
+    try:
+        # Validierung
+        if not data.get('required_field'):
+            raise ValueError("Pflichtfeld 'required_field' fehlt")
+        
+        if not isinstance(data.get('number'), int):
+            raise TypeError("'number' muss ein Integer sein")
+        
+        return True, "Validierung erfolgreich", None
+        
+    except ValueError as e:
+        error = handle_error(
+            e,
+            error_code=ErrorCode.VAL_MISSING_REQUIRED_FIELD,
+            context={'data': data},
+            log_level="warning"
+        )
+        logger.warning(f"Validierungsfehler: {error.message}")
+        return False, error.message, None
+        
+    except TypeError as e:
+        error = handle_error(
+            e,
+            error_code=ErrorCode.VAL_INVALID_INPUT,
+            context={'data': data},
+            log_level="warning"
+        )
+        logger.warning(f"Typ-Fehler: {error.message}")
+        return False, error.message, None
+        
+    except Exception as e:
+        error = handle_error(e, context={'data': data})
+        logger.error(f"Unerwarteter Validierungsfehler", exc_info=True)
+        return False, error.message, None
+```
+
+## Wichtige Regeln
+
+### ❌ NIEMALS so machen:
+
+```python
+# SCHLECHT: Zu generisch
+try:
+    # Code
+except Exception:
+    pass  # Fehler wird ignoriert!
+
+# SCHLECHT: Kein Logging
+try:
+    # Code
+except Exception as e:
+    return False, str(e)  # Kein Logging!
+
+# SCHLECHT: Keine Fehlerbehandlung
+def bad_function():
+    connection = pyodbc.connect(...)  # Kein try-catch!
+```
+
+### ✅ IMMER so machen:
+
+```python
+# GUT: Spezifische Exceptions + Logging + Error-Handler
+try:
+    # Code
+except pyodbc.Error as e:
+    error = handle_error(e, context={'operation': 'connect'})
+    logger.error(f"DB-Fehler: {error.message}", exc_info=True)
+    return False, error.message
+except Exception as e:
+    error = handle_error(e)
+    logger.error(f"Unerwarteter Fehler", exc_info=True)
+    return False, error.message
+```
+
+## Ressourcen-Cleanup
+
+### Immer Ressourcen schließen:
+
+```python
+def safe_database_operation():
+    connection = None
+    cursor = None
+    
+    try:
+        connection = pyodbc.connect(connection_string)
+        cursor = connection.cursor()
+        cursor.execute(query)
+        results = cursor.fetchall()
+        return True, results
+        
+    except pyodbc.Error as e:
+        error = handle_error(e)
+        logger.error(f"DB-Fehler: {error.message}", exc_info=True)
+        return False, None
+        
+    finally:
+        # IMMER Ressourcen schließen
+        if cursor:
+            try:
+                cursor.close()
+            except:
+                pass
+        if connection:
+            try:
+                connection.close()
+            except:
+                pass
+```
+
+## Fehlercode-Verwendung
+
+### Verwende passende ErrorCodes:
+
+- **DB001-DB008**: Datenbank-Fehler
+- **NET001-NET005**: Netzwerk-Fehler
+- **CFG001-CFG005**: Konfigurations-Fehler
+- **VAL001-VAL004**: Validierungs-Fehler
+- **WF001-WF004**: Workflow-Fehler
+- **GEN001-GEN004**: Allgemeine Fehler
+
+### Fehlercode-Suche:
+
+Die statische Fehlerliste in `app/core/error_codes.py` enthält alle Fehlercodes mit Beschreibungen, Suchmustern und Lösungen.
+
+```python
+from app.core.error_codes import (
+    find_error_by_code, 
+    find_error_by_pattern,
+    get_all_errors,
+    get_errors_by_category
+)
+
+# Suche nach Code
+error_info = find_error_by_code("DB002")
+if error_info:
+    print(f"Code: {error_info['code']}")
+    print(f"Name: {error_info['name']}")
+    print(f"Beschreibung: {error_info['description']}")
+    print(f"Kategorie: {error_info['category']}")
+    print(f"Ursachen: {error_info['common_causes']}")
+    print(f"Lösungen: {error_info['solutions']}")
+
+# Suche nach Muster in Fehlermeldung
+error_message = "Login failed for user"
+found_errors = find_error_by_pattern(error_message)
+for error in found_errors:
+    print(f"Gefunden: {error['code']} - {error['description']}")
+
+# Alle Fehler einer Kategorie
+db_errors = get_errors_by_category("Datenbank")
+
+# Alle Fehler
+all_errors = get_all_errors()
+```
+
+### Verfügbare Fehlercode-Kategorien:
+
+- **DB001-DB008**: Datenbank-Fehler (Verbindung, Authentifizierung, Syntax, Berechtigung, etc.)
+- **NET001-NET005**: Netzwerk-Fehler (Timeout, Verbindung, HTTP, SSL, DNS)
+- **CFG001-CFG005**: Konfigurations-Fehler (Datei, JSON, Schlüssel, Credentials, Keyring)
+- **VAL001-VAL004**: Validierungs-Fehler (Eingabe, Pflichtfelder, Format, Bereich)
+- **WF001-WF004**: Workflow-Fehler (Ausführung, nicht gefunden, Zustand, Timeout)
+- **GEN001-GEN004**: Allgemeine Fehler (Unerwartet, nicht implementiert, Ressource, Berechtigung)
+
+## Return-Werte Pattern
+
+### Konsistentes Return-Pattern:
+
+```python
+# Pattern: (success: bool, message: str, data: Optional[Any])
+def operation() -> Tuple[bool, str, Optional[Any]]:
+    try:
+        # Operation
+        result = do_something()
+        return True, "Erfolg", result
+        
+    except SpecificError as e:
+        error = handle_error(e)
+        logger.error(error.message, exc_info=True)
+        return False, error.message, None
+        
+    except Exception as e:
+        error = handle_error(e)
+        logger.error(error.message, exc_info=True)
+        return False, error.message, None
+```
+
+## Statische Fehlerliste
+
+Die statische Fehlerliste (`app/core/error_codes.py`) enthält:
+- **Vollständige Fehlercode-Liste** mit allen 30+ Fehlercodes
+- **Suchmuster** für automatische Fehlererkennung
+- **Beschreibungen** für jeden Fehlercode
+- **Häufige Ursachen** für jeden Fehlertyp
+- **Lösungsvorschläge** für jeden Fehler
+
+### Verwendung der statischen Fehlerliste:
+
+```python
+from app.core.error_codes import find_error_by_code, find_error_by_pattern
+
+# Beispiel: Fehlerbehandlung mit statischer Liste
+try:
+    # Operation
+    pass
+except Exception as e:
+    # Automatische Fehlererkennung durch Suchmuster
+    found_errors = find_error_by_pattern(str(e))
+    if found_errors:
+        error_info = found_errors[0]
+        print(f"Fehler erkannt: {error_info['code']}")
+        print(f"Lösungen: {error_info['solutions']}")
+    
+    # Oder manuell mit ErrorCode
+    error = handle_error(e, error_code=ErrorCode.DB_AUTHENTICATION_FAILED)
+    error_info = find_error_by_code(error.code.value)
+    if error_info:
+        # Zeige Lösungen dem Benutzer
+        show_solutions_to_user(error_info['solutions'])
+```
+
+## Zusammenfassung
+
+1. ✅ **Spezifische Exceptions** fangen (nicht nur `Exception`)
+2. ✅ **Error-Handler verwenden** (`handle_error()`)
+3. ✅ **Immer loggen** mit Kontext und `exc_info=True`
+4. ✅ **Ressourcen schließen** im `finally`-Block
+5. ✅ **Konsistente Return-Werte** (bool, str, Optional[Any])
+6. ✅ **Fehlercodes verwenden** für bessere Fehleranalyse
+7. ✅ **Statische Fehlerliste nutzen** für automatische Fehlererkennung und Lösungen
+8. ❌ **NIEMALS** Fehler stillschweigend ignorieren (`pass` ohne Logging)
+9. ❌ **NIEMALS** zu generische Exceptions fangen ohne Kontext
+10. ❌ **NIEMALS** Fehler ohne ErrorCode behandeln

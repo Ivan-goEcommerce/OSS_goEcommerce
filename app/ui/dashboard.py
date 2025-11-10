@@ -7,6 +7,10 @@ from PySide6.QtWidgets import (QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
                                QLabel, QPushButton, QFrame, QGridLayout, QMessageBox, QDialog, QProgressDialog)
 from PySide6.QtCore import Qt, QTimer
 from PySide6.QtGui import QFont, QPainter, QColor
+import json
+import os
+from datetime import datetime
+from pathlib import Path
 
 from ..managers.license_manager import LicenseManager
 from ..dialogs import JTLConnectionDialog, LicenseDialog, LicenseGUIWindow, DecryptDialog
@@ -38,7 +42,7 @@ class DashboardWindow(QMainWindow):
         self.articles_without_taric = 0
         self.license_status = "Aktiv"
         self.license_expiry = "12/2026"
-        self.last_sync_date = "24.04.2024, 10:32"
+        self.last_sync_date = self.load_last_sync_date()  # Lade gespeichertes Datum
         self.app_version = "1.0.0"
         
         # Label-Referenzen (werden in setup_data_cards gesetzt)
@@ -53,6 +57,10 @@ class DashboardWindow(QMainWindow):
         self.db_status_indicator = None  # Grüner/roter Punkt für DB
         self.license_valid = False
         self.db_connected = False
+        
+        # OSS-Button Referenz und Status
+        self.oss_button = None
+        self.trigger_successfully_created = False  # True nur wenn Trigger erfolgreich erstellt wurde
         
         # Sync Worker
         self.sync_worker = None
@@ -93,6 +101,70 @@ class DashboardWindow(QMainWindow):
         
         # SOFORT Lizenzprüfung beim Start (blockiert App)
         QTimer.singleShot(500, self.check_license_on_startup)
+    
+    def load_last_sync_date(self) -> str:
+        """
+        Lädt das Datum des letzten erfolgreichen Abgleichs aus der Datei.
+        
+        Returns:
+            str: Formatierter Datum-String (dd.mm.yyyy, HH:MM) oder "Nie" wenn kein Datum vorhanden
+        """
+        try:
+            sync_stats_file = Path("sync_stats.json")
+            if sync_stats_file.exists():
+                with open(sync_stats_file, 'r', encoding='utf-8') as f:
+                    stats = json.load(f)
+                    last_sync = stats.get("last_sync_date")
+                    if last_sync:
+                        # Konvertiere ISO-Format zu deutschem Format
+                        try:
+                            dt = datetime.fromisoformat(last_sync)
+                            return dt.strftime("%d.%m.%Y, %H:%M")
+                        except (ValueError, TypeError):
+                            # Falls bereits im richtigen Format, verwende es direkt
+                            return last_sync
+            return "Nie"
+        except Exception as e:
+            logger.warning(f"Fehler beim Laden des letzten Sync-Datums: {e}")
+            return "Nie"
+    
+    def save_last_sync_date(self, sync_date: str = None):
+        """
+        Speichert das Datum des letzten erfolgreichen Abgleichs in einer Datei.
+        
+        Args:
+            sync_date: Optionales Datum (wenn None, wird aktuelles Datum verwendet)
+        """
+        try:
+            sync_stats_file = Path("sync_stats.json")
+            
+            # Verwende aktuelles Datum wenn keines übergeben wurde
+            if sync_date is None:
+                sync_date = datetime.now().isoformat()
+            elif isinstance(sync_date, datetime):
+                sync_date = sync_date.isoformat()
+            
+            # Lade bestehende Stats oder erstelle neue
+            stats = {}
+            if sync_stats_file.exists():
+                try:
+                    with open(sync_stats_file, 'r', encoding='utf-8') as f:
+                        stats = json.load(f)
+                except json.JSONDecodeError:
+                    stats = {}
+            
+            # Aktualisiere letztes Sync-Datum
+            stats["last_sync_date"] = sync_date
+            stats["last_sync_timestamp"] = datetime.now().isoformat()
+            
+            # Speichere Stats
+            with open(sync_stats_file, 'w', encoding='utf-8') as f:
+                json.dump(stats, f, indent=2, ensure_ascii=False)
+            
+            logger.info(f"Letztes Sync-Datum gespeichert: {sync_date}")
+            
+        except Exception as e:
+            logger.error(f"Fehler beim Speichern des letzten Sync-Datums: {e}", exc_info=True)
     
     def setup_ui(self):
         """Erstellt die UI-Struktur wie im Foto"""
@@ -313,22 +385,8 @@ class DashboardWindow(QMainWindow):
             }
         """)
         
-        btn_decrypt = QPushButton("🔓 Entschlüsseln")
-        btn_decrypt.clicked.connect(self.show_decrypt_dialog)
-        btn_decrypt.setStyleSheet("""
-            QPushButton {
-                background-color: #333333;
-                color: #b0b0b0;
-                border: 1px solid #555555;
-            }
-            QPushButton:hover {
-                background-color: #444444;
-            }
-        """)
-        
         status_layout.addWidget(btn_lizenz)
         status_layout.addWidget(btn_db)
-        status_layout.addWidget(btn_decrypt)
         
         title_layout.addLayout(status_layout)
         
@@ -514,8 +572,14 @@ class DashboardWindow(QMainWindow):
             QPushButton:pressed {
                 background-color: #ff6600;
             }
+            QPushButton:disabled {
+                background-color: #555555;
+                color: #888888;
+            }
         """)
         action_button.clicked.connect(self.start_oss_sync)
+        action_button.setEnabled(False)  # Standardmäßig deaktiviert
+        self.oss_button = action_button  # Referenz speichern
         button_layout.addWidget(action_button)
         
         parent_layout.addLayout(button_layout)
@@ -546,6 +610,36 @@ class DashboardWindow(QMainWindow):
             # Lizenzprüfung erfolgreich - App freigeben
             self.license_valid = True
             self.setEnabled(True)
+            
+            # Extrahiere valid_to aus LicenseGUIWindow
+            if hasattr(license_window, 'valid_to_date') and license_window.valid_to_date:
+                # Konvertiere valid_to zu deutschem Format
+                try:
+                    from datetime import datetime
+                    # Versuche verschiedene Datumsformate zu parsen
+                    valid_to_str = license_window.valid_to_date
+                    # Versuche ISO-Format oder andere Formate
+                    try:
+                        dt = datetime.fromisoformat(valid_to_str.replace('Z', '+00:00'))
+                    except:
+                        # Versuche anderes Format
+                        try:
+                            dt = datetime.strptime(valid_to_str, "%Y-%m-%d")
+                        except:
+                            # Verwende direkt wenn kein Parsing möglich
+                            self.license_expiry = valid_to_str
+                            dt = None
+                    
+                    if dt:
+                        # Formatiere als MM/YYYY
+                        self.license_expiry = dt.strftime("%m/%Y")
+                    logger.info(f"License expiry gesetzt: {self.license_expiry}")
+                except Exception as e:
+                    logger.warning(f"Fehler beim Parsen von valid_to: {e}, verwende Original: {license_window.valid_to_date}")
+                    self.license_expiry = license_window.valid_to_date
+            else:
+                logger.warning("Kein valid_to vom License-Check erhalten")
+            
             self.update_license_status(True)
             debug_print("OK: Lizenzprüfung erfolgreich - App freigegeben")
             
@@ -569,6 +663,8 @@ class DashboardWindow(QMainWindow):
     
     def check_database_connection(self):
         """Prüft DB-Verbindung und aktualisiert Status"""
+        # Aktualisiere auch OSS-Button Status nach DB-Verbindungsprüfung
+        QTimer.singleShot(100, self.update_oss_button_status)
         try:
             import sys
             import os
@@ -725,6 +821,33 @@ class DashboardWindow(QMainWindow):
         """Zeigt Lizenz-Dialog"""
         dialog = LicenseDialog(self)
         if dialog.exec() == QDialog.Accepted:
+            # Nach erfolgreichem Dialog: Prüfe Lizenz erneut um valid_to zu erhalten
+            from ..services.license_service import LicenseService
+            license_service = LicenseService()
+            success, response_data, message = license_service.check_license_via_endpoint()
+            
+            if success and isinstance(response_data, dict):
+                # Extrahiere valid_to aus response_data
+                valid_to = response_data.get('valid_to') or response_data.get('validTo') or response_data.get('valid_to_date')
+                if valid_to:
+                    try:
+                        from datetime import datetime
+                        valid_to_str = str(valid_to)
+                        try:
+                            dt = datetime.fromisoformat(valid_to_str.replace('Z', '+00:00'))
+                        except:
+                            try:
+                                dt = datetime.strptime(valid_to_str, "%Y-%m-%d")
+                            except:
+                                self.license_expiry = valid_to_str
+                                dt = None
+                        
+                        if dt:
+                            self.license_expiry = dt.strftime("%m/%Y")
+                        logger.info(f"License expiry aktualisiert: {self.license_expiry}")
+                    except Exception as e:
+                        logger.warning(f"Fehler beim Parsen von valid_to: {e}")
+            
             # Nach erfolgreichem Dialog Lizenz-Status aktualisieren
             self.update_license_status(True)
             self.license_valid = True
@@ -736,11 +859,75 @@ class DashboardWindow(QMainWindow):
             # Nach erfolgreichem Dialog DB-Status prüfen
             QTimer.singleShot(500, self.check_database_connection)
             QTimer.singleShot(1000, self.load_database_stats)
+            # Prüfe OSS-Button Status nach DB-Änderung
+            QTimer.singleShot(1500, self.update_oss_button_status)
     
-    def show_decrypt_dialog(self):
-        """Zeigt Entschlüsselungs-Dialog"""
-        dialog = DecryptDialog(self)
-        dialog.exec()
+    def update_oss_button_status(self):
+        """
+        Aktualisiert den Status des OSS-Buttons.
+        Button wird NUR aktiviert, wenn:
+        1. Beide Verbindungen (Datenbank + Endpoint) funktionieren
+        2. Trigger erfolgreich erstellt wurde
+        """
+        if not self.oss_button:
+            return
+        
+        # Prüfe ob Trigger erfolgreich erstellt wurde
+        if not self.trigger_successfully_created:
+            logger.debug("OSS-Button deaktiviert: Trigger noch nicht erfolgreich erstellt")
+            self.oss_button.setEnabled(False)
+            return
+        
+        # Prüfe Datenbank-Verbindung
+        try:
+            from ..services.database_service import DatabaseService
+            db_service = DatabaseService()
+            
+            if not db_service.has_saved_credentials():
+                logger.debug("OSS-Button deaktiviert: Keine DB-Credentials")
+                self.oss_button.setEnabled(False)
+                return
+            
+            db_success, db_message = db_service.test_connection()
+            if not db_success:
+                logger.debug(f"OSS-Button deaktiviert: DB-Verbindung fehlgeschlagen: {db_message}")
+                self.oss_button.setEnabled(False)
+                return
+        except Exception as e:
+            logger.error(f"Fehler beim Prüfen der DB-Verbindung: {e}")
+            self.oss_button.setEnabled(False)
+            return
+        
+        # Prüfe Endpoint-Verbindung
+        try:
+            import requests
+            headers = self.trigger_endpoint_service._get_license_headers()
+            test_response = requests.get(
+                self.trigger_endpoint_service.url, 
+                headers=headers, 
+                timeout=10
+            )
+            if test_response.status_code != 200:
+                logger.debug(f"OSS-Button deaktiviert: Endpoint-Verbindung fehlgeschlagen (HTTP {test_response.status_code})")
+                self.oss_button.setEnabled(False)
+                return
+        except requests.exceptions.Timeout:
+            logger.debug("OSS-Button deaktiviert: Endpoint-Verbindung Timeout")
+            self.oss_button.setEnabled(False)
+            return
+        except requests.exceptions.RequestException as e:
+            logger.debug(f"OSS-Button deaktiviert: Endpoint-Verbindung fehlgeschlagen: {e}")
+            self.oss_button.setEnabled(False)
+            return
+        except Exception as e:
+            logger.error(f"Fehler beim Prüfen der Endpoint-Verbindung: {e}")
+            self.oss_button.setEnabled(False)
+            return
+        
+        # BEIDE Verbindungen funktionieren UND Trigger wurde erfolgreich erstellt
+        logger.info("✅ OSS-Button aktiviert: Beide Verbindungen funktionieren und Trigger wurde erfolgreich erstellt")
+        self.oss_button.setEnabled(True)
+    
     
     def start_oss_sync(self):
         """Startet OSS-Abgleich"""
@@ -753,17 +940,17 @@ class DashboardWindow(QMainWindow):
             )
             return
         
-        # Prüfe DB-Verbindung
-        if not self.db_connected:
-            reply = QMessageBox.question(
+        # Prüfe ob Button aktiviert ist (sollte nur aktiviert sein wenn beide Verbindungen funktionieren)
+        if not self.oss_button or not self.oss_button.isEnabled():
+            QMessageBox.warning(
                 self,
-                "Keine DB-Verbindung",
-                "Keine Datenbankverbindung vorhanden.\n\nMöchten Sie trotzdem fortfahren?",
-                QMessageBox.Yes | QMessageBox.No,
-                QMessageBox.No
+                "OSS-Abgleich nicht möglich",
+                "Der OSS-Abgleich kann nicht gestartet werden.\n\n"
+                "Bitte stellen Sie sicher, dass:\n"
+                "• Beide Verbindungen (Datenbank + Endpoint) funktionieren\n"
+                "• Der Trigger erfolgreich erstellt wurde"
             )
-            if reply == QMessageBox.No:
-                return
+            return
         
         # Zeige Bestätigungsdialog
         reply = QMessageBox.question(
@@ -816,13 +1003,18 @@ class DashboardWindow(QMainWindow):
             self.progress_dialog.close()
             self.progress_dialog = None
         
-        # Aktualisiere letzten Abgleich
-        from datetime import datetime
-        self.last_sync_date = datetime.now().strftime("%d.%m.%Y, %H:%M")
-        
-        # Aktualisiere Footer
-        if hasattr(self, 'footer_label') and self.footer_label:
-            self.footer_label.setText(f"Version {self.app_version} • Letzter Abgleich: {self.last_sync_date}")
+        # Aktualisiere letzten Abgleich nur bei Erfolg
+        if success:
+            from datetime import datetime
+            sync_datetime = datetime.now()
+            self.last_sync_date = sync_datetime.strftime("%d.%m.%Y, %H:%M")
+            
+            # Speichere Datum persistent
+            self.save_last_sync_date(sync_datetime)
+            
+            # Aktualisiere Footer
+            if hasattr(self, 'footer_label') and self.footer_label:
+                self.footer_label.setText(f"Version {self.app_version} • Letzter Abgleich: {self.last_sync_date}")
         
         # Zeige Ergebnis-Dialog
         if success:
@@ -952,6 +1144,20 @@ class DashboardWindow(QMainWindow):
     def on_trigger_update_finished(self, success: bool, message: str, decrypted_sql: str = ""):
         """Wird aufgerufen wenn Trigger-Update abgeschlossen ist"""
         logger.info(f"Trigger-Update abgeschlossen: success={success}")
+        
+        # Aktualisiere Trigger-Status
+        self.trigger_successfully_created = success
+        
+        # Aktualisiere OSS-Button Status basierend auf Ergebnis
+        if success:
+            # Trigger erfolgreich erstellt - prüfe beide Verbindungen und aktiviere Button
+            logger.info("Trigger erfolgreich erstellt - prüfe Verbindungen für OSS-Button...")
+            QTimer.singleShot(500, self.update_oss_button_status)
+        else:
+            # Fehler beim Trigger-Update - deaktiviere Button
+            logger.warning("Trigger-Update fehlgeschlagen - OSS-Button wird deaktiviert")
+            if self.oss_button:
+                self.oss_button.setEnabled(False)
         
         if success:
             # Erfolgsfenster anzeigen nur im Debug-Modus

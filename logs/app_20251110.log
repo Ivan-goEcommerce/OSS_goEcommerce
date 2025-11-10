@@ -1,0 +1,1637 @@
+2025-11-10 08:43:43 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 08:43:43 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 08:43:46 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 08:43:46 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 08:43:46 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 08:43:46 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 08:43:46 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 08:43:47 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 08:43:48 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 08:43:49 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 08:43:49 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 08:43:49 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 08:43:49 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 20r5783287, E-Mail: efaegfa
+2025-11-10 08:43:49 - app.services.license_service - DEBUG - Lizenznummer: 20r5..., E-Mail: efa...
+2025-11-10 08:43:49 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 08:43:49 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 08:43:49 - app.core.error_handler - ERROR - [GEN004] Lizenz ungültig: not found or expired - not found or expired - Context: {'operation': 'license_check', 'endpoint_url': 'https://agentic.go-ecommerce.de/webhook/v1/check-license', 'response_data': {'status': 'invalid', 'reason': 'not found or expired'}}
+2025-11-10 08:43:50 - app.core.error_handler - DEBUG - Fehler erfolgreich an Webhook gesendet: GEN004
+2025-11-10 08:43:50 - app.core.error_handler - DEBUG - n8n-Response enthält keine strukturierten Error-Daten: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 08:43:50 - app.core.error_handler - DEBUG - Nicht im Main-Thread - verwende QTimer für Dialog-Anzeige
+2025-11-10 08:43:50 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 08:49:31 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 08:49:31 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 08:49:34 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 08:49:34 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 08:49:34 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 08:49:34 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 08:49:34 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 08:49:34 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 08:49:35 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 08:49:36 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 08:49:36 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 08:49:36 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 08:49:36 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 20r5783287, E-Mail: efaegfa
+2025-11-10 08:49:36 - app.services.license_service - DEBUG - Lizenznummer: 20r5..., E-Mail: efa...
+2025-11-10 08:49:36 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 08:49:36 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 08:49:36 - app.core.error_handler - ERROR - [GEN004] Lizenz ungültig: not found or expired - not found or expired - Context: {'operation': 'license_check', 'endpoint_url': 'https://agentic.go-ecommerce.de/webhook/v1/check-license', 'response_data': {'status': 'invalid', 'reason': 'not found or expired'}}
+2025-11-10 08:49:37 - app.core.error_handler - DEBUG - Fehler erfolgreich an Webhook gesendet: GEN004
+2025-11-10 08:49:37 - app.core.error_handler - DEBUG - n8n-Response enthält keine strukturierten Error-Daten: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 08:49:37 - app.core.error_handler - DEBUG - Nicht im Main-Thread - verwende QTimer für Dialog-Anzeige
+2025-11-10 08:49:37 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 08:56:37 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 08:56:37 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 08:56:39 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 08:56:39 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 08:56:39 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 08:56:39 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 08:56:39 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 08:56:40 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 08:56:41 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 08:56:41 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 08:56:41 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 08:56:41 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 08:56:41 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 20r5783287, E-Mail: efaegfa
+2025-11-10 08:56:41 - app.services.license_service - DEBUG - Lizenznummer: 20r5..., E-Mail: efa...
+2025-11-10 08:56:42 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 08:56:42 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 08:56:42 - app.core.error_handler - ERROR - [GEN004] Lizenz ungültig: not found or expired - not found or expired - Context: {'operation': 'license_check', 'endpoint_url': 'https://agentic.go-ecommerce.de/webhook/v1/check-license', 'response_data': {'status': 'invalid', 'reason': 'not found or expired'}}
+2025-11-10 08:56:42 - app.core.error_handler - DEBUG - Fehler erfolgreich an Webhook gesendet: GEN004
+2025-11-10 08:56:42 - app.core.error_handler - DEBUG - n8n-Response enthält keine strukturierten Error-Daten: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 08:56:42 - app.core.error_handler - DEBUG - Nicht im Main-Thread - verwende QTimer für Dialog-Anzeige
+2025-11-10 08:56:42 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 08:56:43 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:00:11 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 09:00:11 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 09:00:13 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 09:00:13 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 09:00:13 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 09:00:13 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:00:13 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 09:00:13 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:00:14 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 09:00:15 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:00:15 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:00:15 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:00:15 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 20r5783287, E-Mail: efaegfa
+2025-11-10 09:00:15 - app.services.license_service - DEBUG - Lizenznummer: 20r5..., E-Mail: efa...
+2025-11-10 09:00:16 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:00:16 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:00:16 - app.core.error_handler - ERROR - [GEN004] Lizenz ungültig: not found or expired - not found or expired - Context: {'operation': 'license_check', 'endpoint_url': 'https://agentic.go-ecommerce.de/webhook/v1/check-license', 'response_data': {'status': 'invalid', 'reason': 'not found or expired'}}
+2025-11-10 09:00:16 - app.core.error_handler - DEBUG - Fehler erfolgreich an Webhook gesendet: GEN004
+2025-11-10 09:00:16 - app.core.error_handler - DEBUG - n8n-Response enthält keine strukturierten Error-Daten: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:00:16 - app.core.error_handler - DEBUG - Nicht im Main-Thread - verwende QTimer für Dialog-Anzeige
+2025-11-10 09:00:16 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:00:18 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:00:30 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 09:00:30 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 09:00:32 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 09:00:32 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 09:00:32 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 09:00:32 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:00:32 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 09:00:32 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:00:33 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 09:00:34 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:00:34 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:00:34 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:00:34 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 20r5783287, E-Mail: efaegfa
+2025-11-10 09:00:34 - app.services.license_service - DEBUG - Lizenznummer: 20r5..., E-Mail: efa...
+2025-11-10 09:00:34 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:00:34 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:00:34 - app.core.error_handler - ERROR - [GEN004] Lizenz ungültig: not found or expired - not found or expired - Context: {'operation': 'license_check', 'endpoint_url': 'https://agentic.go-ecommerce.de/webhook/v1/check-license', 'response_data': {'status': 'invalid', 'reason': 'not found or expired'}}
+2025-11-10 09:00:35 - app.core.error_handler - DEBUG - Fehler erfolgreich an Webhook gesendet: GEN004
+2025-11-10 09:00:35 - app.core.error_handler - DEBUG - n8n-Response enthält keine strukturierten Error-Daten: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:00:35 - app.core.error_handler - DEBUG - Nicht im Main-Thread - verwende QTimer für Dialog-Anzeige
+2025-11-10 09:00:35 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:04:06 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:04:12 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 09:04:12 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 09:04:16 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 09:04:16 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 09:04:16 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 09:04:16 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:04:16 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 09:04:16 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:04:17 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 09:04:18 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:04:18 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:04:18 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:04:18 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 20r5783287, E-Mail: efaegfa
+2025-11-10 09:04:18 - app.services.license_service - DEBUG - Lizenznummer: 20r5..., E-Mail: efa...
+2025-11-10 09:04:18 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:04:18 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:04:18 - app.core.error_handler - ERROR - [GEN004] Lizenz ungültig: not found or expired - not found or expired - Context: {'operation': 'license_check', 'endpoint_url': 'https://agentic.go-ecommerce.de/webhook/v1/check-license', 'response_data': {'status': 'invalid', 'reason': 'not found or expired'}}
+2025-11-10 09:04:19 - app.core.error_handler - DEBUG - Fehler erfolgreich an Webhook gesendet: GEN004
+2025-11-10 09:04:19 - app.core.error_handler - DEBUG - n8n-Response enthält keine strukturierten Error-Daten: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:04:19 - app.core.error_handler - DEBUG - Nicht im Main-Thread - verwende QTimer für Dialog-Anzeige
+2025-11-10 09:04:19 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:04:20 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:04:28 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 09:04:28 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 09:04:31 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 09:04:31 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 09:04:31 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 09:04:31 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:04:31 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 09:04:31 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:04:32 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 09:04:33 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:04:33 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:04:33 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:04:33 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 20r5783287, E-Mail: efaegfa
+2025-11-10 09:04:33 - app.services.license_service - DEBUG - Lizenznummer: 20r5..., E-Mail: efa...
+2025-11-10 09:04:33 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:04:33 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:04:33 - app.core.error_handler - ERROR - [GEN004] Lizenz ungültig: not found or expired - not found or expired - Context: {'operation': 'license_check', 'endpoint_url': 'https://agentic.go-ecommerce.de/webhook/v1/check-license', 'response_data': {'status': 'invalid', 'reason': 'not found or expired'}}
+2025-11-10 09:04:34 - app.core.error_handler - DEBUG - Fehler erfolgreich an Webhook gesendet: GEN004
+2025-11-10 09:04:34 - app.core.error_handler - DEBUG - n8n-Response enthält keine strukturierten Error-Daten: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:04:34 - app.core.error_handler - DEBUG - Nicht im Main-Thread - verwende QTimer für Dialog-Anzeige
+2025-11-10 09:04:34 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:04:35 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:06:37 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 09:06:37 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 09:06:39 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 09:06:39 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 09:06:39 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 09:06:39 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:06:39 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 09:06:40 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:06:41 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 09:06:41 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:06:41 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:06:41 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:06:41 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 20r5783287, E-Mail: efaegfa
+2025-11-10 09:06:41 - app.services.license_service - DEBUG - Lizenznummer: 20r5..., E-Mail: efa...
+2025-11-10 09:06:42 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:06:42 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:06:42 - app.core.error_handler - ERROR - [GEN004] Lizenz ungültig: not found or expired - not found or expired - Context: {'operation': 'license_check', 'endpoint_url': 'https://agentic.go-ecommerce.de/webhook/v1/check-license', 'response_data': {'status': 'invalid', 'reason': 'not found or expired'}}
+2025-11-10 09:06:42 - app.core.error_handler - DEBUG - Fehler erfolgreich an Webhook gesendet: GEN004
+2025-11-10 09:06:42 - app.core.error_handler - DEBUG - n8n-Response enthält keine strukturierten Error-Daten: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:06:42 - app.core.error_handler - DEBUG - Nicht im Main-Thread - verwende QTimer für Dialog-Anzeige
+2025-11-10 09:06:42 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:06:46 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:08:36 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 09:08:36 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 09:08:39 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 09:08:39 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 09:08:39 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 09:08:39 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:08:39 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 09:08:40 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:08:41 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 09:08:41 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:08:41 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:08:41 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:08:41 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 20r5783287, E-Mail: efaegfa
+2025-11-10 09:08:41 - app.services.license_service - DEBUG - Lizenznummer: 20r5..., E-Mail: efa...
+2025-11-10 09:08:42 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:08:42 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:08:42 - app.core.error_handler - ERROR - [GEN004] Lizenz ungültig: not found or expired - not found or expired - Context: {'operation': 'license_check', 'endpoint_url': 'https://agentic.go-ecommerce.de/webhook/v1/check-license', 'response_data': {'status': 'invalid', 'reason': 'not found or expired'}}
+2025-11-10 09:08:42 - app.core.error_handler - DEBUG - Fehler erfolgreich an Webhook gesendet: GEN004
+2025-11-10 09:08:42 - app.core.error_handler - DEBUG - n8n-Response enthält keine strukturierten Error-Daten: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:08:42 - app.core.error_handler - DEBUG - Nicht im Main-Thread - verwende QTimer für Dialog-Anzeige
+2025-11-10 09:08:42 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:08:43 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:08:59 - app.services.license_service - INFO - Speichere Lizenz: 123456789
+2025-11-10 09:08:59 - app.services.license_service - INFO - Lizenz erfolgreich gespeichert
+2025-11-10 09:13:12 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 09:13:12 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 09:13:14 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 09:13:14 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 09:13:14 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 09:13:14 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:13:14 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 09:13:14 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:13:15 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 09:13:16 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:13:16 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:13:16 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:13:16 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-10 09:13:16 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-10 09:13:16 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:13:16 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-10 09:13:16 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-10 09:13:18 - app.ui.dashboard - INFO - Starte automatischen Trigger-Update...
+2025-11-10 09:13:18 - app.ui.dashboard - INFO - Trigger-Update Worker gestartet
+2025-11-10 09:13:18 - app.workers.trigger_fetch_worker - INFO - Starte Trigger-Update über TriggerEndpointService...
+2025-11-10 09:13:18 - app.services.trigger_endpoint_service - INFO - Rufe Trigger-Endpunkt ab: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 09:13:18 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:13:18 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:13:18 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 09:13:19 - app.services.trigger_endpoint_service - INFO - Response erhalten: <class 'list'>
+2025-11-10 09:13:19 - app.services.trigger_endpoint_service - INFO - Entschlüssele 1 Items...
+2025-11-10 09:13:19 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-10 09:13:19 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 09:13:19 - app.services.trigger_endpoint_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 09:13:19 - app.services.trigger_endpoint_service - INFO - Formatiere SQL für Ausführung...
+2025-11-10 09:13:19 - app.services.decrypt_service - DEBUG - SQL formatiert: 6117 Zeichen (ursprünglich: 6119 Zeichen)
+2025-11-10 09:13:19 - app.services.trigger_endpoint_service - INFO - Korrigiere Trigger-Struktur...
+2025-11-10 09:13:19 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-10 09:13:19 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: BEGIN nach AS eingefügt (Inline-SET)
+2025-11-10 09:13:19 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: END vor GO eingefügt
+2025-11-10 09:13:19 - app.services.decrypt_service - INFO - Trigger-Struktur wurde automatisch korrigiert
+2025-11-10 09:13:19 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:13:19 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:13:19 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 09:13:19 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 09:13:19 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 09:13:19 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 09:13:19 - app.services.trigger_endpoint_service - INFO - Führe SQL aus...
+2025-11-10 09:13:19 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:13:19 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 09:13:19 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 09:13:19 - app.services.database_service - DEBUG - Führe 2 SQL-Batch(es) aus...
+2025-11-10 09:13:19 - app.services.database_service - DEBUG - Führe Batch 1/2 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-10 09:13:19 - app.services.database_service - DEBUG - Führe Batch 2/2 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP]
+		ON     [dbo].[tArtikel]
+		AFTER  INSERT, UPDATE
+...
+2025-11-10 09:13:19 - app.services.database_service - INFO - Alle 2 Batch(es) erfolgreich ausgeführt
+2025-11-10 09:13:19 - app.services.trigger_endpoint_service - INFO - Trigger-Update erfolgreich abgeschlossen
+2025-11-10 09:13:19 - app.ui.dashboard - INFO - Trigger-Update abgeschlossen: success=True
+2025-11-10 09:13:25 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:13:31 - app.services.license_service - INFO - Speichere Lizenz: gqwgq
+2025-11-10 09:13:31 - app.services.license_service - INFO - Lizenz erfolgreich gespeichert
+2025-11-10 09:13:31 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:13:31 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:13:31 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:13:31 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: gqwgq, E-Mail: wfhgalzuw
+2025-11-10 09:13:31 - app.services.license_service - DEBUG - Lizenznummer: gqwg..., E-Mail: wfh...
+2025-11-10 09:13:32 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:13:32 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:13:32 - app.core.error_handler - ERROR - [GEN004] Lizenz ungültig: not found or expired - not found or expired - Context: {'operation': 'license_check', 'endpoint_url': 'https://agentic.go-ecommerce.de/webhook/v1/check-license', 'response_data': {'status': 'invalid', 'reason': 'not found or expired'}}
+2025-11-10 09:13:32 - app.core.error_handler - DEBUG - Fehler erfolgreich an Webhook gesendet: GEN004
+2025-11-10 09:13:32 - app.core.error_handler - DEBUG - n8n-Response enthält keine strukturierten Error-Daten: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:13:32 - app.core.error_handler - DEBUG - Nicht im Main-Thread - verwende QTimer für Dialog-Anzeige
+2025-11-10 09:13:32 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:13:47 - app.services.license_service - INFO - Speichere Lizenz: gqwgq
+2025-11-10 09:13:47 - app.services.license_service - INFO - Lizenz erfolgreich gespeichert
+2025-11-10 09:13:47 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:13:47 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:13:47 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:13:47 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: gqwgq, E-Mail: wfhgalzuw
+2025-11-10 09:13:47 - app.services.license_service - DEBUG - Lizenznummer: gqwg..., E-Mail: wfh...
+2025-11-10 09:13:47 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:13:47 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:13:47 - app.core.error_handler - ERROR - [GEN004] Lizenz ungültig: not found or expired - not found or expired - Context: {'operation': 'license_check', 'endpoint_url': 'https://agentic.go-ecommerce.de/webhook/v1/check-license', 'response_data': {'status': 'invalid', 'reason': 'not found or expired'}}
+2025-11-10 09:13:48 - app.core.error_handler - DEBUG - Fehler erfolgreich an Webhook gesendet: GEN004
+2025-11-10 09:13:48 - app.core.error_handler - DEBUG - n8n-Response enthält keine strukturierten Error-Daten: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:13:48 - app.core.error_handler - DEBUG - Nicht im Main-Thread - verwende QTimer für Dialog-Anzeige
+2025-11-10 09:13:48 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:13:51 - app.services.license_service - INFO - Speichere Lizenz: gqwgq
+2025-11-10 09:13:51 - app.services.license_service - INFO - Lizenz erfolgreich gespeichert
+2025-11-10 09:13:51 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:13:51 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:13:51 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:13:51 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: gqwgq, E-Mail: wfhgalzuw
+2025-11-10 09:13:51 - app.services.license_service - DEBUG - Lizenznummer: gqwg..., E-Mail: wfh...
+2025-11-10 09:13:51 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:13:51 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:13:51 - app.core.error_handler - ERROR - [GEN004] Lizenz ungültig: not found or expired - not found or expired - Context: {'operation': 'license_check', 'endpoint_url': 'https://agentic.go-ecommerce.de/webhook/v1/check-license', 'response_data': {'status': 'invalid', 'reason': 'not found or expired'}}
+2025-11-10 09:13:51 - app.core.error_handler - DEBUG - Fehler erfolgreich an Webhook gesendet: GEN004
+2025-11-10 09:13:51 - app.core.error_handler - DEBUG - n8n-Response enthält keine strukturierten Error-Daten: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:13:51 - app.core.error_handler - DEBUG - Nicht im Main-Thread - verwende QTimer für Dialog-Anzeige
+2025-11-10 09:13:51 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:17:43 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 09:17:43 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 09:17:45 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 09:17:45 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 09:17:45 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 09:17:45 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:17:45 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 09:17:46 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:17:47 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 09:17:47 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:17:47 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:17:47 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:17:47 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: gqwgq, E-Mail: wfhgalzuw
+2025-11-10 09:17:47 - app.services.license_service - DEBUG - Lizenznummer: gqwg..., E-Mail: wfh...
+2025-11-10 09:17:48 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:17:48 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:17:48 - app.core.error_handler - ERROR - [GEN004] Lizenz ungültig: not found or expired - not found or expired - Context: {'operation': 'license_check', 'endpoint_url': 'https://agentic.go-ecommerce.de/webhook/v1/check-license', 'response_data': {'status': 'invalid', 'reason': 'not found or expired'}}
+2025-11-10 09:17:48 - app.core.error_handler - DEBUG - Fehler erfolgreich an Webhook gesendet: GEN004
+2025-11-10 09:17:48 - app.core.error_handler - DEBUG - n8n-Response enthält keine strukturierten Error-Daten: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:17:48 - app.core.error_handler - DEBUG - Nicht im Main-Thread - verwende QTimer für Dialog-Anzeige
+2025-11-10 09:17:48 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:17:50 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:17:57 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:17:57 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:17:57 - app.services.license_service - INFO - Speichere Lizenz: gsdgsd
+2025-11-10 09:17:57 - app.services.license_service - INFO - Lizenz erfolgreich gespeichert
+2025-11-10 09:17:57 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:17:57 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:17:57 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:17:57 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: gsdgsd, E-Mail: qwfiuguzi
+2025-11-10 09:17:57 - app.services.license_service - DEBUG - Lizenznummer: gsdg..., E-Mail: qwf...
+2025-11-10 09:17:57 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:17:57 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:17:57 - app.core.error_handler - ERROR - [GEN004] Lizenz ungültig: not found or expired - not found or expired - Context: {'operation': 'license_check', 'endpoint_url': 'https://agentic.go-ecommerce.de/webhook/v1/check-license', 'response_data': {'status': 'invalid', 'reason': 'not found or expired'}}
+2025-11-10 09:17:57 - app.core.error_handler - DEBUG - Fehler erfolgreich an Webhook gesendet: GEN004
+2025-11-10 09:17:57 - app.core.error_handler - DEBUG - n8n-Response enthält keine strukturierten Error-Daten: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:17:57 - app.core.error_handler - DEBUG - Nicht im Main-Thread - verwende QTimer für Dialog-Anzeige
+2025-11-10 09:17:57 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:17:57 - app.services.license_service - INFO - Speichere Lizenz: gqwgq
+2025-11-10 09:17:57 - app.services.license_service - INFO - Lizenz erfolgreich gespeichert
+2025-11-10 09:18:16 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:18:16 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:18:16 - app.services.license_service - INFO - Speichere Lizenz: 123456789
+2025-11-10 09:18:16 - app.services.license_service - INFO - Lizenz erfolgreich gespeichert
+2025-11-10 09:18:16 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:18:16 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:18:16 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:18:16 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-10 09:18:16 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-10 09:18:16 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:18:16 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-10 09:18:16 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-10 09:21:57 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 09:21:57 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 09:21:59 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 09:21:59 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 09:21:59 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 09:21:59 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:21:59 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 09:22:00 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:22:01 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 09:22:01 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:22:01 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:22:01 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:22:01 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-10 09:22:01 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-10 09:22:02 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:22:02 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-10 09:22:02 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-10 09:22:04 - app.ui.dashboard - INFO - Starte automatischen Trigger-Update...
+2025-11-10 09:22:04 - app.ui.dashboard - INFO - Trigger-Update Worker gestartet
+2025-11-10 09:22:04 - app.workers.trigger_fetch_worker - INFO - Starte Trigger-Update über TriggerEndpointService...
+2025-11-10 09:22:04 - app.services.trigger_endpoint_service - INFO - Rufe Trigger-Endpunkt ab: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 09:22:04 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:22:04 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:22:04 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 09:22:04 - app.services.trigger_endpoint_service - INFO - Response erhalten: <class 'list'>
+2025-11-10 09:22:04 - app.services.trigger_endpoint_service - INFO - Entschlüssele 1 Items...
+2025-11-10 09:22:04 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-10 09:22:04 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 09:22:04 - app.services.trigger_endpoint_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 09:22:04 - app.services.trigger_endpoint_service - INFO - Formatiere SQL für Ausführung...
+2025-11-10 09:22:04 - app.services.decrypt_service - DEBUG - SQL formatiert: 6117 Zeichen (ursprünglich: 6119 Zeichen)
+2025-11-10 09:22:04 - app.services.trigger_endpoint_service - INFO - Korrigiere Trigger-Struktur...
+2025-11-10 09:22:04 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-10 09:22:04 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: BEGIN nach AS eingefügt (Inline-SET)
+2025-11-10 09:22:04 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: END vor GO eingefügt
+2025-11-10 09:22:04 - app.services.decrypt_service - INFO - Trigger-Struktur wurde automatisch korrigiert
+2025-11-10 09:22:04 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:22:04 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:22:04 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 09:22:04 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 09:22:04 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 09:22:04 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 09:22:04 - app.services.trigger_endpoint_service - INFO - Führe SQL aus...
+2025-11-10 09:22:04 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:22:04 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 09:22:04 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 09:22:04 - app.services.database_service - DEBUG - Führe 2 SQL-Batch(es) aus...
+2025-11-10 09:22:04 - app.services.database_service - DEBUG - Führe Batch 1/2 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-10 09:22:05 - app.services.database_service - DEBUG - Führe Batch 2/2 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP]
+		ON     [dbo].[tArtikel]
+		AFTER  INSERT, UPDATE
+...
+2025-11-10 09:22:05 - app.services.database_service - INFO - Alle 2 Batch(es) erfolgreich ausgeführt
+2025-11-10 09:22:05 - app.services.trigger_endpoint_service - INFO - Trigger-Update erfolgreich abgeschlossen
+2025-11-10 09:22:05 - app.ui.dashboard - INFO - Trigger-Update abgeschlossen: success=True
+2025-11-10 09:22:08 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:22:15 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:22:15 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:22:15 - app.services.license_service - INFO - Speichere Lizenz: asegasg
+2025-11-10 09:22:15 - app.services.license_service - INFO - Lizenz erfolgreich gespeichert
+2025-11-10 09:22:15 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:22:15 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:22:15 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:22:15 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: asegasg, E-Mail: wiuqagfpiu
+2025-11-10 09:22:15 - app.services.license_service - DEBUG - Lizenznummer: aseg..., E-Mail: wiu...
+2025-11-10 09:22:15 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:22:15 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:22:15 - app.core.error_handler - ERROR - [GEN004] Lizenz ungültig: not found or expired - not found or expired - Context: {'operation': 'license_check', 'endpoint_url': 'https://agentic.go-ecommerce.de/webhook/v1/check-license', 'response_data': {'status': 'invalid', 'reason': 'not found or expired'}}
+2025-11-10 09:22:16 - app.core.error_handler - DEBUG - Fehler erfolgreich an Webhook gesendet: GEN004
+2025-11-10 09:22:16 - app.core.error_handler - DEBUG - n8n-Response enthält keine strukturierten Error-Daten: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:22:16 - app.core.error_handler - DEBUG - Nicht im Main-Thread - verwende QTimer für Dialog-Anzeige
+2025-11-10 09:22:16 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:22:16 - app.services.license_service - INFO - Speichere Lizenz: 123456789
+2025-11-10 09:22:16 - app.services.license_service - INFO - Lizenz erfolgreich gespeichert
+2025-11-10 09:25:11 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:25:30 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:25:30 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:25:30 - app.services.license_service - INFO - Speichere Lizenz: 123456
+2025-11-10 09:25:30 - app.services.license_service - INFO - Lizenz erfolgreich gespeichert
+2025-11-10 09:25:30 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:25:30 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:25:30 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:25:30 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456, E-Mail: test.lol@gmail.com
+2025-11-10 09:25:30 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: tes...
+2025-11-10 09:25:31 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:25:31 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456', 'validTo': '2025-11-10T09:26:43', 'customer': '3', 'status': 'valid'}
+2025-11-10 09:25:31 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-10 09:27:02 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 09:27:02 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 09:27:04 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 09:27:04 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 09:27:04 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 09:27:04 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:27:04 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 09:27:05 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:27:06 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 09:27:06 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:27:06 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:27:06 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:27:06 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456, E-Mail: test.lol@gmail.com
+2025-11-10 09:27:06 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: tes...
+2025-11-10 09:27:07 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:27:07 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456', 'validTo': '2025-11-10T09:26:43', 'customer': '3', 'status': 'valid'}
+2025-11-10 09:27:07 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-10 09:27:09 - app.ui.dashboard - INFO - Starte automatischen Trigger-Update...
+2025-11-10 09:27:09 - app.ui.dashboard - INFO - Trigger-Update Worker gestartet
+2025-11-10 09:27:09 - app.workers.trigger_fetch_worker - INFO - Starte Trigger-Update über TriggerEndpointService...
+2025-11-10 09:27:09 - app.services.trigger_endpoint_service - INFO - Rufe Trigger-Endpunkt ab: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 09:27:09 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:27:09 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:27:09 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 09:27:09 - app.services.trigger_endpoint_service - INFO - Response erhalten: <class 'list'>
+2025-11-10 09:27:09 - app.services.trigger_endpoint_service - INFO - Entschlüssele 1 Items...
+2025-11-10 09:27:09 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-10 09:27:09 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 09:27:09 - app.services.trigger_endpoint_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 09:27:09 - app.services.trigger_endpoint_service - INFO - Formatiere SQL für Ausführung...
+2025-11-10 09:27:09 - app.services.decrypt_service - DEBUG - SQL formatiert: 6117 Zeichen (ursprünglich: 6119 Zeichen)
+2025-11-10 09:27:09 - app.services.trigger_endpoint_service - INFO - Korrigiere Trigger-Struktur...
+2025-11-10 09:27:09 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-10 09:27:09 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: BEGIN nach AS eingefügt (Inline-SET)
+2025-11-10 09:27:09 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: END vor GO eingefügt
+2025-11-10 09:27:09 - app.services.decrypt_service - INFO - Trigger-Struktur wurde automatisch korrigiert
+2025-11-10 09:27:09 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:27:09 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:27:09 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 09:27:09 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 09:27:09 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 09:27:09 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 09:27:09 - app.services.trigger_endpoint_service - INFO - Führe SQL aus...
+2025-11-10 09:27:09 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:27:09 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 09:27:09 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 09:27:09 - app.services.database_service - DEBUG - Führe 2 SQL-Batch(es) aus...
+2025-11-10 09:27:09 - app.services.database_service - DEBUG - Führe Batch 1/2 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-10 09:27:09 - app.services.database_service - DEBUG - Führe Batch 2/2 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP]
+		ON     [dbo].[tArtikel]
+		AFTER  INSERT, UPDATE
+...
+2025-11-10 09:27:10 - app.services.database_service - INFO - Alle 2 Batch(es) erfolgreich ausgeführt
+2025-11-10 09:27:10 - app.services.trigger_endpoint_service - INFO - Trigger-Update erfolgreich abgeschlossen
+2025-11-10 09:27:10 - app.ui.dashboard - INFO - Trigger-Update abgeschlossen: success=True
+2025-11-10 09:27:30 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 09:27:30 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 09:27:31 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 09:27:31 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 09:27:31 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 09:27:31 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:27:31 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 09:27:32 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:27:33 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 09:27:34 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:27:34 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:27:34 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:27:34 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456, E-Mail: test.lol@gmail.com
+2025-11-10 09:27:34 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: tes...
+2025-11-10 09:27:34 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:27:34 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456', 'validTo': '2025-11-10T09:26:43', 'customer': '3', 'status': 'valid'}
+2025-11-10 09:27:34 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-10 09:27:36 - app.ui.dashboard - INFO - Starte automatischen Trigger-Update...
+2025-11-10 09:27:36 - app.ui.dashboard - INFO - Trigger-Update Worker gestartet
+2025-11-10 09:27:36 - app.workers.trigger_fetch_worker - INFO - Starte Trigger-Update über TriggerEndpointService...
+2025-11-10 09:27:36 - app.services.trigger_endpoint_service - INFO - Rufe Trigger-Endpunkt ab: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 09:27:36 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:27:36 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:27:36 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 09:27:37 - app.services.trigger_endpoint_service - INFO - Response erhalten: <class 'list'>
+2025-11-10 09:27:37 - app.services.trigger_endpoint_service - INFO - Entschlüssele 1 Items...
+2025-11-10 09:27:37 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-10 09:27:37 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 09:27:37 - app.services.trigger_endpoint_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 09:27:37 - app.services.trigger_endpoint_service - INFO - Formatiere SQL für Ausführung...
+2025-11-10 09:27:37 - app.services.decrypt_service - DEBUG - SQL formatiert: 6117 Zeichen (ursprünglich: 6119 Zeichen)
+2025-11-10 09:27:37 - app.services.trigger_endpoint_service - INFO - Korrigiere Trigger-Struktur...
+2025-11-10 09:27:37 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-10 09:27:37 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: BEGIN nach AS eingefügt (Inline-SET)
+2025-11-10 09:27:37 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: END vor GO eingefügt
+2025-11-10 09:27:37 - app.services.decrypt_service - INFO - Trigger-Struktur wurde automatisch korrigiert
+2025-11-10 09:27:37 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:27:37 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:27:37 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 09:27:37 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 09:27:37 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 09:27:37 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 09:27:37 - app.services.trigger_endpoint_service - INFO - Führe SQL aus...
+2025-11-10 09:27:37 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:27:37 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 09:27:37 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 09:27:37 - app.services.database_service - DEBUG - Führe 2 SQL-Batch(es) aus...
+2025-11-10 09:27:37 - app.services.database_service - DEBUG - Führe Batch 1/2 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-10 09:27:37 - app.services.database_service - DEBUG - Führe Batch 2/2 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP]
+		ON     [dbo].[tArtikel]
+		AFTER  INSERT, UPDATE
+...
+2025-11-10 09:27:37 - app.services.database_service - INFO - Alle 2 Batch(es) erfolgreich ausgeführt
+2025-11-10 09:27:37 - app.services.trigger_endpoint_service - INFO - Trigger-Update erfolgreich abgeschlossen
+2025-11-10 09:27:37 - app.ui.dashboard - INFO - Trigger-Update abgeschlossen: success=True
+2025-11-10 09:27:40 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 09:27:40 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 09:27:40 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 09:28:28 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 09:28:28 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 09:28:30 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 09:28:30 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 09:28:30 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 09:28:30 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:28:30 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 09:28:31 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:28:32 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 09:28:33 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:28:33 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:28:33 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:28:33 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456, E-Mail: test.lol@gmail.com
+2025-11-10 09:28:33 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: tes...
+2025-11-10 09:28:33 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:28:33 - app.services.license_service - DEBUG - Response Data: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:28:33 - app.core.error_handler - ERROR - [GEN004] Lizenz ungültig: not found or expired - not found or expired - Context: {'operation': 'license_check', 'endpoint_url': 'https://agentic.go-ecommerce.de/webhook/v1/check-license', 'response_data': {'status': 'invalid', 'reason': 'not found or expired'}}
+2025-11-10 09:28:34 - app.core.error_handler - DEBUG - Fehler erfolgreich an Webhook gesendet: GEN004
+2025-11-10 09:28:34 - app.core.error_handler - DEBUG - n8n-Response enthält keine strukturierten Error-Daten: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:28:34 - app.core.error_handler - DEBUG - Nicht im Main-Thread - verwende QTimer für Dialog-Anzeige
+2025-11-10 09:28:34 - app.services.license_service - ERROR - License-Check: Lizenz ungültig: not found or expired - Response: {'status': 'invalid', 'reason': 'not found or expired'}
+2025-11-10 09:28:35 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:28:52 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:28:52 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:28:52 - app.services.license_service - INFO - Speichere Lizenz: 123456789
+2025-11-10 09:28:52 - app.services.license_service - INFO - Lizenz erfolgreich gespeichert
+2025-11-10 09:28:52 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:28:52 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:28:52 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:28:52 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-10 09:28:52 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-10 09:28:52 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:28:52 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-10 09:28:52 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-10 09:28:54 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:28:54 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:28:54 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:28:54 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-10 09:28:54 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-10 09:28:54 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:28:54 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-10 09:28:54 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-10 09:28:56 - app.ui.dashboard - INFO - Starte automatischen Trigger-Update...
+2025-11-10 09:28:56 - app.ui.dashboard - INFO - Trigger-Update Worker gestartet
+2025-11-10 09:28:56 - app.workers.trigger_fetch_worker - INFO - Starte Trigger-Update über TriggerEndpointService...
+2025-11-10 09:28:56 - app.services.trigger_endpoint_service - INFO - Rufe Trigger-Endpunkt ab: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 09:28:56 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:28:56 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:28:56 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 09:28:57 - app.services.trigger_endpoint_service - INFO - Response erhalten: <class 'list'>
+2025-11-10 09:28:57 - app.services.trigger_endpoint_service - INFO - Entschlüssele 1 Items...
+2025-11-10 09:28:57 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-10 09:28:57 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 09:28:57 - app.services.trigger_endpoint_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 09:28:57 - app.services.trigger_endpoint_service - INFO - Formatiere SQL für Ausführung...
+2025-11-10 09:28:57 - app.services.decrypt_service - DEBUG - SQL formatiert: 6117 Zeichen (ursprünglich: 6119 Zeichen)
+2025-11-10 09:28:57 - app.services.trigger_endpoint_service - INFO - Korrigiere Trigger-Struktur...
+2025-11-10 09:28:57 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-10 09:28:57 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: BEGIN nach AS eingefügt (Inline-SET)
+2025-11-10 09:28:57 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: END vor GO eingefügt
+2025-11-10 09:28:57 - app.services.decrypt_service - INFO - Trigger-Struktur wurde automatisch korrigiert
+2025-11-10 09:28:57 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:28:57 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:28:57 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 09:28:57 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 09:28:57 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 09:28:57 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 09:28:57 - app.services.trigger_endpoint_service - INFO - Führe SQL aus...
+2025-11-10 09:28:57 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:28:57 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 09:28:57 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 09:28:57 - app.services.database_service - DEBUG - Führe 2 SQL-Batch(es) aus...
+2025-11-10 09:28:57 - app.services.database_service - DEBUG - Führe Batch 1/2 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-10 09:28:57 - app.services.database_service - DEBUG - Führe Batch 2/2 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP]
+		ON     [dbo].[tArtikel]
+		AFTER  INSERT, UPDATE
+...
+2025-11-10 09:28:57 - app.services.database_service - INFO - Alle 2 Batch(es) erfolgreich ausgeführt
+2025-11-10 09:28:57 - app.services.trigger_endpoint_service - INFO - Trigger-Update erfolgreich abgeschlossen
+2025-11-10 09:28:57 - app.ui.dashboard - INFO - Trigger-Update abgeschlossen: success=True
+2025-11-10 09:57:22 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 09:57:22 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 09:57:24 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 09:57:24 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 09:57:24 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 09:57:24 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:57:24 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 09:57:25 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 09:57:26 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 09:57:27 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:57:27 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:57:27 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 09:57:27 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-10 09:57:27 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-10 09:57:29 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 09:57:29 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-10 09:57:29 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-10 09:57:31 - app.ui.dashboard - INFO - Starte automatischen Trigger-Update...
+2025-11-10 09:57:31 - app.ui.dashboard - INFO - Trigger-Update Worker gestartet
+2025-11-10 09:57:31 - app.workers.trigger_fetch_worker - INFO - Starte Trigger-Update über TriggerEndpointService...
+2025-11-10 09:57:31 - app.services.trigger_endpoint_service - INFO - Prüfe Datenbank-Verbindung...
+2025-11-10 09:57:31 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:57:31 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:57:31 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 09:57:31 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 09:57:31 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 09:57:31 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 09:57:31 - app.services.trigger_endpoint_service - INFO - ✓ Datenbank-Verbindung erfolgreich
+2025-11-10 09:57:31 - app.services.trigger_endpoint_service - INFO - Prüfe Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 09:57:31 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 09:57:31 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 09:57:31 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 09:57:33 - app.services.trigger_endpoint_service - INFO - ✓ Endpoint-Verbindung erfolgreich
+2025-11-10 09:57:33 - app.services.trigger_endpoint_service - INFO - Rufe Trigger-Daten vom Endpunkt ab: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 09:57:34 - app.services.trigger_endpoint_service - INFO - Response erhalten: <class 'list'>
+2025-11-10 09:57:34 - app.services.trigger_endpoint_service - INFO - Entschlüssele 1 Items...
+2025-11-10 09:57:34 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-10 09:57:34 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 09:57:34 - app.services.trigger_endpoint_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 09:57:34 - app.services.trigger_endpoint_service - INFO - Formatiere SQL für Ausführung...
+2025-11-10 09:57:34 - app.services.decrypt_service - DEBUG - SQL formatiert: 6117 Zeichen (ursprünglich: 6119 Zeichen)
+2025-11-10 09:57:34 - app.services.trigger_endpoint_service - INFO - Korrigiere Trigger-Struktur...
+2025-11-10 09:57:34 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-10 09:57:34 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: BEGIN nach AS eingefügt (Inline-SET)
+2025-11-10 09:57:34 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: END vor GO eingefügt
+2025-11-10 09:57:34 - app.services.decrypt_service - INFO - Trigger-Struktur wurde automatisch korrigiert
+2025-11-10 09:57:34 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Beide Verbindungen müssen funktionieren...
+2025-11-10 09:57:34 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Datenbank-Verbindung...
+2025-11-10 09:57:34 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:57:34 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 09:57:34 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 09:57:34 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 09:57:34 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 09:57:34 - app.services.trigger_endpoint_service - INFO - ✓ Finale Prüfung: Datenbank-Verbindung erfolgreich
+2025-11-10 09:57:34 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 09:57:35 - app.services.trigger_endpoint_service - INFO - ✓ Finale Prüfung: Endpoint-Verbindung erfolgreich
+2025-11-10 09:57:35 - app.services.trigger_endpoint_service - INFO - ✅ BEIDE Verbindungen funktionieren - Trigger wird jetzt erstellt...
+2025-11-10 09:57:35 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 09:57:35 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 09:57:35 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 09:57:35 - app.services.database_service - DEBUG - Führe 2 SQL-Batch(es) aus...
+2025-11-10 09:57:35 - app.services.database_service - DEBUG - Führe Batch 1/2 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-10 09:57:36 - app.services.database_service - DEBUG - Führe Batch 2/2 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP]
+		ON     [dbo].[tArtikel]
+		AFTER  INSERT, UPDATE
+...
+2025-11-10 09:57:36 - app.services.database_service - INFO - Alle 2 Batch(es) erfolgreich ausgeführt
+2025-11-10 09:57:36 - app.services.trigger_endpoint_service - INFO - Trigger-Update erfolgreich abgeschlossen
+2025-11-10 09:57:36 - app.ui.dashboard - INFO - Trigger-Update abgeschlossen: success=True
+2025-11-10 09:57:48 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 09:57:48 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 09:57:48 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 10:00:33 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 10:00:33 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 10:00:37 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 10:00:37 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 10:00:37 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 10:00:37 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 10:00:37 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 10:00:38 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 10:00:39 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 10:00:39 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 10:00:39 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 10:00:39 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 10:00:39 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-10 10:00:39 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-10 10:00:40 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 10:00:40 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-10 10:00:40 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-10 10:00:42 - app.ui.dashboard - INFO - Starte automatischen Trigger-Update...
+2025-11-10 10:00:42 - app.ui.dashboard - INFO - Trigger-Update Worker gestartet
+2025-11-10 10:00:42 - app.workers.trigger_fetch_worker - INFO - Starte Trigger-Update über TriggerEndpointService...
+2025-11-10 10:00:42 - app.services.trigger_endpoint_service - INFO - Prüfe Datenbank-Verbindung...
+2025-11-10 10:00:42 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:00:42 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:00:42 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 10:00:42 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 10:00:42 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 10:00:43 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 10:00:43 - app.services.trigger_endpoint_service - INFO - ✓ Datenbank-Verbindung erfolgreich
+2025-11-10 10:00:43 - app.services.trigger_endpoint_service - INFO - Prüfe Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 10:00:43 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 10:00:43 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 10:00:43 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 10:00:44 - app.services.trigger_endpoint_service - INFO - ✓ Endpoint-Verbindung erfolgreich
+2025-11-10 10:00:44 - app.services.trigger_endpoint_service - INFO - Rufe Trigger-Daten vom Endpunkt ab: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 10:00:46 - app.services.trigger_endpoint_service - INFO - Response erhalten: <class 'list'>
+2025-11-10 10:00:46 - app.services.trigger_endpoint_service - INFO - Entschlüssele 1 Items...
+2025-11-10 10:00:46 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-10 10:00:46 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 10:00:46 - app.services.trigger_endpoint_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 10:00:46 - app.services.trigger_endpoint_service - INFO - Formatiere SQL für Ausführung...
+2025-11-10 10:00:46 - app.services.decrypt_service - DEBUG - SQL formatiert: 6117 Zeichen (ursprünglich: 6119 Zeichen)
+2025-11-10 10:00:46 - app.services.trigger_endpoint_service - INFO - Korrigiere Trigger-Struktur...
+2025-11-10 10:00:46 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-10 10:00:46 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: BEGIN nach AS eingefügt (Inline-SET)
+2025-11-10 10:00:46 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: END vor GO eingefügt
+2025-11-10 10:00:46 - app.services.decrypt_service - INFO - Trigger-Struktur wurde automatisch korrigiert
+2025-11-10 10:00:46 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Beide Verbindungen müssen funktionieren...
+2025-11-10 10:00:46 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Datenbank-Verbindung...
+2025-11-10 10:00:46 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:00:46 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 10:00:46 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 10:00:46 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 10:00:46 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 10:00:46 - app.services.trigger_endpoint_service - INFO - ✓ Finale Prüfung: Datenbank-Verbindung erfolgreich
+2025-11-10 10:00:46 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 10:00:47 - app.services.trigger_endpoint_service - INFO - ✓ Finale Prüfung: Endpoint-Verbindung erfolgreich
+2025-11-10 10:00:47 - app.services.trigger_endpoint_service - INFO - ✅ BEIDE Verbindungen funktionieren - Trigger wird jetzt erstellt...
+2025-11-10 10:00:47 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:00:47 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 10:00:47 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 10:00:47 - app.services.database_service - DEBUG - Führe 2 SQL-Batch(es) aus...
+2025-11-10 10:00:47 - app.services.database_service - DEBUG - Führe Batch 1/2 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-10 10:00:47 - app.services.database_service - DEBUG - Führe Batch 2/2 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP]
+		ON     [dbo].[tArtikel]
+		AFTER  INSERT, UPDATE
+...
+2025-11-10 10:00:47 - app.services.database_service - INFO - Alle 2 Batch(es) erfolgreich ausgeführt
+2025-11-10 10:00:47 - app.services.trigger_endpoint_service - INFO - Trigger-Update erfolgreich abgeschlossen
+2025-11-10 10:00:47 - app.ui.dashboard - INFO - Trigger-Update abgeschlossen: success=True
+2025-11-10 10:00:56 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 10:00:56 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 10:00:56 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 10:00:56 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 10:00:56 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 10:00:56 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:00:56 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:00:56 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 10:00:56 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 10:00:56 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 10:00:56 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 10:00:56 - app.services.workflow_service - DEBUG - WorkflowService initialisiert - URL: https://agentic.go-ecommerce.de/webhook/v1/users/tarics
+2025-11-10 10:00:56 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 10:00:56 - app.managers.oss_start - INFO - OSSStart initialisiert - License: 1234..., Email: iva...
+2025-11-10 10:00:56 - app.managers.oss_start - INFO - 🚀 Starte OSS-Abgleich...
+2025-11-10 10:00:56 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:00:56 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:00:56 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 10:00:56 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 10:00:56 - app.services.database_service - DEBUG - Lade Produkte mit TARIC-Informationen...
+2025-11-10 10:00:56 - app.services.database_service - INFO - 5 Artikel mit TARIC-Informationen gefunden
+2025-11-10 10:00:56 - app.managers.oss_start - INFO - 📤 Sende 5 Produkte...
+2025-11-10 10:00:56 - app.services.workflow_service - INFO - Sende 5 Produkte an Webhook
+2025-11-10 10:00:58 - app.managers.oss_start - INFO -    ✓ Produkte erfolgreich gesendet: Erfolgreich: 200
+2025-11-10 10:00:58 - app.managers.oss_start - INFO - 📊 Hole aktuelle Steuersätze...
+2025-11-10 10:00:58 - app.managers.oss_start - INFO - Rufe Tax-Rates Endpoint auf: https://agentic.go-ecommerce.de/webhook/v1/tax-rates
+2025-11-10 10:00:59 - app.managers.oss_start - INFO - Verschlüsselte Daten erhalten: <class 'list'>
+2025-11-10 10:00:59 - app.managers.oss_start - INFO -    ✓ 1 verschlüsselte Items erhalten
+2025-11-10 10:00:59 - app.managers.oss_start - INFO - 🔓 Entschlüssele Daten...
+2025-11-10 10:00:59 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-10 10:00:59 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6449 Zeichen
+2025-11-10 10:00:59 - app.managers.oss_start - INFO - Entschlüsselung erfolgreich: 6449 Zeichen
+2025-11-10 10:00:59 - app.managers.oss_start - INFO -    ✓ Entschlüsselung erfolgreich (6449 Zeichen)
+2025-11-10 10:00:59 - app.managers.oss_start - INFO - 📝 Formatiere SQL...
+2025-11-10 10:00:59 - app.services.decrypt_service - DEBUG - SQL formatiert: 6449 Zeichen (ursprünglich: 6449 Zeichen)
+2025-11-10 10:00:59 - app.managers.oss_start - INFO - SQL formatiert: 6449 Zeichen
+2025-11-10 10:00:59 - app.managers.oss_start - INFO -    ✓ SQL formatiert (6449 Zeichen)
+2025-11-10 10:00:59 - app.managers.oss_start - INFO - decrypted_sql_callback aufgerufen
+2025-11-10 10:01:00 - app.managers.oss_start - INFO - 💾 Führe SQL Statement aus...
+2025-11-10 10:01:00 - app.ui.dashboard - INFO - Entschlüsseltes SQL erhalten (6449 Zeichen)
+2025-11-10 10:01:00 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:01:00 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-10 10:01:00 - app.services.decrypt_service - DEBUG - Kein CREATE TRIGGER gefunden - keine Korrektur nötig
+2025-11-10 10:01:00 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:01:00 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 10:01:00 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 10:01:00 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 10:01:00 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 10:01:00 - app.managers.oss_start - INFO - Führe SQL aus (6449 Zeichen):
+/* ============================================================*/
+/* Automatisch generiert am: 2025-11-10T09:00:59.529Z */
+/* Steuersatz-Update für 27 Länder */
+/* Batch-Größe: Alle 10 Statements ein GO */
+/* ============================================================*/
+
+/* Update für AT */
+UPDATE [eazybusiness].[dbo].[tLandSteuersatz]
+SET 
+    [fStarkErmaessigterSatz] = 0,
+    [fErmaessigterSatzNiedrig] = 13,
+    [fErmaessigterSatz] = 10,
+    [fNormalerSatz] = 20
+WHERE [cISOLand] = 'AT';
+
+/* U...
+2025-11-10 10:01:00 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:01:00 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 10:01:00 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 10:01:00 - app.services.database_service - DEBUG - Führe 3 SQL-Batch(es) aus...
+2025-11-10 10:01:00 - app.services.database_service - DEBUG - Führe Batch 1/3 aus: /* ============================================================*/
+/* Automatisch generiert am: 2025-...
+2025-11-10 10:01:00 - app.services.database_service - DEBUG - Führe Batch 2/3 aus: /* Update für FR */
+UPDATE [eazybusiness].[dbo].[tLandSteuersatz]
+SET 
+    [fStarkErmaessigterSatz] ...
+2025-11-10 10:01:00 - app.services.database_service - DEBUG - Führe Batch 3/3 aus: /* Update für NL */
+UPDATE [eazybusiness].[dbo].[tLandSteuersatz]
+SET 
+    [fStarkErmaessigterSatz] ...
+2025-11-10 10:01:00 - app.services.database_service - INFO - Alle Batches erfolgreich ausgeführt - 1 Zeilen betroffen
+2025-11-10 10:01:00 - app.managers.oss_start - INFO -    ✓ SQL erfolgreich ausgeführt: Alle Batches erfolgreich ausgeführt - 1 Zeilen betroffen
+2025-11-10 10:01:00 - app.managers.oss_start - INFO - SQL-Ausführung: success=True, sql_statement vorhanden=True
+2025-11-10 10:45:13 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 10:45:13 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 10:45:16 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 10:45:16 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 10:45:16 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 10:45:16 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 10:45:16 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 10:45:17 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 10:45:19 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 10:45:20 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 10:45:20 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 10:45:20 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 10:45:20 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-10 10:45:20 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-10 10:45:21 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 10:45:21 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-10 10:45:21 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-10 10:45:23 - app.ui.dashboard - INFO - Starte automatischen Trigger-Update...
+2025-11-10 10:45:23 - app.ui.dashboard - INFO - Trigger-Update Worker gestartet
+2025-11-10 10:45:23 - app.workers.trigger_fetch_worker - INFO - Starte Trigger-Update über TriggerEndpointService...
+2025-11-10 10:45:23 - app.services.trigger_endpoint_service - INFO - Prüfe Datenbank-Verbindung...
+2025-11-10 10:45:23 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:45:23 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:45:23 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 10:45:23 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 10:45:23 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 10:45:23 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 10:45:23 - app.services.trigger_endpoint_service - INFO - ✓ Datenbank-Verbindung erfolgreich
+2025-11-10 10:45:23 - app.services.trigger_endpoint_service - INFO - Prüfe Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 10:45:23 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 10:45:23 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 10:45:23 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 10:45:24 - app.ui.dashboard - DEBUG - OSS-Button deaktiviert: Trigger noch nicht erfolgreich erstellt
+2025-11-10 10:45:25 - app.services.trigger_endpoint_service - INFO - ✓ Endpoint-Verbindung erfolgreich
+2025-11-10 10:45:25 - app.services.trigger_endpoint_service - INFO - Rufe Trigger-Daten vom Endpunkt ab: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 10:45:26 - app.services.trigger_endpoint_service - INFO - Response erhalten: <class 'list'>
+2025-11-10 10:45:26 - app.services.trigger_endpoint_service - INFO - Entschlüssele 1 Items...
+2025-11-10 10:45:26 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-10 10:45:26 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 10:45:26 - app.services.trigger_endpoint_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 10:45:26 - app.services.trigger_endpoint_service - INFO - Formatiere SQL für Ausführung...
+2025-11-10 10:45:26 - app.services.decrypt_service - DEBUG - SQL formatiert: 6117 Zeichen (ursprünglich: 6119 Zeichen)
+2025-11-10 10:45:26 - app.services.trigger_endpoint_service - INFO - Korrigiere Trigger-Struktur...
+2025-11-10 10:45:26 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-10 10:45:26 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: BEGIN nach AS eingefügt (Inline-SET)
+2025-11-10 10:45:26 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: END vor GO eingefügt
+2025-11-10 10:45:26 - app.services.decrypt_service - INFO - Trigger-Struktur wurde automatisch korrigiert
+2025-11-10 10:45:26 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Beide Verbindungen müssen funktionieren...
+2025-11-10 10:45:26 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Datenbank-Verbindung...
+2025-11-10 10:45:26 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:45:26 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 10:45:26 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 10:45:26 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 10:45:26 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 10:45:26 - app.services.trigger_endpoint_service - INFO - ✓ Finale Prüfung: Datenbank-Verbindung erfolgreich
+2025-11-10 10:45:26 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 10:45:27 - app.services.trigger_endpoint_service - INFO - ✓ Finale Prüfung: Endpoint-Verbindung erfolgreich
+2025-11-10 10:45:27 - app.services.trigger_endpoint_service - INFO - ✅ BEIDE Verbindungen funktionieren - Trigger wird jetzt erstellt...
+2025-11-10 10:45:27 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:45:27 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 10:45:27 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 10:45:27 - app.services.database_service - DEBUG - Führe 2 SQL-Batch(es) aus...
+2025-11-10 10:45:27 - app.services.database_service - DEBUG - Führe Batch 1/2 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-10 10:45:27 - app.services.database_service - DEBUG - Führe Batch 2/2 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP]
+		ON     [dbo].[tArtikel]
+		AFTER  INSERT, UPDATE
+...
+2025-11-10 10:45:28 - app.services.database_service - INFO - Alle 2 Batch(es) erfolgreich ausgeführt
+2025-11-10 10:45:28 - app.services.trigger_endpoint_service - INFO - Trigger-Update erfolgreich abgeschlossen
+2025-11-10 10:45:28 - app.ui.dashboard - INFO - Trigger-Update abgeschlossen: success=True
+2025-11-10 10:45:28 - app.ui.dashboard - INFO - Trigger erfolgreich erstellt - prüfe Verbindungen für OSS-Button...
+2025-11-10 10:45:28 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 10:45:28 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 10:45:28 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:45:28 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:45:28 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 10:45:28 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 10:45:28 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 10:45:28 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 10:45:28 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 10:45:28 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 10:45:28 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 10:45:30 - app.ui.dashboard - INFO - ✅ OSS-Button aktiviert: Beide Verbindungen funktionieren und Trigger wurde erfolgreich erstellt
+2025-11-10 10:45:32 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 10:45:32 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 10:45:32 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 10:45:32 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 10:45:32 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 10:45:32 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:45:32 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:45:32 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 10:45:32 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 10:45:32 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 10:45:32 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 10:45:32 - app.services.workflow_service - DEBUG - WorkflowService initialisiert - URL: https://agentic.go-ecommerce.de/webhook/v1/users/tarics
+2025-11-10 10:45:32 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 10:45:32 - app.managers.oss_start - INFO - OSSStart initialisiert - License: 1234..., Email: iva...
+2025-11-10 10:45:32 - app.managers.oss_start - INFO - 🚀 Starte OSS-Abgleich...
+2025-11-10 10:45:32 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:45:32 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:45:32 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 10:45:32 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 10:45:32 - app.services.database_service - DEBUG - Lade Produkte mit TARIC-Informationen...
+2025-11-10 10:45:32 - app.services.database_service - INFO - 5 Artikel mit TARIC-Informationen gefunden
+2025-11-10 10:45:32 - app.managers.oss_start - INFO - 📤 Sende 5 Produkte...
+2025-11-10 10:45:32 - app.services.workflow_service - INFO - Sende 5 Produkte an Webhook
+2025-11-10 10:45:34 - app.managers.oss_start - INFO -    ✓ Produkte erfolgreich gesendet: Erfolgreich: 200
+2025-11-10 10:45:34 - app.managers.oss_start - INFO - 📊 Hole aktuelle Steuersätze...
+2025-11-10 10:45:34 - app.managers.oss_start - INFO - Rufe Tax-Rates Endpoint auf: https://agentic.go-ecommerce.de/webhook/v1/tax-rates
+2025-11-10 10:45:35 - app.managers.oss_start - INFO - Verschlüsselte Daten erhalten: <class 'list'>
+2025-11-10 10:45:35 - app.managers.oss_start - INFO -    ✓ 1 verschlüsselte Items erhalten
+2025-11-10 10:45:35 - app.managers.oss_start - INFO - 🔓 Entschlüssele Daten...
+2025-11-10 10:45:35 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-10 10:45:35 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6449 Zeichen
+2025-11-10 10:45:35 - app.managers.oss_start - INFO - Entschlüsselung erfolgreich: 6449 Zeichen
+2025-11-10 10:45:35 - app.managers.oss_start - INFO -    ✓ Entschlüsselung erfolgreich (6449 Zeichen)
+2025-11-10 10:45:35 - app.managers.oss_start - INFO - 📝 Formatiere SQL...
+2025-11-10 10:45:35 - app.services.decrypt_service - DEBUG - SQL formatiert: 6449 Zeichen (ursprünglich: 6449 Zeichen)
+2025-11-10 10:45:35 - app.managers.oss_start - INFO - SQL formatiert: 6449 Zeichen
+2025-11-10 10:45:35 - app.managers.oss_start - INFO -    ✓ SQL formatiert (6449 Zeichen)
+2025-11-10 10:45:35 - app.managers.oss_start - INFO - decrypted_sql_callback aufgerufen
+2025-11-10 10:45:35 - app.managers.oss_start - INFO - 💾 Führe SQL Statement aus...
+2025-11-10 10:45:35 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:45:35 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-10 10:45:35 - app.services.decrypt_service - DEBUG - Kein CREATE TRIGGER gefunden - keine Korrektur nötig
+2025-11-10 10:45:35 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:45:35 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 10:45:35 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 10:45:35 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 10:45:35 - app.ui.dashboard - INFO - Entschlüsseltes SQL erhalten (6449 Zeichen)
+2025-11-10 10:45:35 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 10:45:35 - app.managers.oss_start - INFO - Führe SQL aus (6449 Zeichen):
+/* ============================================================*/
+/* Automatisch generiert am: 2025-11-10T09:45:35.454Z */
+/* Steuersatz-Update für 27 Länder */
+/* Batch-Größe: Alle 10 Statements ein GO */
+/* ============================================================*/
+
+/* Update für AT */
+UPDATE [eazybusiness].[dbo].[tLandSteuersatz]
+SET 
+    [fStarkErmaessigterSatz] = 0,
+    [fErmaessigterSatzNiedrig] = 13,
+    [fErmaessigterSatz] = 10,
+    [fNormalerSatz] = 20
+WHERE [cISOLand] = 'AT';
+
+/* U...
+2025-11-10 10:45:35 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 10:45:35 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 10:45:35 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 10:45:35 - app.services.database_service - DEBUG - Führe 3 SQL-Batch(es) aus...
+2025-11-10 10:45:35 - app.services.database_service - DEBUG - Führe Batch 1/3 aus: /* ============================================================*/
+/* Automatisch generiert am: 2025-...
+2025-11-10 10:45:35 - app.services.database_service - DEBUG - Führe Batch 2/3 aus: /* Update für FR */
+UPDATE [eazybusiness].[dbo].[tLandSteuersatz]
+SET 
+    [fStarkErmaessigterSatz] ...
+2025-11-10 10:45:36 - app.services.database_service - DEBUG - Führe Batch 3/3 aus: /* Update für NL */
+UPDATE [eazybusiness].[dbo].[tLandSteuersatz]
+SET 
+    [fStarkErmaessigterSatz] ...
+2025-11-10 10:45:36 - app.services.database_service - INFO - Alle Batches erfolgreich ausgeführt - 1 Zeilen betroffen
+2025-11-10 10:45:36 - app.managers.oss_start - INFO -    ✓ SQL erfolgreich ausgeführt: Alle Batches erfolgreich ausgeführt - 1 Zeilen betroffen
+2025-11-10 10:45:36 - app.managers.oss_start - INFO - SQL-Ausführung: success=True, sql_statement vorhanden=True
+2025-11-10 11:25:30 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 11:25:30 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 11:25:35 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 11:25:35 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 11:25:35 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 11:25:35 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 11:25:35 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 11:25:35 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 11:25:37 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 11:25:37 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 11:25:37 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 11:25:37 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 11:25:37 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-10 11:25:37 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-10 11:25:39 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 11:25:39 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-10 11:25:39 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-10 11:25:41 - app.ui.dashboard - INFO - Starte automatischen Trigger-Update...
+2025-11-10 11:25:41 - app.ui.dashboard - INFO - Trigger-Update Worker gestartet
+2025-11-10 11:25:41 - app.workers.trigger_fetch_worker - INFO - Starte Trigger-Update über TriggerEndpointService...
+2025-11-10 11:25:41 - app.services.trigger_endpoint_service - INFO - Prüfe Datenbank-Verbindung...
+2025-11-10 11:25:41 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:25:41 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:25:41 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 11:25:41 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 11:25:41 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 11:25:41 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 11:25:41 - app.services.trigger_endpoint_service - INFO - ✓ Datenbank-Verbindung erfolgreich
+2025-11-10 11:25:41 - app.services.trigger_endpoint_service - INFO - Prüfe Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 11:25:41 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 11:25:41 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 11:25:41 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 11:25:41 - app.ui.dashboard - DEBUG - OSS-Button deaktiviert: Trigger noch nicht erfolgreich erstellt
+2025-11-10 11:25:42 - app.services.trigger_endpoint_service - INFO - ✓ Endpoint-Verbindung erfolgreich
+2025-11-10 11:25:42 - app.services.trigger_endpoint_service - INFO - Rufe Trigger-Daten vom Endpunkt ab: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 11:25:43 - app.services.trigger_endpoint_service - INFO - Response erhalten: <class 'list'>
+2025-11-10 11:25:43 - app.services.trigger_endpoint_service - INFO - Entschlüssele 1 Items...
+2025-11-10 11:25:43 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-10 11:25:43 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 11:25:43 - app.services.trigger_endpoint_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 11:25:43 - app.services.trigger_endpoint_service - INFO - Formatiere SQL für Ausführung...
+2025-11-10 11:25:43 - app.services.decrypt_service - DEBUG - SQL formatiert: 6117 Zeichen (ursprünglich: 6119 Zeichen)
+2025-11-10 11:25:43 - app.services.trigger_endpoint_service - INFO - Korrigiere Trigger-Struktur...
+2025-11-10 11:25:43 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-10 11:25:43 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: BEGIN nach AS eingefügt (Inline-SET)
+2025-11-10 11:25:43 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: END vor GO eingefügt
+2025-11-10 11:25:43 - app.services.decrypt_service - INFO - Trigger-Struktur wurde automatisch korrigiert
+2025-11-10 11:25:43 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Beide Verbindungen müssen funktionieren...
+2025-11-10 11:25:43 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Datenbank-Verbindung...
+2025-11-10 11:25:43 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:25:43 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 11:25:43 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 11:25:43 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 11:25:43 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 11:25:43 - app.services.trigger_endpoint_service - INFO - ✓ Finale Prüfung: Datenbank-Verbindung erfolgreich
+2025-11-10 11:25:43 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 11:25:44 - app.services.trigger_endpoint_service - INFO - ✓ Finale Prüfung: Endpoint-Verbindung erfolgreich
+2025-11-10 11:25:44 - app.services.trigger_endpoint_service - INFO - ✅ BEIDE Verbindungen funktionieren - Trigger wird jetzt erstellt...
+2025-11-10 11:25:44 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:25:44 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 11:25:44 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 11:25:44 - app.services.database_service - DEBUG - Führe 2 SQL-Batch(es) aus...
+2025-11-10 11:25:44 - app.services.database_service - DEBUG - Führe Batch 1/2 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-10 11:25:44 - app.services.database_service - DEBUG - Führe Batch 2/2 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP]
+		ON     [dbo].[tArtikel]
+		AFTER  INSERT, UPDATE
+...
+2025-11-10 11:25:44 - app.services.database_service - INFO - Alle 2 Batch(es) erfolgreich ausgeführt
+2025-11-10 11:25:44 - app.services.trigger_endpoint_service - INFO - Trigger-Update erfolgreich abgeschlossen
+2025-11-10 11:25:44 - app.ui.dashboard - INFO - Trigger-Update abgeschlossen: success=True
+2025-11-10 11:25:44 - app.ui.dashboard - INFO - Trigger erfolgreich erstellt - prüfe Verbindungen für OSS-Button...
+2025-11-10 11:25:45 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 11:25:45 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 11:25:45 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:25:45 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:25:45 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 11:25:45 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 11:25:45 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 11:25:45 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 11:25:45 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 11:25:45 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 11:25:45 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 11:25:46 - app.ui.dashboard - INFO - ✅ OSS-Button aktiviert: Beide Verbindungen funktionieren und Trigger wurde erfolgreich erstellt
+2025-11-10 11:29:30 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 11:29:30 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 11:29:32 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 11:29:32 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 11:29:32 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 11:29:32 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 11:29:32 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 11:29:33 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 11:29:34 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 11:29:35 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 11:29:35 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 11:29:35 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 11:29:35 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-10 11:29:35 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-10 11:29:36 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 11:29:36 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-10 11:29:36 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-10 11:29:38 - app.ui.dashboard - INFO - Starte automatischen Trigger-Update...
+2025-11-10 11:29:38 - app.ui.dashboard - INFO - Trigger-Update Worker gestartet
+2025-11-10 11:29:38 - app.workers.trigger_fetch_worker - INFO - Starte Trigger-Update über TriggerEndpointService...
+2025-11-10 11:29:38 - app.services.trigger_endpoint_service - INFO - Prüfe Datenbank-Verbindung...
+2025-11-10 11:29:38 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:29:38 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:29:38 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 11:29:38 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 11:29:38 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 11:29:38 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 11:29:38 - app.services.trigger_endpoint_service - INFO - ✓ Datenbank-Verbindung erfolgreich
+2025-11-10 11:29:38 - app.services.trigger_endpoint_service - INFO - Prüfe Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 11:29:38 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 11:29:38 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 11:29:38 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 11:29:38 - app.ui.dashboard - DEBUG - OSS-Button deaktiviert: Trigger noch nicht erfolgreich erstellt
+2025-11-10 11:29:39 - app.services.trigger_endpoint_service - INFO - ✓ Endpoint-Verbindung erfolgreich
+2025-11-10 11:29:39 - app.services.trigger_endpoint_service - INFO - Rufe Trigger-Daten vom Endpunkt ab: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 11:29:40 - app.services.trigger_endpoint_service - INFO - Response erhalten: <class 'list'>
+2025-11-10 11:29:40 - app.services.trigger_endpoint_service - INFO - Entschlüssele 1 Items...
+2025-11-10 11:29:40 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-10 11:29:40 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 11:29:41 - app.services.trigger_endpoint_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 11:29:41 - app.services.trigger_endpoint_service - INFO - Formatiere SQL für Ausführung...
+2025-11-10 11:29:41 - app.services.decrypt_service - DEBUG - SQL formatiert: 6117 Zeichen (ursprünglich: 6119 Zeichen)
+2025-11-10 11:29:41 - app.services.trigger_endpoint_service - INFO - Korrigiere Trigger-Struktur...
+2025-11-10 11:29:41 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-10 11:29:41 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: BEGIN nach AS eingefügt (Inline-SET)
+2025-11-10 11:29:41 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: END vor GO eingefügt
+2025-11-10 11:29:41 - app.services.decrypt_service - INFO - Trigger-Struktur wurde automatisch korrigiert
+2025-11-10 11:29:41 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Beide Verbindungen müssen funktionieren...
+2025-11-10 11:29:41 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Datenbank-Verbindung...
+2025-11-10 11:29:41 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:29:41 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 11:29:41 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 11:29:41 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 11:29:41 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 11:29:41 - app.services.trigger_endpoint_service - INFO - ✓ Finale Prüfung: Datenbank-Verbindung erfolgreich
+2025-11-10 11:29:41 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 11:29:42 - app.services.trigger_endpoint_service - INFO - ✓ Finale Prüfung: Endpoint-Verbindung erfolgreich
+2025-11-10 11:29:42 - app.services.trigger_endpoint_service - INFO - ✅ BEIDE Verbindungen funktionieren - Trigger wird jetzt erstellt...
+2025-11-10 11:29:42 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:29:42 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 11:29:42 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 11:29:42 - app.services.database_service - DEBUG - Führe 2 SQL-Batch(es) aus...
+2025-11-10 11:29:42 - app.services.database_service - DEBUG - Führe Batch 1/2 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-10 11:29:42 - app.services.database_service - DEBUG - Führe Batch 2/2 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP]
+		ON     [dbo].[tArtikel]
+		AFTER  INSERT, UPDATE
+...
+2025-11-10 11:29:42 - app.services.database_service - INFO - Alle 2 Batch(es) erfolgreich ausgeführt
+2025-11-10 11:29:42 - app.services.trigger_endpoint_service - INFO - Trigger-Update erfolgreich abgeschlossen
+2025-11-10 11:29:42 - app.ui.dashboard - INFO - Trigger-Update abgeschlossen: success=True
+2025-11-10 11:29:42 - app.ui.dashboard - INFO - Trigger erfolgreich erstellt - prüfe Verbindungen für OSS-Button...
+2025-11-10 11:29:42 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 11:29:42 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 11:29:42 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:29:42 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:29:42 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 11:29:42 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 11:29:42 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 11:29:42 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 11:29:42 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 11:29:42 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 11:29:42 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 11:29:44 - app.ui.dashboard - INFO - ✅ OSS-Button aktiviert: Beide Verbindungen funktionieren und Trigger wurde erfolgreich erstellt
+2025-11-10 11:31:50 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 11:31:50 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 11:31:53 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 11:31:53 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 11:31:53 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 11:31:53 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 11:31:53 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 11:31:53 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 11:31:55 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 11:31:55 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 11:31:55 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 11:31:55 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 11:31:55 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-10 11:31:55 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-10 11:31:56 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 11:31:56 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-10 11:31:56 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-10 11:31:58 - app.ui.dashboard - INFO - Starte automatischen Trigger-Update...
+2025-11-10 11:31:58 - app.ui.dashboard - INFO - Trigger-Update Worker gestartet
+2025-11-10 11:31:58 - app.workers.trigger_fetch_worker - INFO - Starte Trigger-Update über TriggerEndpointService...
+2025-11-10 11:31:58 - app.services.trigger_endpoint_service - INFO - Prüfe Datenbank-Verbindung...
+2025-11-10 11:31:58 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:31:58 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:31:58 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 11:31:58 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 11:31:58 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 11:31:59 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 11:31:59 - app.services.trigger_endpoint_service - INFO - ✓ Datenbank-Verbindung erfolgreich
+2025-11-10 11:31:59 - app.services.trigger_endpoint_service - INFO - Prüfe Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 11:31:59 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 11:31:59 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 11:31:59 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 11:31:59 - app.ui.dashboard - DEBUG - OSS-Button deaktiviert: Trigger noch nicht erfolgreich erstellt
+2025-11-10 11:32:00 - app.services.trigger_endpoint_service - INFO - ✓ Endpoint-Verbindung erfolgreich
+2025-11-10 11:32:00 - app.services.trigger_endpoint_service - INFO - Rufe Trigger-Daten vom Endpunkt ab: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 11:32:01 - app.services.trigger_endpoint_service - INFO - Response erhalten: <class 'list'>
+2025-11-10 11:32:01 - app.services.trigger_endpoint_service - INFO - Entschlüssele 1 Items...
+2025-11-10 11:32:01 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-10 11:32:01 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 11:32:01 - app.services.trigger_endpoint_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 11:32:01 - app.services.trigger_endpoint_service - INFO - Formatiere SQL für Ausführung...
+2025-11-10 11:32:01 - app.services.decrypt_service - DEBUG - SQL formatiert: 6117 Zeichen (ursprünglich: 6119 Zeichen)
+2025-11-10 11:32:01 - app.services.trigger_endpoint_service - INFO - Korrigiere Trigger-Struktur...
+2025-11-10 11:32:01 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-10 11:32:01 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: BEGIN nach AS eingefügt (Inline-SET)
+2025-11-10 11:32:01 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: END vor GO eingefügt
+2025-11-10 11:32:01 - app.services.decrypt_service - INFO - Trigger-Struktur wurde automatisch korrigiert
+2025-11-10 11:32:01 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Beide Verbindungen müssen funktionieren...
+2025-11-10 11:32:01 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Datenbank-Verbindung...
+2025-11-10 11:32:01 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:32:01 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 11:32:01 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 11:32:01 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 11:32:01 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 11:32:01 - app.services.trigger_endpoint_service - INFO - ✓ Finale Prüfung: Datenbank-Verbindung erfolgreich
+2025-11-10 11:32:01 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 11:32:02 - app.services.trigger_endpoint_service - INFO - ✓ Finale Prüfung: Endpoint-Verbindung erfolgreich
+2025-11-10 11:32:02 - app.services.trigger_endpoint_service - INFO - ✅ BEIDE Verbindungen funktionieren - Trigger wird jetzt erstellt...
+2025-11-10 11:32:02 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:32:02 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 11:32:02 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 11:32:02 - app.services.database_service - DEBUG - Führe 2 SQL-Batch(es) aus...
+2025-11-10 11:32:02 - app.services.database_service - DEBUG - Führe Batch 1/2 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-10 11:32:03 - app.services.database_service - DEBUG - Führe Batch 2/2 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP]
+		ON     [dbo].[tArtikel]
+		AFTER  INSERT, UPDATE
+...
+2025-11-10 11:32:04 - app.services.database_service - INFO - Alle 2 Batch(es) erfolgreich ausgeführt
+2025-11-10 11:32:04 - app.services.trigger_endpoint_service - INFO - Trigger-Update erfolgreich abgeschlossen
+2025-11-10 11:32:04 - app.ui.dashboard - INFO - Trigger-Update abgeschlossen: success=True
+2025-11-10 11:32:04 - app.ui.dashboard - INFO - Trigger erfolgreich erstellt - prüfe Verbindungen für OSS-Button...
+2025-11-10 11:32:05 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 11:32:05 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 11:32:05 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:32:05 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:32:05 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 11:32:05 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 11:32:05 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 11:32:05 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 11:32:05 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 11:32:05 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 11:32:05 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 11:32:06 - app.ui.dashboard - INFO - ✅ OSS-Button aktiviert: Beide Verbindungen funktionieren und Trigger wurde erfolgreich erstellt
+2025-11-10 11:39:52 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 11:39:52 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 11:39:54 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 11:39:55 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 11:39:55 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 11:39:55 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 11:39:55 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 11:39:55 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 11:39:56 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 11:39:57 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 11:39:57 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 11:39:57 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 11:39:57 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-10 11:39:57 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-10 11:39:58 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 11:39:58 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-10 11:39:58 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-10 11:40:00 - app.ui.dashboard - INFO - Starte automatischen Trigger-Update...
+2025-11-10 11:40:00 - app.ui.dashboard - INFO - Trigger-Update Worker gestartet
+2025-11-10 11:40:00 - app.workers.trigger_fetch_worker - INFO - Starte Trigger-Update über TriggerEndpointService...
+2025-11-10 11:40:00 - app.services.trigger_endpoint_service - INFO - Prüfe Datenbank-Verbindung...
+2025-11-10 11:40:00 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:40:00 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:40:00 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 11:40:00 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 11:40:00 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 11:40:00 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 11:40:00 - app.services.trigger_endpoint_service - INFO - ✓ Datenbank-Verbindung erfolgreich
+2025-11-10 11:40:00 - app.services.trigger_endpoint_service - INFO - Prüfe Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 11:40:00 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 11:40:00 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 11:40:00 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 11:40:01 - app.ui.dashboard - DEBUG - OSS-Button deaktiviert: Trigger noch nicht erfolgreich erstellt
+2025-11-10 11:40:02 - app.services.trigger_endpoint_service - INFO - ✓ Endpoint-Verbindung erfolgreich
+2025-11-10 11:40:02 - app.services.trigger_endpoint_service - INFO - Rufe Trigger-Daten vom Endpunkt ab: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 11:40:03 - app.services.trigger_endpoint_service - INFO - Response erhalten: <class 'list'>
+2025-11-10 11:40:03 - app.services.trigger_endpoint_service - INFO - Entschlüssele 1 Items...
+2025-11-10 11:40:03 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-10 11:40:03 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 11:40:03 - app.services.trigger_endpoint_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 11:40:03 - app.services.trigger_endpoint_service - INFO - Formatiere SQL für Ausführung...
+2025-11-10 11:40:03 - app.services.decrypt_service - DEBUG - SQL formatiert: 6117 Zeichen (ursprünglich: 6119 Zeichen)
+2025-11-10 11:40:03 - app.services.trigger_endpoint_service - INFO - Korrigiere Trigger-Struktur...
+2025-11-10 11:40:03 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-10 11:40:03 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: BEGIN nach AS eingefügt (Inline-SET)
+2025-11-10 11:40:03 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: END vor GO eingefügt
+2025-11-10 11:40:03 - app.services.decrypt_service - INFO - Trigger-Struktur wurde automatisch korrigiert
+2025-11-10 11:40:03 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Beide Verbindungen müssen funktionieren...
+2025-11-10 11:40:03 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Datenbank-Verbindung...
+2025-11-10 11:40:03 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:40:03 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 11:40:03 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 11:40:03 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 11:40:03 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 11:40:03 - app.services.trigger_endpoint_service - INFO - ✓ Finale Prüfung: Datenbank-Verbindung erfolgreich
+2025-11-10 11:40:03 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 11:40:04 - app.services.trigger_endpoint_service - INFO - ✓ Finale Prüfung: Endpoint-Verbindung erfolgreich
+2025-11-10 11:40:04 - app.services.trigger_endpoint_service - INFO - ✅ BEIDE Verbindungen funktionieren - Trigger wird jetzt erstellt...
+2025-11-10 11:40:04 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:40:04 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 11:40:04 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 11:40:04 - app.services.database_service - DEBUG - Führe 2 SQL-Batch(es) aus...
+2025-11-10 11:40:04 - app.services.database_service - DEBUG - Führe Batch 1/2 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-10 11:40:04 - app.services.database_service - DEBUG - Führe Batch 2/2 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP]
+		ON     [dbo].[tArtikel]
+		AFTER  INSERT, UPDATE
+...
+2025-11-10 11:40:04 - app.services.database_service - INFO - Alle 2 Batch(es) erfolgreich ausgeführt
+2025-11-10 11:40:04 - app.services.trigger_endpoint_service - INFO - Trigger-Update erfolgreich abgeschlossen
+2025-11-10 11:40:04 - app.ui.dashboard - INFO - Trigger-Update abgeschlossen: success=True
+2025-11-10 11:40:04 - app.ui.dashboard - INFO - Trigger erfolgreich erstellt - prüfe Verbindungen für OSS-Button...
+2025-11-10 11:40:05 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 11:40:05 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 11:40:05 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:40:05 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 11:40:05 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 11:40:05 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 11:40:05 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 11:40:05 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 11:40:05 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 11:40:05 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 11:40:05 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 11:40:06 - app.ui.dashboard - INFO - ✅ OSS-Button aktiviert: Beide Verbindungen funktionieren und Trigger wurde erfolgreich erstellt
+2025-11-10 14:48:01 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 14:48:01 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 14:48:03 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 14:48:03 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 14:48:03 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 14:48:03 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 14:48:03 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 14:48:04 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 14:48:05 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 14:48:05 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 14:48:05 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 14:48:05 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 14:48:05 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-10 14:48:05 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-10 14:48:06 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 14:48:06 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-10 14:48:06 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-10 14:48:08 - app.ui.dashboard - INFO - Starte automatischen Trigger-Update...
+2025-11-10 14:48:08 - app.ui.dashboard - INFO - Trigger-Update Worker gestartet
+2025-11-10 14:48:08 - app.workers.trigger_fetch_worker - INFO - Starte Trigger-Update über TriggerEndpointService...
+2025-11-10 14:48:08 - app.services.trigger_endpoint_service - INFO - Prüfe Datenbank-Verbindung...
+2025-11-10 14:48:08 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:48:08 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:48:08 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 14:48:08 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 14:48:08 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 14:48:08 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 14:48:08 - app.services.trigger_endpoint_service - INFO - ✓ Datenbank-Verbindung erfolgreich
+2025-11-10 14:48:08 - app.services.trigger_endpoint_service - INFO - Prüfe Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 14:48:08 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 14:48:08 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 14:48:08 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 14:48:08 - app.ui.dashboard - DEBUG - OSS-Button deaktiviert: Trigger noch nicht erfolgreich erstellt
+2025-11-10 14:48:09 - app.services.trigger_endpoint_service - INFO - ✓ Endpoint-Verbindung erfolgreich
+2025-11-10 14:48:09 - app.services.trigger_endpoint_service - INFO - Rufe Trigger-Daten vom Endpunkt ab: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 14:48:09 - app.services.trigger_endpoint_service - INFO - Response erhalten: <class 'list'>
+2025-11-10 14:48:09 - app.services.trigger_endpoint_service - INFO - Entschlüssele 1 Items...
+2025-11-10 14:48:09 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-10 14:48:09 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 14:48:09 - app.services.trigger_endpoint_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 14:48:09 - app.services.trigger_endpoint_service - INFO - Formatiere SQL für Ausführung...
+2025-11-10 14:48:09 - app.services.decrypt_service - DEBUG - SQL formatiert: 6117 Zeichen (ursprünglich: 6119 Zeichen)
+2025-11-10 14:48:09 - app.services.trigger_endpoint_service - INFO - Korrigiere Trigger-Struktur...
+2025-11-10 14:48:09 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-10 14:48:09 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: BEGIN nach AS eingefügt (Inline-SET)
+2025-11-10 14:48:09 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: END vor GO eingefügt
+2025-11-10 14:48:09 - app.services.decrypt_service - INFO - Trigger-Struktur wurde automatisch korrigiert
+2025-11-10 14:48:09 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Beide Verbindungen müssen funktionieren...
+2025-11-10 14:48:09 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Datenbank-Verbindung...
+2025-11-10 14:48:09 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:48:09 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 14:48:09 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 14:48:09 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 14:48:09 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 14:48:09 - app.services.trigger_endpoint_service - INFO - ✓ Finale Prüfung: Datenbank-Verbindung erfolgreich
+2025-11-10 14:48:09 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 14:48:10 - app.services.trigger_endpoint_service - INFO - ✓ Finale Prüfung: Endpoint-Verbindung erfolgreich
+2025-11-10 14:48:10 - app.services.trigger_endpoint_service - INFO - ✅ BEIDE Verbindungen funktionieren - Trigger wird jetzt erstellt...
+2025-11-10 14:48:10 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:48:10 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 14:48:10 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 14:48:10 - app.services.database_service - DEBUG - Führe 2 SQL-Batch(es) aus...
+2025-11-10 14:48:10 - app.services.database_service - DEBUG - Führe Batch 1/2 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-10 14:48:10 - app.services.database_service - DEBUG - Führe Batch 2/2 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP]
+		ON     [dbo].[tArtikel]
+		AFTER  INSERT, UPDATE
+...
+2025-11-10 14:48:10 - app.services.database_service - INFO - Alle 2 Batch(es) erfolgreich ausgeführt
+2025-11-10 14:48:10 - app.services.trigger_endpoint_service - INFO - Trigger-Update erfolgreich abgeschlossen
+2025-11-10 14:48:10 - app.ui.dashboard - INFO - Trigger-Update abgeschlossen: success=True
+2025-11-10 14:48:10 - app.ui.dashboard - INFO - Trigger erfolgreich erstellt - prüfe Verbindungen für OSS-Button...
+2025-11-10 14:48:10 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 14:48:10 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 14:48:10 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:48:10 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:48:10 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 14:48:10 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 14:48:10 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 14:48:10 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 14:48:10 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 14:48:10 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 14:48:10 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 14:48:11 - app.ui.dashboard - INFO - ✅ OSS-Button aktiviert: Beide Verbindungen funktionieren und Trigger wurde erfolgreich erstellt
+2025-11-10 14:53:02 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 14:53:02 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 14:53:04 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 14:53:04 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 14:53:04 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 14:53:04 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 14:53:04 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 14:53:04 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 14:53:05 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 14:53:06 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 14:53:06 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 14:53:06 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 14:53:06 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-10 14:53:06 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-10 14:53:06 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 14:53:06 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-10 14:53:06 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-10 14:53:08 - app.ui.dashboard - INFO - License expiry gesetzt: 11/2025
+2025-11-10 14:53:08 - app.ui.dashboard - INFO - Starte automatischen Trigger-Update...
+2025-11-10 14:53:08 - app.ui.dashboard - INFO - Trigger-Update Worker gestartet
+2025-11-10 14:53:08 - app.workers.trigger_fetch_worker - INFO - Starte Trigger-Update über TriggerEndpointService...
+2025-11-10 14:53:08 - app.services.trigger_endpoint_service - INFO - Prüfe Datenbank-Verbindung...
+2025-11-10 14:53:08 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:53:08 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:53:08 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 14:53:08 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 14:53:08 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 14:53:09 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 14:53:09 - app.services.trigger_endpoint_service - INFO - ✓ Datenbank-Verbindung erfolgreich
+2025-11-10 14:53:09 - app.services.trigger_endpoint_service - INFO - Prüfe Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 14:53:09 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 14:53:09 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 14:53:09 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 14:53:09 - app.ui.dashboard - DEBUG - OSS-Button deaktiviert: Trigger noch nicht erfolgreich erstellt
+2025-11-10 14:53:09 - app.services.trigger_endpoint_service - INFO - ✓ Endpoint-Verbindung erfolgreich
+2025-11-10 14:53:09 - app.services.trigger_endpoint_service - INFO - Rufe Trigger-Daten vom Endpunkt ab: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 14:53:10 - app.services.trigger_endpoint_service - INFO - Response erhalten: <class 'list'>
+2025-11-10 14:53:10 - app.services.trigger_endpoint_service - INFO - Entschlüssele 1 Items...
+2025-11-10 14:53:10 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-10 14:53:10 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 14:53:10 - app.services.trigger_endpoint_service - INFO - Entschlüsselung erfolgreich: 6119 Zeichen
+2025-11-10 14:53:10 - app.services.trigger_endpoint_service - INFO - Formatiere SQL für Ausführung...
+2025-11-10 14:53:10 - app.services.decrypt_service - DEBUG - SQL formatiert: 6117 Zeichen (ursprünglich: 6119 Zeichen)
+2025-11-10 14:53:10 - app.services.trigger_endpoint_service - INFO - Korrigiere Trigger-Struktur...
+2025-11-10 14:53:10 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-10 14:53:10 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: BEGIN nach AS eingefügt (Inline-SET)
+2025-11-10 14:53:10 - app.services.decrypt_service - INFO - Trigger-Struktur korrigiert: END vor GO eingefügt
+2025-11-10 14:53:10 - app.services.decrypt_service - INFO - Trigger-Struktur wurde automatisch korrigiert
+2025-11-10 14:53:10 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Beide Verbindungen müssen funktionieren...
+2025-11-10 14:53:10 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Datenbank-Verbindung...
+2025-11-10 14:53:10 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:53:10 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 14:53:10 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 14:53:10 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 14:53:10 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 14:53:10 - app.services.trigger_endpoint_service - INFO - ✓ Finale Prüfung: Datenbank-Verbindung erfolgreich
+2025-11-10 14:53:10 - app.services.trigger_endpoint_service - INFO - Finale Prüfung: Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 14:53:11 - app.services.trigger_endpoint_service - INFO - ✓ Finale Prüfung: Endpoint-Verbindung erfolgreich
+2025-11-10 14:53:11 - app.services.trigger_endpoint_service - INFO - ✅ BEIDE Verbindungen funktionieren - Trigger wird jetzt erstellt...
+2025-11-10 14:53:11 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:53:11 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 14:53:11 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 14:53:11 - app.services.database_service - DEBUG - Führe 2 SQL-Batch(es) aus...
+2025-11-10 14:53:11 - app.services.database_service - DEBUG - Führe Batch 1/2 aus: IF EXISTS ( SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[tgr_oss_goe_tartikel_INSU...
+2025-11-10 14:53:11 - app.services.database_service - DEBUG - Führe Batch 2/2 aus: CREATE TRIGGER [dbo].[tgr_oss_goe_tartikel_INSUP]
+		ON     [dbo].[tArtikel]
+		AFTER  INSERT, UPDATE
+...
+2025-11-10 14:53:11 - app.services.database_service - INFO - Alle 2 Batch(es) erfolgreich ausgeführt
+2025-11-10 14:53:11 - app.services.trigger_endpoint_service - INFO - Trigger-Update erfolgreich abgeschlossen
+2025-11-10 14:53:11 - app.ui.dashboard - INFO - Trigger-Update abgeschlossen: success=True
+2025-11-10 14:53:11 - app.ui.dashboard - INFO - Trigger erfolgreich erstellt - prüfe Verbindungen für OSS-Button...
+2025-11-10 14:53:11 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 14:53:11 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 14:53:11 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:53:11 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:53:11 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 14:53:11 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 14:53:11 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 14:53:11 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 14:53:11 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 14:53:11 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 14:53:11 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 14:53:12 - app.ui.dashboard - INFO - ✅ OSS-Button aktiviert: Beide Verbindungen funktionieren und Trigger wurde erfolgreich erstellt
+2025-11-10 14:53:14 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 14:53:14 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 14:53:14 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 14:53:17 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 14:53:17 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 14:53:17 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 14:53:17 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 14:53:17 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 14:53:17 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:53:17 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:53:17 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 14:53:17 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 14:53:17 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 14:53:17 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 14:53:17 - app.services.workflow_service - DEBUG - WorkflowService initialisiert - URL: https://agentic.go-ecommerce.de/webhook/v1/users/tarics
+2025-11-10 14:53:17 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 14:53:17 - app.managers.oss_start - INFO - OSSStart initialisiert - License: 1234..., Email: iva...
+2025-11-10 14:53:17 - app.managers.oss_start - INFO - 🚀 Starte OSS-Abgleich...
+2025-11-10 14:53:17 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:53:17 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:53:17 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 14:53:17 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 14:53:17 - app.services.database_service - DEBUG - Lade Produkte mit TARIC-Informationen...
+2025-11-10 14:53:18 - app.services.database_service - INFO - 5 Artikel mit TARIC-Informationen gefunden
+2025-11-10 14:53:18 - app.managers.oss_start - INFO - 📤 Sende 5 Produkte...
+2025-11-10 14:53:18 - app.services.workflow_service - INFO - Sende 5 Produkte an Webhook
+2025-11-10 14:53:19 - app.managers.oss_start - INFO -    ✓ Produkte erfolgreich gesendet: Erfolgreich: 200
+2025-11-10 14:53:19 - app.managers.oss_start - INFO - 📊 Hole aktuelle Steuersätze...
+2025-11-10 14:53:19 - app.managers.oss_start - INFO - Rufe Tax-Rates Endpoint auf: https://agentic.go-ecommerce.de/webhook/v1/tax-rates
+2025-11-10 14:53:20 - app.managers.oss_start - INFO - Verschlüsselte Daten erhalten: <class 'list'>
+2025-11-10 14:53:20 - app.managers.oss_start - INFO -    ✓ 1 verschlüsselte Items erhalten
+2025-11-10 14:53:20 - app.managers.oss_start - INFO - 🔓 Entschlüssele Daten...
+2025-11-10 14:53:20 - app.services.decrypt_service - INFO - Entschlüssele 1 Items aus n8n-Format
+2025-11-10 14:53:20 - app.services.decrypt_service - INFO - Entschlüsselung erfolgreich: 6550 Zeichen
+2025-11-10 14:53:20 - app.managers.oss_start - INFO - Entschlüsselung erfolgreich: 6550 Zeichen
+2025-11-10 14:53:20 - app.managers.oss_start - INFO -    ✓ Entschlüsselung erfolgreich (6550 Zeichen)
+2025-11-10 14:53:20 - app.managers.oss_start - INFO - 📝 Formatiere SQL...
+2025-11-10 14:53:20 - app.services.decrypt_service - DEBUG - SQL formatiert: 6550 Zeichen (ursprünglich: 6550 Zeichen)
+2025-11-10 14:53:20 - app.managers.oss_start - INFO - SQL formatiert: 6550 Zeichen
+2025-11-10 14:53:20 - app.managers.oss_start - INFO -    ✓ SQL formatiert (6550 Zeichen)
+2025-11-10 14:53:20 - app.managers.oss_start - INFO - decrypted_sql_callback aufgerufen
+2025-11-10 14:53:20 - app.managers.oss_start - INFO - 💾 Führe SQL Statement aus...
+2025-11-10 14:53:20 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:53:20 - app.services.decrypt_service - DEBUG - Prüfe Trigger-Struktur auf Korrekturen...
+2025-11-10 14:53:20 - app.services.decrypt_service - DEBUG - Kein CREATE TRIGGER gefunden - keine Korrektur nötig
+2025-11-10 14:53:20 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:53:20 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 14:53:20 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 14:53:20 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 14:53:20 - app.ui.dashboard - INFO - Entschlüsseltes SQL erhalten (6550 Zeichen)
+2025-11-10 14:53:20 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 14:53:20 - app.managers.oss_start - INFO - Führe SQL aus (6550 Zeichen):
+/* ============================================================*/
+/* Automatisch generiert am: 2025-11-10T13:53:19.743Z */
+/* Steuersatz-Update für 27 Länder */
+/* Batch-Größe: Alle 10 Statements ein GO */
+/* ============================================================*/
+
+/* Update für AT */
+UPDATE [eazybusiness].[dbo].[tLandSteuersatz]
+SET 
+    [fStarkErmaessigterSatz] = NULL,
+    [fErmaessigterSatzNiedrig] = 13,
+    [fErmaessigterSatz] = 10,
+    [fNormalerSatz] = 20
+WHERE [cISOLand] = 'AT';
+
+/...
+2025-11-10 14:53:20 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:53:20 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 14:53:20 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 14:53:20 - app.services.database_service - DEBUG - Führe 3 SQL-Batch(es) aus...
+2025-11-10 14:53:20 - app.services.database_service - DEBUG - Führe Batch 1/3 aus: /* ============================================================*/
+/* Automatisch generiert am: 2025-...
+2025-11-10 14:53:20 - app.services.database_service - DEBUG - Führe Batch 2/3 aus: /* Update für FR */
+UPDATE [eazybusiness].[dbo].[tLandSteuersatz]
+SET 
+    [fStarkErmaessigterSatz] ...
+2025-11-10 14:53:20 - app.services.database_service - DEBUG - Führe Batch 3/3 aus: /* Update für NL */
+UPDATE [eazybusiness].[dbo].[tLandSteuersatz]
+SET 
+    [fStarkErmaessigterSatz] ...
+2025-11-10 14:53:20 - app.services.database_service - INFO - Alle Batches erfolgreich ausgeführt - 1 Zeilen betroffen
+2025-11-10 14:53:20 - app.managers.oss_start - INFO -    ✓ SQL erfolgreich ausgeführt: Alle Batches erfolgreich ausgeführt - 1 Zeilen betroffen
+2025-11-10 14:53:20 - app.managers.oss_start - INFO - SQL-Ausführung: success=True, sql_statement vorhanden=True
+2025-11-10 14:53:20 - app.ui.dashboard - INFO - Letztes Sync-Datum gespeichert: 2025-11-10T14:53:20.204014
+2025-11-10 14:53:27 - app.core.error_handler - INFO - Globaler Exception Handler installiert
+2025-11-10 14:53:27 - app.core.error_handler - INFO - Qt Exception Handler installiert
+2025-11-10 14:53:30 - app.services.decrypt_service - DEBUG - DecryptService initialisiert
+2025-11-10 14:53:30 - app.services.database_service - INFO - Konfiguration erfolgreich geladen
+2025-11-10 14:53:30 - app.services.database_service - DEBUG - DatabaseService initialisiert - Server: .\JTLWAWI
+2025-11-10 14:53:30 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 14:53:30 - app.services.trigger_endpoint_service - DEBUG - TriggerEndpointService initialisiert
+2025-11-10 14:53:30 - app.services.license_service - DEBUG - LicenseService initialisiert
+2025-11-10 14:53:31 - app.services.license_service - DEBUG - Lizenz vorhanden: True
+2025-11-10 14:53:32 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 14:53:32 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 14:53:32 - app.services.license_service - INFO - Prüfe Lizenz über Endpoint: https://agentic.go-ecommerce.de/webhook/v1/check-license
+2025-11-10 14:53:32 - app.services.license_service - INFO - WICHTIG: Sende Lizenzdaten - Lizenznummer: 123456789, E-Mail: ivan.levshyn@go-ecommerce.de
+2025-11-10 14:53:32 - app.services.license_service - DEBUG - Lizenznummer: 1234..., E-Mail: iva...
+2025-11-10 14:53:32 - app.services.license_service - INFO - License-Check Response Status: 200
+2025-11-10 14:53:32 - app.services.license_service - DEBUG - Response Data: {'licenseKey': '123456789', 'validTo': '2025-11-30T11:49:35', 'customer': '2', 'status': 'valid'}
+2025-11-10 14:53:32 - app.services.license_service - INFO - Lizenz erfolgreich geprüft und gültig
+2025-11-10 14:53:34 - app.ui.dashboard - INFO - License expiry gesetzt: 11/2025
+2025-11-10 14:53:34 - app.ui.dashboard - INFO - Starte automatischen Trigger-Update...
+2025-11-10 14:53:34 - app.ui.dashboard - INFO - Trigger-Update Worker gestartet
+2025-11-10 14:53:34 - app.workers.trigger_fetch_worker - INFO - Starte Trigger-Update über TriggerEndpointService...
+2025-11-10 14:53:34 - app.services.trigger_endpoint_service - INFO - Prüfe Datenbank-Verbindung...
+2025-11-10 14:53:34 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:53:34 - app.services.database_service - DEBUG - Passwort erfolgreich aus Keyring geladen
+2025-11-10 14:53:34 - app.services.database_service - DEBUG - Erstelle Connection String - Server: .\JTLWAWI, Username: sa, Database: eazybusiness
+2025-11-10 14:53:34 - app.services.database_service - DEBUG - Passwort vorhanden: Ja (Länge: 8)
+2025-11-10 14:53:34 - app.services.database_service - DEBUG - Starte Verbindungstest...
+2025-11-10 14:53:35 - app.services.database_service - INFO - Verbindungstest erfolgreich
+2025-11-10 14:53:35 - app.services.trigger_endpoint_service - INFO - ✓ Datenbank-Verbindung erfolgreich
+2025-11-10 14:53:35 - app.services.trigger_endpoint_service - INFO - Prüfe Endpoint-Verbindung: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger
+2025-11-10 14:53:35 - app.services.license_service - DEBUG - Lade Lizenzdaten
+2025-11-10 14:53:35 - app.services.license_service - DEBUG - Lizenzdaten erfolgreich geladen
+2025-11-10 14:53:35 - app.services.trigger_endpoint_service - DEBUG - Headers erstellt - License: 1234...
+2025-11-10 14:53:35 - app.ui.dashboard - DEBUG - OSS-Button deaktiviert: Trigger noch nicht erfolgreich erstellt
+2025-11-10 14:53:35 - app.services.trigger_endpoint_service - INFO - ✓ Endpoint-Verbindung erfolgreich
+2025-11-10 14:53:35 - app.services.trigger_endpoint_service - INFO - Rufe Trigger-Daten vom Endpunkt ab: https://agentic.go-ecommerce.de/webhook/v1/get-products-trigger

@@ -44,6 +44,10 @@ class EndpointConfig:
         # Tax Rates Endpoints
         "tax_rates": f"{API_V1_BASE}/tax-rates",
         "tax_rates_test": f"{API_V1_TEST_BASE}/tax-rates",
+        
+        # Error Handling Endpoints
+        "error_webhook": f"{API_V1_BASE}/oss-error",
+        "error_webhook_test": f"{API_V1_TEST_BASE}/oss-error",
     }
     
     @classmethod

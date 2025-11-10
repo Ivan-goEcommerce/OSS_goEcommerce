@@ -10,11 +10,18 @@ from PySide6.QtGui import QPalette, QColor
 from .ui.dashboard import DashboardWindow
 from .config import get_color_scheme
 from .core.debug_manager import get_debug_manager
+from .core.error_handler import install_global_exception_handler, install_qt_exception_handler
 
 
 def setup_application():
     """Richtet die Anwendung ein"""
+    # Installiere globalen Exception Handler (MUSS vor QApplication sein)
+    install_global_exception_handler()
+    
     app = QApplication(sys.argv)
+    
+    # Installiere Qt-spezifischen Exception Handler
+    install_qt_exception_handler(app)
     
     # Setze das Orange-Schwarz Farbschema
     palette = QPalette()

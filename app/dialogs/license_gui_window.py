@@ -4,18 +4,20 @@ Zeigt Lizenzstatus und ermöglicht Lizenz-Eingabe
 """
 
 from PySide6.QtWidgets import (QDialog, QVBoxLayout, QHBoxLayout, QLabel, 
-                               QLineEdit, QPushButton, QFormLayout, QMessageBox,
+                               QPushButton, QMessageBox,
                                QProgressBar, QFrame)
 from PySide6.QtCore import Qt, QTimer, QThread, Signal
 from PySide6.QtGui import QFont
 
 from app.services.license_service import LicenseService
 from app.core.debug_manager import debug_print
+from app.dialogs.license_dialog import LicenseDialog
 
 
 class LicenseCheckThread(QThread):
     """Worker-Thread für Lizenzprüfung über Endpoint"""
     finished = Signal(bool, dict, str)  # success, response_data, message
+    valid_to_received = Signal(str)  # valid_to date
     
     def __init__(self, license_service, license_number=None, email=None):
         super().__init__()
@@ -33,6 +35,13 @@ class LicenseCheckThread(QThread):
             
             # Prüfe über Endpoint
             success, response_data, message = self.license_service.check_license_via_endpoint()
+            
+            # Extrahiere "valid to" aus response_data wenn vorhanden
+            if success and isinstance(response_data, dict):
+                valid_to = response_data.get('valid_to') or response_data.get('validTo') or response_data.get('valid_to_date')
+                if valid_to:
+                    self.valid_to_received.emit(str(valid_to))
+            
             self.finished.emit(success, response_data, message)
         except Exception as e:
             self.finished.emit(False, {}, f"Fehler: {str(e)}")
@@ -50,6 +59,7 @@ class LicenseGUIWindow(QDialog):
         self.license_valid = False
         self.license_service = LicenseService()
         self.check_thread = None
+        self.valid_to_date = None  # Speichere valid_to Datum
         self.setup_ui()
     
     def setup_ui(self):
@@ -116,7 +126,7 @@ class LicenseGUIWindow(QDialog):
         error_buttons_layout.setSpacing(10)
         
         self.enter_license_button = QPushButton("🔑 Lizenz eingeben")
-        self.enter_license_button.clicked.connect(self.show_license_form_on_error)
+        self.enter_license_button.clicked.connect(self._open_license_dialog_and_close)
         self.enter_license_button.setStyleSheet("""
             QPushButton {
                 background-color: #ff8c00;
@@ -158,101 +168,6 @@ class LicenseGUIWindow(QDialog):
         
         layout.addWidget(self.error_buttons_frame)
         
-        # Lizenz-Formular (versteckt bis benötigt - nur wenn KEINE Lizenzdaten vorhanden)
-        self.license_form = QFrame()
-        self.license_form.setVisible(False)
-        form_layout = QVBoxLayout(self.license_form)
-        
-        form_title = QLabel("Lizenz eingeben:")
-        form_title.setFont(QFont("Arial", 12, QFont.Bold))
-        form_title.setStyleSheet("color: #ff8c00; margin-bottom: 10px;")
-        form_layout.addWidget(form_title)
-        
-        # Formular
-        input_layout = QFormLayout()
-        
-        self.license_input = QLineEdit()
-        self.license_input.setPlaceholderText("Lizenznummer eingeben...")
-        self.license_input.setStyleSheet("""
-            QLineEdit {
-                background-color: #1a1a1a;
-                border: 2px solid #ff8c00;
-                border-radius: 8px;
-                padding: 8px;
-                color: #ff8c00;
-                font-size: 12px;
-            }
-            QLineEdit:focus {
-                border-color: #ffaa00;
-            }
-        """)
-        input_layout.addRow("Lizenznummer:", self.license_input)
-        
-        self.email_input = QLineEdit()
-        self.email_input.setPlaceholderText("E-Mail eingeben...")
-        self.email_input.setStyleSheet("""
-            QLineEdit {
-                background-color: #1a1a1a;
-                border: 2px solid #ff8c00;
-                border-radius: 8px;
-                padding: 8px;
-                color: #ff8c00;
-                font-size: 12px;
-            }
-            QLineEdit:focus {
-                border-color: #ffaa00;
-            }
-        """)
-        input_layout.addRow("E-Mail:", self.email_input)
-        
-        form_layout.addLayout(input_layout)
-        
-        # Buttons
-        button_layout = QHBoxLayout()
-        
-        self.verify_button = QPushButton("🔍 Lizenz prüfen")
-        self.verify_button.clicked.connect(self.verify_license)
-        self.verify_button.setStyleSheet("""
-            QPushButton {
-                background-color: #ff8c00;
-                color: #000000;
-                border: none;
-                border-radius: 8px;
-                padding: 12px 24px;
-                font-size: 14px;
-                font-weight: bold;
-            }
-            QPushButton:hover {
-                background-color: #ffaa00;
-            }
-            QPushButton:pressed {
-                background-color: #ff6600;
-            }
-        """)
-        button_layout.addWidget(self.verify_button)
-        
-        self.cancel_button = QPushButton("❌ Beenden")
-        self.cancel_button.clicked.connect(self.reject)
-        self.cancel_button.setStyleSheet("""
-            QPushButton {
-                background-color: #2a2a2a;
-                color: #ff8c00;
-                border: 2px solid #ff8c00;
-                border-radius: 8px;
-                padding: 10px 20px;
-                font-size: 12px;
-            }
-            QPushButton:hover {
-                background-color: #ff8c00;
-                color: #000000;
-            }
-        """)
-        button_layout.addWidget(self.cancel_button)
-        
-        form_layout.addLayout(button_layout)
-        
-        layout.addWidget(self.license_form)
-        
         # Starte automatische Lizenzprüfung
         QTimer.singleShot(1000, self.start_license_check)
     
@@ -262,12 +177,14 @@ class LicenseGUIWindow(QDialog):
         
         # Prüfe ob Lizenzdaten vorhanden sind
         if not self.license_service.has_license():
-            # Keine Lizenzdaten gefunden - zeige Eingabeformular
-            debug_print("WARNUNG: Keine Lizenzdaten gefunden - zeige Eingabeformular")
+            # Keine Lizenzdaten gefunden - schließe Fenster und zeige LicenseDialog
+            debug_print("WARNUNG: Keine Lizenzdaten gefunden - schließe Fenster und öffne LicenseDialog")
             self.progress_bar.setVisible(False)
             self.status_label.setText("❌ Keine Lizenzdaten gefunden")
             self.status_label.setStyleSheet("color: #ff4444; text-align: center;")
-            self.license_form.setVisible(True)
+            
+            # Schließe dieses Fenster und öffne LicenseDialog
+            QTimer.singleShot(500, self._open_license_dialog_and_close)
             return
         
         # Prüfe vorhandene Lizenz über Endpoint
@@ -280,7 +197,14 @@ class LicenseGUIWindow(QDialog):
         # Erstelle Worker-Thread für HTTP-Request
         self.check_thread = LicenseCheckThread(self.license_service)
         self.check_thread.finished.connect(self.on_license_check_finished)
+        self.check_thread.valid_to_received.connect(self.on_valid_to_received)
         self.check_thread.start()
+    
+    def on_valid_to_received(self, valid_to: str):
+        """Wird aufgerufen wenn valid_to vom Server empfangen wurde"""
+        # Speichere valid_to für späteren Zugriff
+        self.valid_to_date = valid_to
+        debug_print(f"DEBUG: valid_to empfangen: {valid_to}")
     
     def on_license_check_finished(self, success, response_data, message):
         """Wird aufgerufen wenn automatische Lizenzprüfung abgeschlossen ist"""
@@ -294,78 +218,61 @@ class LicenseGUIWindow(QDialog):
             debug_print(f"Response: {response_data}")
             self.license_valid = True
             
+            # Extrahiere valid_to aus response_data (falls noch nicht über Signal empfangen)
+            if isinstance(response_data, dict):
+                valid_to = response_data.get('valid_to') or response_data.get('validTo') or response_data.get('valid_to_date')
+                if valid_to:
+                    self.valid_to_date = str(valid_to)
+                    debug_print(f"DEBUG: valid_to aus response_data extrahiert: {valid_to}")
+            
             # Schließe Dialog nach kurzer Zeit
             QTimer.singleShot(1500, self.accept)
         else:
-            # Lizenzprüfung fehlgeschlagen - zeige NUR Fehlermeldung und Beenden-Button
-            self.status_label.setText(f"❌ Lizenzprüfung fehlgeschlagen\n\n{message}")
-            self.status_label.setStyleSheet("color: #ff4444; text-align: center;")
+            # Lizenzprüfung fehlgeschlagen - zeige Fehlerfenster und öffne dann LicenseDialog
             debug_print(f"FEHLER: Lizenzprüfung fehlgeschlagen - {message}")
             debug_print(f"Response: {response_data}")
             
-            # Zeige Buttons (Lizenz eingeben + Beenden), aber verstecke zunächst Eingabefelder
-            self.error_buttons_frame.setVisible(True)
-            self.license_form.setVisible(False)
+            # Zeige Fehlerfenster
+            msg_box = QMessageBox(self)
+            msg_box.setWindowTitle("❌ Lizenzprüfung fehlgeschlagen")
+            msg_box.setText(f"Die Lizenzprüfung war nicht erfolgreich:\n\n{message}\n\n"
+                          "Bitte geben Sie neue Lizenzdaten ein.")
+            msg_box.setIcon(QMessageBox.Warning)
+            msg_box.setStandardButtons(QMessageBox.Ok)
+            
+            # Nach OK: Schließe dieses Fenster und öffne LicenseDialog
+            msg_box.finished.connect(lambda result: self._open_license_dialog_and_close())
+            msg_box.exec()
     
-    def show_license_form_on_error(self):
-        """Zeigt Eingabeformular wenn User auf 'Lizenz eingeben' klickt"""
-        # Verstecke Fehler-Buttons
-        self.error_buttons_frame.setVisible(False)
-        # Zeige Eingabeformular
-        self.license_form.setVisible(True)
-        # Aktualisiere Status-Label
-        self.status_label.setText("Bitte geben Sie neue Lizenzdaten ein:")
-        self.status_label.setStyleSheet("color: #ff8c00; text-align: center;")
+    def _open_license_dialog_and_close(self):
+        """Schließt dieses Fenster und öffnet LicenseDialog - nach erfolgreichem Speichern wird neue Prüfung gestartet"""
+        # Öffne LicenseDialog im Hauptfenster (NICHT schließen, damit wir das Ergebnis zurückgeben können)
+        parent = self.parent()
+        if parent:
+            license_dialog = LicenseDialog(parent)
+            dialog_result = license_dialog.exec()
+            
+            # Wenn LicenseDialog erfolgreich war (neue Daten gespeichert und geprüft)
+            # dann prüfe nochmal mit den neuen Daten
+            if dialog_result == QDialog.Accepted:
+                debug_print("LicenseDialog erfolgreich - starte neue Prüfung mit gespeicherten Daten")
+                # Prüfe nochmal mit den gespeicherten Daten
+                QTimer.singleShot(500, self._recheck_license_after_save)
+            else:
+                # LicenseDialog abgebrochen oder fehlgeschlagen - schließe dieses Fenster
+                debug_print("LicenseDialog abgebrochen - schließe LicenseGUIWindow")
+                self.reject()
     
-    def verify_license(self):
-        """Prüft eingegebene Lizenz über Endpoint"""
-        license_number = self.license_input.text().strip()
-        email = self.email_input.text().strip()
+    def _recheck_license_after_save(self):
+        """Prüft Lizenz erneut nach erfolgreichem Speichern neuer Daten"""
+        debug_print("INFO: Prüfe Lizenz erneut nach erfolgreichem Speichern...")
         
-        if not license_number or not email:
-            QMessageBox.warning(self, "Fehler", "Bitte geben Sie Lizenznummer und E-Mail ein!")
-            return
-        
-        # Deaktiviere Button während Prüfung
-        self.verify_button.setEnabled(False)
-        self.verify_button.setText("🔄 Prüfe über Server...")
-        self.status_label.setText("🔄 Prüfe Lizenz über Server...")
-        self.status_label.setStyleSheet("color: #ff8c00; text-align: center;")
+        # Zeige Progress Bar
         self.progress_bar.setVisible(True)
+        self.status_label.setText("🔄 Prüfe neue Lizenzdaten...")
+        self.status_label.setStyleSheet("color: #ff8c00; text-align: center;")
         
-        # Erstelle Worker-Thread für HTTP-Request
-        self.check_thread = LicenseCheckThread(
-            self.license_service, 
-            license_number=license_number, 
-            email=email
-        )
-        self.check_thread.finished.connect(self.finish_license_check)
+        # Prüfe vorhandene Lizenz über Endpoint
+        self.check_thread = LicenseCheckThread(self.license_service)
+        self.check_thread.finished.connect(self.on_license_check_finished)
         self.check_thread.start()
-    
-    def finish_license_check(self, success, response_data, message):
-        """Beendet die Lizenzprüfung"""
-        self.progress_bar.setVisible(False)
-        self.verify_button.setEnabled(True)
-        self.verify_button.setText("🔍 Lizenz prüfen")
-        
-        if success:
-            # Lizenzprüfung erfolgreich
-            self.status_label.setText("✅ Lizenz erfolgreich geprüft!")
-            self.status_label.setStyleSheet("color: #00ff00; text-align: center;")
-            debug_print(f"OK: Lizenz erfolgreich geprüft - {message}")
-            debug_print(f"Response: {response_data}")
-            self.license_valid = True
-            
-            # Schließe Dialog nach kurzer Zeit
-            QTimer.singleShot(1500, self.accept)
-        else:
-            # Lizenzprüfung fehlgeschlagen
-            self.status_label.setText(f"❌ Lizenzprüfung fehlgeschlagen\n{message}")
-            self.status_label.setStyleSheet("color: #ff4444; text-align: center;")
-            QMessageBox.warning(
-                self, 
-                "Lizenzprüfung fehlgeschlagen", 
-                f"Die Lizenzprüfung war nicht erfolgreich:\n\n{message}\n\n"
-                "Bitte überprüfen Sie Ihre Lizenzdaten und versuchen Sie es erneut."
-            )
-            debug_print(f"FEHLER: Lizenzprüfung fehlgeschlagen - {message}")
