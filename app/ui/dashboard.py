@@ -9,7 +9,6 @@ from PySide6.QtCore import Qt, QTimer
 from PySide6.QtGui import QFont, QPainter, QColor
 
 from ..managers.license_manager import LicenseManager
-from ..managers.oss_schema_manager import OSSSchemaManager
 from ..dialogs import JTLConnectionDialog, LicenseDialog, LicenseGUIWindow, DecryptDialog
 from ..workers.sync_worker import JTLToN8nSyncWorker
 from ..workers.trigger_fetch_worker import TriggerFetchWorker
@@ -32,7 +31,6 @@ class DashboardWindow(QMainWindow):
         
         # Managers
         self.license_manager = LicenseManager()
-        self.oss_schema_manager = None
         
         # Daten für die Cards
         self.taric_total_count = 0
